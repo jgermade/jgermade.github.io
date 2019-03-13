@@ -1,2 +1,0 @@
-jgermade.github.io
-==================
