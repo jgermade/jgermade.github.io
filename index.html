@@ -147,6 +147,20 @@ table.st td:last-child{text-align:right;white-space:nowrap}
 footer{border-top:1px solid var(--line);margin-top:72px;padding:36px 0 56px;color:var(--ink-3);font-size:14px}
 footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
 
+/* fixed background that follows the project in view */
+.stage{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.stage .layer{position:absolute;inset:0;opacity:0;transition:opacity .9s ease;
+  background:
+    radial-gradient(55% 60% at 88% 18%,color-mix(in srgb,var(--c1) var(--mix),transparent),transparent 70%),
+    radial-gradient(50% 55% at 8% 88%,color-mix(in srgb,var(--c2) var(--mix),transparent),transparent 70%)}
+.stage .layer.on{opacity:1}
+.stage img{position:absolute;inset:-10%;width:120%;height:120%;max-width:none;object-fit:cover;filter:blur(70px) saturate(1.4);opacity:var(--img-op);transform:translateZ(0)}
+.stage::after{content:"";position:absolute;inset:0;background:radial-gradient(70% 70% at 40% 45%,var(--bg),transparent 100%);opacity:.55}
+:root{--mix:30%;--img-op:.22}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--mix:34%;--img-op:.28}}
+:root[data-theme="dark"]{--mix:34%;--img-op:.28}
+@media (prefers-reduced-motion:reduce){.stage .layer{transition:none}}
+
 /* WIP ribbon */
 .has-ribbon{position:relative}
 .ribbon{position:absolute;top:0;right:0;width:118px;height:118px;overflow:hidden;pointer-events:none;z-index:3;border-top-right-radius:var(--radius)}
@@ -166,6 +180,7 @@ dialog.lb button{position:fixed;top:14px;right:16px;width:40px;height:40px;borde
 </style>
 </head>
 <body>
+<div class="stage" id="stage" aria-hidden="true"></div>
 
 <header class="top">
   <div class="wrap">
@@ -185,7 +200,7 @@ dialog.lb button{position:fixed;top:14px;right:16px;width:40px;height:40px;borde
 
 <main class="wrap">
 
-<section class="hero">
+<section class="hero" data-bg="#3f51e0 #e2a530">
   <div class="eyebrow">Código abierto · 11 proyectos</div>
   <h1>Herramientas que se quedan en tu máquina.</h1>
   <p class="lead">Apps para tu música, tu voz y tu pixel art; un agente de IA pensado para modelos locales; túneles, proxies y una contabilidad que puedes alojar tú. Casi todo funciona sin nube: tus archivos se quedan donde están.</p>
@@ -213,7 +228,7 @@ dialog.lb button{position:fixed;top:14px;right:16px;width:40px;height:40px;borde
 <section class="group" id="apps">
   <div class="group-head"><h2>Apps</h2><p>Para escuchar, grabar y dibujar.</p></div>
 
-  <article class="project" id="jackbird">
+  <article class="project" id="jackbird" data-bg="#f0601e #3fb27f" data-bg-img="img/jackbird-library.webp">
     <div class="text">
       <div class="p-head"><img src="img/jackbird.svg" alt=""><div><span class="num">01</span><h3>jackbird</h3></div></div>
       <p class="tagline">Tu biblioteca de música, justo donde está.</p>
@@ -238,7 +253,7 @@ dialog.lb button{position:fixed;top:14px;right:16px;width:40px;height:40px;borde
     </div>
   </article>
 
-  <article class="project" id="hummingbox">
+  <article class="project" id="hummingbox" data-bg="#7c3aed #d946ef" data-bg-img="img/hummingbox-piano.webp">
     <div class="text">
       <div class="p-head"><img src="img/hummingbox-icon.svg" alt=""><div><span class="num">02</span><h3>HummingBox</h3></div></div>
       <p class="tagline">Una grabadora de voz que también tiene un piano.</p>
@@ -268,7 +283,7 @@ dialog.lb button{position:fixed;top:14px;right:16px;width:40px;height:40px;borde
     </div>
   </article>
 
-  <article class="project" id="spritemotion">
+  <article class="project" id="spritemotion" data-bg="#0ea5e9 #facc15" data-bg-img="img/spritemotion-editor.webp">
     <div class="text">
       <div class="p-head"><img src="img/spritemotion.svg" alt=""><div><span class="num">03</span><h3>Spritemotion</h3></div></div>
       <p class="tagline">Dibuja y anima sprites de pixel art en el navegador.</p>
@@ -290,7 +305,7 @@ dialog.lb button{position:fixed;top:14px;right:16px;width:40px;height:40px;borde
     </div>
   </article>
 
-  <article class="project" id="vektro">
+  <article class="project" id="vektro" data-bg="#4f46e5 #38bdf8" data-bg-img="img/vektro.webp">
     <div class="text">
       <div class="p-head"><img src="img/vektro.svg" alt=""><div><span class="num">04</span><h3>Vektro</h3></div></div>
       <p class="tagline">Convierte imágenes en SVG limpio, sin salir de tu equipo.</p>
@@ -316,7 +331,7 @@ dialog.lb button{position:fixed;top:14px;right:16px;width:40px;height:40px;borde
 <section class="group" id="dev">
   <div class="group-head"><h2>IA y desarrollo</h2><p>Para programar con lo que tienes.</p></div>
 
-  <article class="project" id="luu">
+  <article class="project" id="luu" data-bg="#f59e0b #fb7185" data-bg-img="img/luu-demo.webp">
     <div class="text">
       <div class="p-head"><img src="img/luu.svg" alt=""><div><span class="num">05</span><h3>luu</h3></div></div>
       <p class="tagline">El agente hecho para la ventana de contexto que de verdad tienes.</p>
@@ -339,7 +354,7 @@ dialog.lb button{position:fixed;top:14px;right:16px;width:40px;height:40px;borde
     </div>
   </article>
 
-  <article class="project" id="jq79">
+  <article class="project" id="jq79" data-bg="#2f74d0 #facc15" data-bg-img="img/jq79.webp">
     <div class="text">
       <div class="p-head"><img src="img/jq79.svg" alt=""><div><span class="num">06</span><h3>jq79</h3></div></div>
       <p class="tagline">Componentes reactivos en archivos <code>.html</code> normales.</p>
@@ -372,7 +387,7 @@ src/App.html:4:7 - error TS2322: Type 'number' is not assignable to type 'string
 <section class="group" id="selfhost">
   <div class="group-head"><h2>Autoalojado</h2><p>Servicios que montas en tu propio servidor.</p></div>
 
-  <article class="project" id="intergate">
+  <article class="project" id="intergate" data-bg="#3b82f6 #ff9a2a" data-bg-img="img/intergate.webp">
     <div class="text">
       <div class="p-head"><img src="img/intergate.svg" alt=""><div><span class="num">07</span><h3>intergate</h3></div></div>
       <p class="tagline">Abre una puerta a la web desde tu localhost, en tu propio dominio.</p>
@@ -399,7 +414,7 @@ src/App.html:4:7 - error TS2322: Type 'number' is not assignable to type 'string
     </div>
   </article>
 
-  <article class="project" id="vericount">
+  <article class="project" id="vericount" data-bg="#1557ad #22c55e">
     <div class="text">
       <div class="p-head"><img src="img/vericount.svg" alt=""><div><span class="num">08</span><h3>vericount</h3></div></div>
       <p class="tagline">Contabilidad para una SL española, con Veri*factu.</p>
@@ -444,7 +459,7 @@ src/App.html:4:7 - error TS2322: Type 'number' is not assignable to type 'string
 <section class="group" id="red">
   <div class="group-head"><h2>Red</h2><p>Para moverte entre proxies sin pelearte con ellos.</p></div>
 
-  <article class="project" id="proxyxt">
+  <article class="project" id="proxyxt" data-bg="#ff5a1f #6aa1f5" data-bg-img="img/proxyxt-home.webp">
     <div class="text">
       <div class="p-head"><img src="img/proxyxt.svg" alt=""><div><span class="num">09</span><h3>ProxyXT</h3></div></div>
       <p class="tagline">Varios proxies, un clic para cambiar.</p>
@@ -471,7 +486,7 @@ src/App.html:4:7 - error TS2322: Type 'number' is not assignable to type 'string
     </div>
   </article>
 
-  <article class="project" id="localproxy">
+  <article class="project" id="localproxy" data-bg="#22c55e #0ea5e9">
     <div class="text">
       <div class="p-head"><img src="img/localproxy.svg" alt=""><div><span class="num">10</span><h3>localproxy</h3></div></div>
       <p class="tagline">Un proxy en localhost que decide por dónde sale cada petición.</p>
@@ -510,7 +525,7 @@ src/App.html:4:7 - error TS2322: Type 'number' is not assignable to type 'string
     </div>
   </article>
 
-  <article class="project" id="steam-gamestore">
+  <article class="project" id="steam-gamestore" data-bg="#ff7a2f #6366f1">
     <div class="text">
       <div class="p-head"><img src="img/steam-gamestore.svg" alt=""><div><span class="num">11</span><h3>steam-gamestore</h3></div></div>
       <p class="tagline">Tus juegos de GOG, como fichas normales de Steam.</p>
@@ -573,6 +588,31 @@ src/App.html:4:7 - error TS2322: Type 'number' is not assignable to type 'string
     root.setAttribute('data-theme',next);
     try{localStorage.setItem(KEY,next);}catch(e){}
   });
+
+  // Fixed background: one layer per section, the one crossing the middle of the viewport is shown.
+  var stage=document.getElementById('stage'), layers=new Map(), current=null;
+  var targets=[].slice.call(document.querySelectorAll('[data-bg]'));
+  targets.forEach(function(el){
+    var c=el.getAttribute('data-bg').split(' '), l=document.createElement('div');
+    l.className='layer'; l.style.setProperty('--c1',c[0]); l.style.setProperty('--c2',c[1]);
+    stage.appendChild(l); layers.set(el,l);
+  });
+  function show(el){
+    if(el===current) return;
+    var l=layers.get(el), src=el.getAttribute('data-bg-img');
+    if(src && !l.firstChild){ var i=new Image(); i.alt=''; i.decoding='async'; i.src=src; l.appendChild(i); }
+    if(current) layers.get(current).classList.remove('on');
+    l.classList.add('on'); current=el;
+  }
+  if(targets.length){
+    show(targets[0]);
+    if('IntersectionObserver' in window){
+      var io=new IntersectionObserver(function(es){
+        es.forEach(function(e){ if(e.isIntersecting) show(e.target); });
+      },{rootMargin:'-50% 0px -50% 0px'});
+      targets.forEach(function(el){ io.observe(el); });
+    }
+  }
 
   var lb=document.getElementById('lb'), img=document.getElementById('lb-img'), cap=document.getElementById('lb-cap');
   document.querySelectorAll('.shot img').forEach(function(el){
