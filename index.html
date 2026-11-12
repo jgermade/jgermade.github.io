@@ -147,6 +147,14 @@ table.st td:last-child{text-align:right;white-space:nowrap}
 footer{border-top:1px solid var(--line);margin-top:72px;padding:36px 0 56px;color:var(--ink-3);font-size:14px}
 footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
 
+/* WIP ribbon */
+.has-ribbon{position:relative}
+.ribbon{position:absolute;top:0;right:0;width:118px;height:118px;overflow:hidden;pointer-events:none;z-index:3;border-top-right-radius:var(--radius)}
+.ribbon span{position:absolute;top:24px;right:-34px;width:150px;transform:rotate(45deg);text-align:center;background:#e2a530;color:#1a1408;font:700 12px/1 "JetBrains Mono",monospace;letter-spacing:.14em;padding:7px 0;box-shadow:0 2px 6px rgba(0,0,0,.25)}
+.index .ribbon{width:58px;height:58px;border-top-right-radius:12px}
+.index .ribbon span{top:11px;right:-24px;width:84px;font-size:9px;padding:3px 0;letter-spacing:.1em}
+.index .has-ribbon .num{margin-right:20px}
+
 /* lightbox */
 dialog.lb{border:0;padding:0;background:transparent;max-width:min(96vw,1500px);max-height:94vh}
 dialog.lb::backdrop{background:rgba(8,8,12,.86)}
@@ -187,17 +195,17 @@ dialog.lb button{position:fixed;top:14px;right:16px;width:40px;height:40px;borde
   </div>
 
   <ol class="index">
-    <li><a href="#jackbird"><img src="img/jackbird.svg" alt=""><span><b>jackbird</b><small>Biblioteca musical local</small></span><span class="num">01</span></a></li>
+    <li><a class="has-ribbon" href="#jackbird" title="En desarrollo"><span class="ribbon" aria-hidden="true"><span>WIP</span></span><img src="img/jackbird.svg" alt=""><span><b>jackbird</b><small>Biblioteca musical local</small></span><span class="num">01</span></a></li>
     <li><a href="#hummingbox"><img src="img/hummingbox-icon.svg" alt=""><span><b>HummingBox</b><small>Grabadora de voz móvil</small></span><span class="num">02</span></a></li>
-    <li><a href="#spritemotion"><img src="img/spritemotion.svg" alt=""><span><b>Spritemotion</b><small>Animador de sprites</small></span><span class="num">03</span></a></li>
+    <li><a class="has-ribbon" href="#spritemotion" title="En desarrollo"><span class="ribbon" aria-hidden="true"><span>WIP</span></span><img src="img/spritemotion.svg" alt=""><span><b>Spritemotion</b><small>Animador de sprites</small></span><span class="num">03</span></a></li>
     <li><a href="#vektro"><img src="img/vektro.svg" alt=""><span><b>Vektro</b><small>Imágenes a SVG</small></span><span class="num">04</span></a></li>
-    <li><a href="#luu"><img src="img/luu.svg" alt=""><span><b>luu</b><small>Agente de IA local</small></span><span class="num">05</span></a></li>
+    <li><a class="has-ribbon" href="#luu" title="En desarrollo"><span class="ribbon" aria-hidden="true"><span>WIP</span></span><img src="img/luu.svg" alt=""><span><b>luu</b><small>Agente de IA local</small></span><span class="num">05</span></a></li>
     <li><a href="#jq79"><img src="img/jq79.svg" alt=""><span><b>jq79</b><small>Componentes reactivos</small></span><span class="num">06</span></a></li>
     <li><a href="#intergate"><img src="img/intergate.svg" alt=""><span><b>intergate</b><small>Túneles SSH a tu dominio</small></span><span class="num">07</span></a></li>
-    <li><a href="#vericount"><img src="img/vericount.svg" alt=""><span><b>vericount</b><small>Contabilidad con Veri*factu</small></span><span class="num">08</span></a></li>
+    <li><a class="has-ribbon" href="#vericount" title="En desarrollo"><span class="ribbon" aria-hidden="true"><span>WIP</span></span><img src="img/vericount.svg" alt=""><span><b>vericount</b><small>Contabilidad con Veri*factu</small></span><span class="num">08</span></a></li>
     <li><a href="#proxyxt"><img src="img/proxyxt.svg" alt=""><span><b>ProxyXT</b><small>Extensión de proxies</small></span><span class="num">09</span></a></li>
     <li><a href="#localproxy"><img src="img/localproxy.svg" alt=""><span><b>localproxy</b><small>Proxy local en Rust</small></span><span class="num">10</span></a></li>
-    <li><a href="#steam-gamestore"><span class="ph">G</span><span><b>steam-gamestore</b><small>GOG dentro de Steam</small></span><span class="num">11</span></a></li>
+    <li><a class="has-ribbon" href="#steam-gamestore" title="En desarrollo"><span class="ribbon" aria-hidden="true"><span>WIP</span></span><img src="img/steam-gamestore.svg" alt=""><span><b>steam-gamestore</b><small>GOG dentro de Steam</small></span><span class="num">11</span></a></li>
   </ol>
 </section>
 
@@ -221,7 +229,7 @@ dialog.lb button{position:fixed;top:14px;right:16px;width:40px;height:40px;borde
         <a class="btn" href="https://github.com/jgermade/jackbird">Código</a>
       </div>
     </div>
-    <div class="media">
+    <div class="media has-ribbon"><span class="ribbon" aria-label="En desarrollo"><span>WIP</span></span>
       <figure class="shot"><img src="img/jackbird-library.webp" width="1600" height="1000" alt="Biblioteca de jackbird en acabado Silver con una pista sonando" loading="lazy"><figcaption>La biblioteca en Silver, con una pista sonando.</figcaption></figure>
       <div class="grid-2 stack-s">
         <figure class="shot"><img src="img/jackbird-graphite.webp" width="1200" height="750" alt="Álbum de dos discos en acabado Graphite" loading="lazy"><figcaption>Acabado Graphite.</figcaption></figure>
@@ -276,7 +284,7 @@ dialog.lb button{position:fixed;top:14px;right:16px;width:40px;height:40px;borde
         <a class="btn" href="https://github.com/germadev/spriteman">Código</a>
       </div>
     </div>
-    <div class="media">
+    <div class="media has-ribbon"><span class="ribbon" aria-label="En desarrollo"><span>WIP</span></span>
       <figure class="shot"><img src="img/spritemotion-editor.webp" width="1440" height="900" alt="Editor de Spritemotion con un patito de 16×16 dibujado en la cuadrícula" loading="lazy"><figcaption>Un sprite de 16×16 en el editor: capas y paleta a la derecha, línea de tiempo abajo.</figcaption></figure>
       <figure class="shot"><img src="img/spritemotion-home.webp" width="1440" height="900" alt="Pantalla de inicio de Spritemotion para crear o abrir proyectos" loading="lazy"><figcaption>Crear un proyecto o abrir uno guardado en el navegador.</figcaption></figure>
     </div>
@@ -325,7 +333,7 @@ dialog.lb button{position:fixed;top:14px;right:16px;width:40px;height:40px;borde
         <a class="btn" href="https://github.com/jgermade/luu">Código</a>
       </div>
     </div>
-    <div class="media">
+    <div class="media has-ribbon"><span class="ribbon" aria-label="En desarrollo"><span>WIP</span></span>
       <figure class="shot"><img src="img/luu-demo.webp" width="1440" height="900" alt="Demo de luu: panel de depuración con el uso del contexto por categorías y la sesión en vivo" loading="lazy"><figcaption>La demo: a la izquierda, en qué se gasta cada token del contexto; a la derecha, la sesión.</figcaption></figure>
       <figure class="shot"><img src="img/luu-landing.webp" width="1440" height="900" alt="Portada de la web de luu" loading="lazy"></figure>
     </div>
@@ -407,7 +415,7 @@ src/App.html:4:7 - error TS2322: Type 'number' is not assignable to type 'string
         <a class="btn" href="https://github.com/jgermade/vericount">Código</a>
       </div>
     </div>
-    <div class="media">
+    <div class="media has-ribbon"><span class="ribbon" aria-label="En desarrollo"><span>WIP</span></span>
       <div class="diagram">
         <h4>Cadena de registros (esquema)</h4>
         <div class="chain">
@@ -504,8 +512,7 @@ src/App.html:4:7 - error TS2322: Type 'number' is not assignable to type 'string
 
   <article class="project" id="steam-gamestore">
     <div class="text">
-      <div class="p-head"><span class="ph" aria-hidden="true">G</span><div><span class="num">11</span><h3>steam-gamestore</h3></div></div>
-      <span class="status wip">en desarrollo · fase 0</span>
+      <div class="p-head"><img src="img/steam-gamestore.svg" alt=""><div><span class="num">11</span><h3>steam-gamestore</h3></div></div>
       <p class="tagline">Tus juegos de GOG, como fichas normales de Steam.</p>
       <p>Un instalador de GOG que vive dentro de la biblioteca de Steam. Los juegos comprados en GOG se descargan, se instalan en silencio y se añaden como fichas de Steam, así que se lanzan desde Big Picture con el Proton que Steam ya gestiona. Las partidas se restauran antes de jugar y se respaldan después con Ludusavi.</p>
       <ul class="feats">
@@ -517,7 +524,7 @@ src/App.html:4:7 - error TS2322: Type 'number' is not assignable to type 'string
         <a class="btn" href="https://github.com/jgermade/steam-gamestore">Código</a>
       </div>
     </div>
-    <div class="media">
+    <div class="media has-ribbon"><span class="ribbon" aria-label="En desarrollo"><span>WIP</span></span>
       <div class="term">
         <div class="term-bar"><i></i><i></i><i></i><span>SteamOS · modo escritorio</span></div>
 <pre><span class="p">$</span> curl -fsSL https://raw.githubusercontent.com/jgermade/steam-gamestore/main/install.sh | sh
