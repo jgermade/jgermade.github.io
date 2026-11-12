@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2b3550"/>
+      <stop offset="1" stop-color="#141927"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="url(#bg)"/>
+  <!-- box / shelf -->
+  <path d="M12 30h40v18a4 4 0 0 1-4 4H16a4 4 0 0 1-4-4z" fill="#e9ecf5"/>
+  <path d="M10 26a2 2 0 0 1 2-2h40a2 2 0 0 1 2 2v5H10z" fill="#c4cadb"/>
+  <!-- d-pad -->
+  <path d="M21 37h4v-4h4v4h4v4h-4v4h-4v-4h-4z" fill="#2b3550"/>
+  <!-- buttons -->
+  <circle cx="40" cy="37" r="2.6" fill="#ff7a2f"/>
+  <circle cx="45" cy="42" r="2.6" fill="#7ad69a"/>
+  <!-- download arrow -->
+  <path d="M32 7v12" stroke="#ff7a2f" stroke-width="4.5" stroke-linecap="round"/>
+  <path d="M25.5 14.5 32 21l6.5-6.5" fill="none" stroke="#ff7a2f" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

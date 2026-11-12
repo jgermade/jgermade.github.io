@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <title>HummingBox</title>
+  <!-- Source of the app icons: tool/icons.cjs renders every PNG from it
+       (see docs/development.md). The #tile background is drawn behind
+       #artwork; the Android adaptive icon uses them as separate layers. -->
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#6E3CEE"/>
+      <stop offset="1" stop-color="#4A1ABE"/>
+    </linearGradient>
+    <linearGradient id="orange" gradientUnits="userSpaceOnUse" x1="0" y1="209" x2="0" y2="809">
+      <stop offset="0" stop-color="#FDCB57"/>
+      <stop offset="0.5" stop-color="#FBA43E"/>
+      <stop offset="1" stop-color="#F2772C"/>
+    </linearGradient>
+    <mask id="notch" maskUnits="userSpaceOnUse" x="0" y="0" width="1024" height="1024">
+      <rect width="1024" height="1024" fill="#FFF"/>
+      <path d="M380 463.4A78.6 78.6 0 0 1 437 462.2" fill="none" stroke="#000" stroke-width="10.8" stroke-linecap="round"/>
+    </mask>
+    <filter id="relief" x="-10%" y="-10%" width="120%" height="125%" color-interpolation-filters="sRGB">
+      <feOffset in="SourceAlpha" dx="-12" dy="-12"/>
+      <feGaussianBlur stdDeviation="8" result="shifted"/>
+      <feComposite in="SourceAlpha" in2="shifted" operator="arithmetic" k2="1" k3="-1" result="edge"/>
+      <feFlood flood-color="#C3BAF0"/>
+      <feComposite in2="edge" operator="in"/>
+      <feComposite in2="SourceGraphic" operator="over" result="piece"/>
+      <feGaussianBlur in="SourceAlpha" stdDeviation="5"/>
+      <feOffset dy="5" result="blurred"/>
+      <feFlood flood-color="#0E0063" flood-opacity="0.75"/>
+      <feComposite in2="blurred" operator="in" result="shadow"/>
+      <feMorphology in="SourceAlpha" operator="dilate" radius="2"/>
+      <feGaussianBlur stdDeviation="2"/>
+      <feOffset dy="2" result="outline"/>
+      <feFlood flood-color="#08004A" flood-opacity="0.6"/>
+      <feComposite in2="outline" operator="in" result="contact"/>
+      <feMerge>
+        <feMergeNode in="shadow"/>
+        <feMergeNode in="contact"/>
+        <feMergeNode in="piece"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect id="tile" width="1024" height="1024" rx="230" fill="url(#background)"/>
+  <g id="artwork">
+    <g id="waves" fill="none" stroke="url(#orange)" stroke-width="14.4" stroke-linecap="round">
+      <path d="M131.4 530.1A379.5 379.5 0 0 1 131.4 496.9M889.6 496.9A379.5 379.5 0 0 1 889.6 530.1M185 608.1A339 339 0 0 1 185 418.9M836 418.9A339 339 0 0 1 836 608.1M265.7 590.2A256.5 256.5 0 0 1 265.7 436.8M755.3 436.8A256.5 256.5 0 0 1 755.3 590.2M294.5 539.3A217.5 217.5 0 0 1 294.5 487.7M726.5 487.7A217.5 217.5 0 0 1 726.5 539.3M385.1 792.6A306 306 0 0 1 279.6 312.7M783.6 375.5A306 306 0 0 1 635.9 792.6"/>
+      <path d="M328.4 323C339.5 326 354.5 333.5 350 348.5" stroke-width="7.2"/>
+    </g>
+    <g id="dots" fill="url(#orange)">
+      <circle cx="387.5" cy="221.9" r="8.7"/>
+      <circle cx="342.5" cy="246.8" r="9"/>
+      <circle cx="261.5" cy="248" r="13.2"/>
+      <circle cx="297.8" cy="284.9" r="8.7"/>
+      <circle cx="202.1" cy="338.9" r="11.1"/>
+      <circle cx="203.9" cy="678.2" r="7.8"/>
+      <circle cx="293.3" cy="649.1" r="7.8"/>
+      <circle cx="727.1" cy="649.7" r="7.8"/>
+      <circle cx="816.5" cy="686.9" r="13.2"/>
+      <circle cx="762.2" cy="766.1" r="15.3"/>
+      <circle cx="314.9" cy="369.8" r="13.8"/>
+      <rect x="324.8" y="320" width="6.9" height="49.8" rx="3.3"/>
+    </g>
+    <g id="mic" fill="#FFFFFF" filter="url(#relief)">
+      <path d="M395 548V332C395 267.5 444.5 215 506 215C564.5 215 608 260 608 311V329A24 24 0 0 1 587.5 352.7A111 111 0 0 0 492.5 462.5V503C492.5 521 486.5 536 477.5 548Z" mask="url(#notch)"/>
+      <circle cx="410" cy="536" r="70.5"/>
+      <circle cx="603.5" cy="462.5" r="66"/>
+      <path d="M638 462.5V138.5Q638 132.5 644 132.5H669.5C686 167 725 194 753.5 230C779 263 780.5 308 765.5 336.5C759.5 348.5 752 359 744.5 366.5C753.5 341 753.5 305 737 284C719 261.5 692 248 669.5 242V462.5Z"/>
+      <path d="M395 639.5C413 627.5 455 624.5 480.5 608C506 590 524 557 528.5 517.5A93 93 0 0 0 627.5 552.3V619.2A116.2 116.2 0 0 1 395 619.2Z"/>
+      <path d="M350.1 626.8A160.5 160.5 0 0 0 670.9 626.8" fill="none" stroke="#FFFFFF" stroke-width="31.5" stroke-linecap="round"/>
+      <rect x="486.5" y="782" width="48" height="78"/>
+      <path d="M423.5 852.5H597.5Q609.5 852.5 612.5 861.5L627.5 879.5Q630.5 891.5 618.5 891.5H402.5Q390.5 891.5 393.5 879.5L408.5 861.5Q411.5 852.5 423.5 852.5Z"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" aria-label="luu" viewBox="0 0 512 512">
+  <title>luu</title>
+  <rect width="512" height="512" fill="#12161c" rx="112"/>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="40">
+    <path stroke="#f5a524" d="M116 150v210"/>
+    <path stroke="#f2f4f7" d="M196 215v105a40 40 0 0 0 80 0V215M316 215v105a40 40 0 0 0 80 0V215"/>
+  </g>
+  <circle cx="356" cy="296" r="13" fill="#f5a524"/>
+</svg>
