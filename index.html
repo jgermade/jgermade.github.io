@@ -186,9 +186,17 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
 /* lightbox */
 dialog.lb{border:0;padding:0;background:transparent;max-width:min(96vw,1500px);max-height:94vh}
 dialog.lb::backdrop{background:rgba(8,8,12,.86)}
-dialog.lb img{max-width:min(96vw,1500px);max-height:88vh;width:auto;border-radius:10px;margin:0 auto}
+dialog.lb img{max-width:min(calc(100vw - 150px),1500px);max-height:88vh;width:auto;border-radius:10px;margin:0 auto}
 dialog.lb p{color:#d4d4dc;text-align:center;font-size:14px;margin:10px 0 0}
-dialog.lb button{position:fixed;top:14px;right:16px;width:40px;height:40px;border-radius:50%;border:0;background:rgba(255,255,255,.14);color:#fff;font-size:22px;cursor:pointer}
+dialog.lb button{position:fixed;width:44px;height:44px;border-radius:50%;border:0;background:rgba(255,255,255,.14);color:#fff;font-size:26px;line-height:1;cursor:pointer}
+dialog.lb button:hover{background:rgba(255,255,255,.26)}
+dialog.lb .lb-close{top:14px;right:16px}
+dialog.lb .lb-nav{top:50%;transform:translateY(-50%);font-size:32px}
+dialog.lb .lb-nav.prev{left:16px}
+dialog.lb .lb-nav.next{right:16px}
+dialog.lb .lb-nav[hidden]{display:none}
+@media (max-width:640px){dialog.lb img{max-width:94vw;max-height:78vh}dialog.lb .lb-nav{top:auto;bottom:18px;transform:none}}
+dialog.lb .lb-count{color:#9a9aa6;font:12px "JetBrains Mono",monospace;margin-left:8px}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.index a{transition:none}}
 </style>
@@ -583,9 +591,11 @@ src/App.html:4:7 - error TS2322: Type 'number' is not assignable to type 'string
 </footer>
 
 <dialog class="lb" id="lb" aria-label="Captura ampliada">
-  <button type="button" id="lb-close" aria-label="Cerrar">×</button>
+  <button type="button" class="lb-close" id="lb-close" aria-label="Cerrar">×</button>
+  <button type="button" class="lb-nav prev" id="lb-prev" aria-label="Captura anterior">‹</button>
   <img id="lb-img" alt="">
-  <p id="lb-cap"></p>
+  <button type="button" class="lb-nav next" id="lb-next" aria-label="Captura siguiente">›</button>
+  <p><span id="lb-cap"></span> <span class="lb-count" id="lb-count"></span></p>
 </dialog>
 
 <script>
@@ -626,7 +636,7 @@ src/App.html:4:7 - error TS2322: Type 'number' is not assignable to type 'string
     var m=el.querySelector('.media');
     return m?[].slice.call(m.children).filter(function(c){ return !c.classList.contains('ribbon'); }):[];
   });
-  var STEP=0.55, HOLD=0.18, OFF=14;   // per card and hold, in viewport heights; px between stacked cards
+  var STEP=0.55, HOLD=0.25, OFF=14;   // per card, and how far the next panel rises (fading in) before this one fades, in viewport heights; px between stacked cards
   function on(){ return !reduce.matches; }
   // The last panel can't take a margin (sticky stops a margin short of the end of <main>), so a
   // spacer after it gives it the same pinned scroll distance.
@@ -638,7 +648,7 @@ src/App.html:4:7 - error TS2322: Type 'number' is not assignable to type 'string
     document.documentElement.classList.toggle('deck',deck);
     panels.forEach(function(el,i){
       var n=deck?Math.max(1,decks[i].length):1, last=i===panels.length-1;
-      gaps[i]=deck?Math.round(vh*((n-1)*STEP+(last?0:HOLD))):0;
+      gaps[i]=deck?Math.round(vh*(n-1)*STEP):0;
       el.style.marginBottom=deck&&!last?gaps[i]+'px':(last?'0px':'');
       // A panel taller than the view sticks once its bottom reaches the bottom of the view.
       el.style.top=Math.min(0,vh-el.offsetHeight)+'px';
@@ -673,15 +683,20 @@ src/App.html:4:7 - error TS2322: Type 'number' is not assignable to type 'string
           c.style.visibility=(k&&t===0)?'hidden':'';
         });
       }
-      // fade and recede once the next panel rises
-      var next=panels[i+1], e=0;
+      // While the next panel rises it fades in; once it has risen HOLD, this one fades and recedes.
+      var next=panels[i+1], e=0, a=1;
       if(next && deck){
-        var p=Math.min(1,Math.max(0,(vh-next.getBoundingClientRect().top)/(vh*0.55)));
+        var p=Math.min(1,Math.max(0,(vh-next.getBoundingClientRect().top-vh*HOLD)/(vh*0.55)));
         e=p*p*(3-2*p);
       }
-      if(e===0){ el.style.opacity=''; el.style.transform=''; el.style.pointerEvents=''; return; }
-      el.style.opacity=String(1-e);
-      el.style.transform='scale('+(1-0.1*e)+')';
+      if(i>0 && deck){
+        var q=Math.min(1,Math.max(0,(vh-r.top)/(vh*0.5)));
+        a=q*q*(3-2*q);
+      }
+      var o=a*(1-e);
+      if(o===1){ el.style.opacity=''; el.style.transform=''; el.style.pointerEvents=''; return; }
+      el.style.opacity=String(o);
+      el.style.transform=e?'scale('+(1-0.1*e)+')':'';
       el.style.pointerEvents=e>0.5?'none':'';
     });
     show(active);
@@ -693,15 +708,43 @@ src/App.html:4:7 - error TS2322: Type 'number' is not assignable to type 'string
   addEventListener('load',function(){ layout(); frame(); });
   layout(); frame();
 
+  // Lightbox: a shot opens big; arrows (keys, buttons or a swipe) move between the shots of its project.
   var lb=document.getElementById('lb'), img=document.getElementById('lb-img'), cap=document.getElementById('lb-cap');
+  var count=document.getElementById('lb-count'), prevB=document.getElementById('lb-prev'), nextB=document.getElementById('lb-next');
+  var set=[], at=0;
+  function visible(fig){ // a themed figure holds a light and a dark image; take the one showing
+    var imgs=[].slice.call(fig.querySelectorAll('img'));
+    return imgs.filter(function(im){ return getComputedStyle(im).display!=='none'; })[0]||imgs[0];
+  }
+  function draw(){
+    var fig=set[at], im=visible(fig), fc=fig.querySelector('figcaption');
+    img.src=im.currentSrc||im.src; img.alt=im.alt;
+    cap.textContent=fc?fc.textContent:im.alt;
+    var many=set.length>1;
+    count.textContent=many?(at+1)+' / '+set.length:'';
+    prevB.hidden=nextB.hidden=!many;
+  }
+  function step(d){ if(set.length>1){ at=(at+d+set.length)%set.length; draw(); } }
   document.querySelectorAll('.shot img').forEach(function(el){
     el.addEventListener('click',function(){
-      img.src=el.currentSrc||el.src; img.alt=el.alt;
-      var fc=el.closest('figure').querySelector('figcaption');
-      cap.textContent=fc?fc.textContent:el.alt;
+      var fig=el.closest('figure'), scope=fig.closest('.project')||fig.parentNode;
+      set=[].slice.call(scope.querySelectorAll('figure.shot')); at=Math.max(0,set.indexOf(fig));
+      draw();
       if(lb.showModal) lb.showModal();
     });
   });
+  prevB.addEventListener('click',function(){ step(-1); });
+  nextB.addEventListener('click',function(){ step(1); });
+  lb.addEventListener('keydown',function(e){
+    if(e.key==='ArrowLeft'){ step(-1); e.preventDefault(); }
+    else if(e.key==='ArrowRight'){ step(1); e.preventDefault(); }
+  });
+  var x0=null;
+  lb.addEventListener('touchstart',function(e){ x0=e.touches[0].clientX; },{passive:true});
+  lb.addEventListener('touchend',function(e){
+    if(x0===null) return; var dx=e.changedTouches[0].clientX-x0; x0=null;
+    if(Math.abs(dx)>40) step(dx<0?1:-1);
+  },{passive:true});
   document.getElementById('lb-close').addEventListener('click',function(){lb.close();});
   lb.addEventListener('click',function(e){ if(e.target===lb) lb.close(); });
 })();
