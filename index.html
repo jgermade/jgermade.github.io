@@ -56,8 +56,13 @@ code,.mono{font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monosp
 
 /* hero */
 .hero{padding:72px 0 40px;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;justify-content:center}
+.me{display:inline-flex;align-items:center;gap:14px;text-decoration:none;margin-bottom:26px}
+.me img{width:72px;height:72px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 3px var(--surface),0 0 0 4px var(--line),var(--shadow)}
+.me b{display:block;font-size:17px;line-height:1.2}
+.me small{display:block;color:var(--ink-3);font:13px "JetBrains Mono",monospace}
+.me:hover small{color:var(--accent)}
 .eyebrow{font:500 12px/1 "JetBrains Mono",monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
-.hero h1{font-size:clamp(36px,6.4vw,68px);line-height:1.02;letter-spacing:-.035em;margin:18px 0 20px;font-weight:800;max-width:15ch;text-wrap:balance}
+.hero h1{font-size:clamp(36px,6.4vw,68px);line-height:1.02;letter-spacing:-.035em;margin:18px 0 20px;font-weight:800;max-width:18ch;text-wrap:balance}
 .hero p.lead{font-size:clamp(17px,2vw,20px);color:var(--ink-2);max-width:60ch;margin:0}
 .hero .meta{margin-top:28px;display:flex;flex-wrap:wrap;gap:10px}
 .btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:600;font-size:15px;padding:10px 16px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--ink)}
@@ -151,7 +156,10 @@ code,.mono{font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monosp
 .term-bar i{width:10px;height:10px;border-radius:50%;background:#3a3d49}
 .term-bar span{margin-left:8px;font:500 12px "JetBrains Mono",monospace;color:var(--term-dim)}
 .term pre{margin:0;padding:16px 18px;overflow-x:auto;font:13px/1.7 "JetBrains Mono",monospace;white-space:pre}
-.term .c{color:var(--term-dim)} .term .p{color:var(--term-key)} .term .o{color:var(--term-ok)}
+.term .c{color:var(--term-dim)} .term .tg{color:#ff8fa3} .term .at{color:#f4c96b} .term .st{color:#7ad69a} .term .kw{color:#a5b0ff} .term .nu{color:#7fd4ff} .term .mu{color:#e6c7ff}
+.term.code pre{font-size:14px;line-height:1.75;padding:20px 22px}
+.term .code-cap{margin:0;padding:10px 16px;border-top:1px solid #23252e;font-size:13px;color:var(--term-dim)}
+.term .code-cap code{color:var(--term-ink)} .term .p{color:var(--term-key)} .term .o{color:var(--term-ok)}
 
 /* diagram cards */
 .diagram{border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);padding:22px;box-shadow:var(--shadow)}
@@ -198,6 +206,12 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
 @media (max-width:560px){.minis .brand span{display:none}.mini{justify-content:flex-start}.mini a{width:30px;height:30px}.mini a img{width:21px;height:21px}}
 @media (prefers-reduced-motion:reduce){.mini,.mini a{transition:none}}
 
+/* scroll snap stops (desktop): markers the script places at each state */
+main{position:relative}
+.snaps{position:absolute;top:0;left:0;width:0;height:0;pointer-events:none}
+.snaps i{position:absolute;left:0;width:1px;height:1px;scroll-snap-align:start}
+html.deck{scroll-snap-type:y mandatory}
+
 /* WIP ribbon */
 .has-ribbon{position:relative}
 .ribbon{position:absolute;top:0;right:0;width:118px;height:118px;overflow:hidden;pointer-events:none;z-index:3;border-top-right-radius:var(--radius)}
@@ -243,8 +257,9 @@ dialog.lb .lb-count{color:#9a9aa6;font:12px "JetBrains Mono",monospace;margin-le
 <main class="wrap">
 
 <section class="hero" data-bg="#3f51e0 #e2a530">
-  <div class="eyebrow">Código abierto · 11 proyectos</div>
-  <h1>Once proyectos, hechos a mano.</h1>
+  <a class="me" href="https://github.com/jgermade"><img src="img/avatar.webp" width="256" height="256" alt="Avatar de jgermade en GitHub"><span><b>Jesús Germade</b><small>@jgermade</small></span></a>
+  <div class="eyebrow">Código abierto · hecho con Claude Code · 11 proyectos</div>
+  <h1>¡Todo lo que siempre quise hacer, ahora con superpoderes!</h1>
   <p class="lead">Apps para tu música, tu voz y tu pixel art; un agente de IA pensado para modelos locales; túneles, proxies y una contabilidad que puedes alojar tú. Casi todo funciona sin nube: tus archivos se quedan donde están.</p>
   <div class="meta">
     <a class="btn primary" href="#apps">Ver proyectos ↓</a>
@@ -425,7 +440,23 @@ dialog.lb .lb-count{color:#9a9aa6;font:12px "JetBrains Mono",monospace;margin-le
     <div class="media">
       <figure class="shot"><img src="img/jq79.webp" width="1440" height="900" alt="Web de jq79 con un componente contador y su resultado en vivo" loading="lazy"><figcaption>Un componente completo en <code>counter.html</code>, montado en tiempo de ejecución.</figcaption></figure>
       <figure class="shot"><img src="img/jq79-tutorial.webp" width="1440" height="900" alt="Tutorial de jq79: explicación a la izquierda, editor del componente y resultado en vivo a la derecha" loading="lazy"><figcaption>El tutorial: 22 lecciones con editor y resultado en vivo.</figcaption></figure>
-      <figure class="shot"><img src="img/jq79-benchmark.webp" width="1440" height="900" alt="Benchmark de jq79 versión a versión: tiempo mediano por operación" loading="lazy"><figcaption>El benchmark, versión a versión.</figcaption></figure>
+      <div class="term code">
+        <div class="term-bar"><i></i><i></i><i></i><span>counter.html</span></div>
+<pre><span class="tg">&lt;script</span> <span class="at">:setup</span>=<span class="st">"{ step = 1 }"</span><span class="tg">&gt;</span>
+  <span class="kw">let</span> count = <span class="nu">0</span>
+  <span class="kw">$:</span> double = count * <span class="nu">2</span>
+<span class="tg">&lt;/script&gt;</span>
+
+<span class="tg">&lt;button</span> <span class="at">@click</span>=<span class="st">"count = count + step"</span><span class="tg">&gt;</span>
+  clicked <span class="mu">{{ count }}</span> times
+<span class="tg">&lt;/button&gt;</span>
+<span class="tg">&lt;span</span> <span class="at">:if</span>=<span class="st">"count &gt; 0"</span><span class="tg">&gt;</span>double is <span class="mu">{{ double }}</span><span class="tg">&lt;/span&gt;</span>
+
+<span class="tg">&lt;style</span> <span class="at">scoped</span><span class="tg">&gt;</span>
+  button { font: <span class="nu">600 1rem</span> system-ui; padding: <span class="nu">.7em 1.2em</span>; }
+<span class="tg">&lt;/style&gt;</span></pre>
+        <p class="code-cap">Un componente entero: script, plantilla y estilos en un <code>.html</code>, sin compilar.</p>
+      </div>
       <figure class="shot"><img src="img/jq79-comparison.webp" width="1440" height="900" alt="Comparativa de jq79 con vanillajs, Svelte, Vue, Preact y React en js-framework-benchmark" loading="lazy"><figcaption>Comparado con vanillajs, Svelte, Vue, Preact y React.</figcaption></figure>
     </div>
   </article>
@@ -687,8 +718,20 @@ dialog.lb .lb-count{color:#9a9aa6;font:12px "JetBrains Mono",monospace;margin-le
   var spacer=document.createElement('div'), gaps=[];
   spacer.setAttribute('aria-hidden','true');
   panels[panels.length-1].after(spacer);
+  // Scroll snap: a stop at every state (each project once it fills the view, and each of its shots
+  // once stacked), on markers placed where those states are; the margins are only the room they need.
+  var mainEl=document.querySelector('main'), snaps=document.createElement('div');
+  snaps.className='snaps'; snaps.setAttribute('aria-hidden','true'); mainEl.appendChild(snaps);
+  // Markers are made once and only moved: removing the one the page is snapped to makes the
+  // browser pick another, and the page jumps.
+  var marks=[], used=0;
+  function snapAt(y){
+    var m=marks[used]; if(!m){ m=document.createElement('i'); snaps.appendChild(m); marks.push(m); }
+    m.style.top=Math.round(y)+'px'; m.hidden=false; used++;
+  }
   function layout(){
     var vh=innerHeight, deck=on(), root=document.documentElement;
+    used=0;
     root.classList.toggle('deck',deck);
     root.classList.toggle('swipe',narrow.matches);
     if(!deck){
@@ -697,6 +740,7 @@ dialog.lb .lb-count{color:#9a9aa6;font:12px "JetBrains Mono",monospace;margin-le
         decks[i].forEach(function(c){ c.style.transform=c.style.zIndex=c.style.visibility=''; });
       });
       spacer.style.height='0px';
+      marks.forEach(function(m){ m.hidden=true; });
       return;
     }
     panels.forEach(function(el,i){
@@ -707,6 +751,15 @@ dialog.lb .lb-count{color:#9a9aa6;font:12px "JetBrains Mono",monospace;margin-le
       el.style.top=i?Math.min(0,vh-el.offsetHeight)+'px':'';  // the hero scrolls normally
     });
     spacer.style.height=gaps[panels.length-1]+'px';
+    snapAt(-mainEl.offsetTop);                       // the top of the page
+    panels.forEach(function(el,i){
+      if(!i) return;
+      var a=document.getElementById(el.getAttribute('data-id')).offsetTop, extra=Math.max(0,el.offsetHeight-vh);
+      if(extra>20) snapAt(a);                       // a panel taller than the view: its top first
+      for(var k=0;k<Math.max(1,decks[i].length);k++) snapAt(a+extra+k*vh*STEP);
+    });
+    snapAt(document.documentElement.scrollHeight-vh-mainEl.offsetTop);  // the end of the page, footer in view
+    for(var u=used;u<marks.length;u++) marks[u].hidden=true;
   }
   function frame(){
     ticking=false;
