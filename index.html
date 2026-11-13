@@ -51,7 +51,7 @@ code,.mono{font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monosp
 .top nav a:hover{background:var(--surface-2);color:var(--ink)}
 .theme-btn{border:1px solid var(--line);background:var(--surface);color:var(--ink-2);width:34px;height:34px;border-radius:9px;display:grid;place-items:center;cursor:pointer}
 .theme-btn:hover{color:var(--ink)}
-@media (max-width:560px){.top nav a.hide-s{display:none}}
+
 
 /* hero */
 .hero{padding:72px 0 40px;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;justify-content:center}
@@ -85,7 +85,7 @@ code,.mono{font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monosp
 .project{padding:88px 0 48px;display:grid;gap:28px;align-content:center;min-height:100vh;min-height:100svh}
 /* stacked panels: each one sticks once it fills the view; the margin is how long it stays before the next one rises */
 .hero,.project{position:relative}
-.deck .hero,.deck .project{position:sticky;top:0;transform-origin:50% 45%;will-change:opacity,transform}
+.deck .project{position:sticky;top:0;transform-origin:50% 45%;will-change:opacity,transform}
 /* deck of screenshots: every card in the same cell, raised over the previous one by the script */
 .deck .project{overflow:clip;overflow-clip-margin:40px}
 .deck .media{display:grid;align-items:start}
@@ -183,6 +183,17 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
 :root[data-theme="dark"]{--mix:34%;--img-op:.28}
 @media (prefers-reduced-motion:reduce){.stage .layer{transition:none}}
 
+/* project icons in the header, once the hero's list has gone under it */
+.mini{flex:1;min-width:0;display:flex;align-items:center;justify-content:center;gap:4px;padding:6px 8px;overflow-x:auto;scrollbar-width:none;opacity:0;visibility:hidden;transform:translateY(-6px);transition:opacity .25s,transform .25s,visibility .25s}
+.mini::-webkit-scrollbar{display:none}
+.minis .mini{opacity:1;visibility:visible;transform:none}
+.mini a{flex:none;width:34px;height:34px;border-radius:9px;display:grid;place-items:center;opacity:.4;filter:saturate(.5);transition:opacity .2s,transform .2s,filter .2s,background .2s}
+.mini a img{width:24px;height:24px;object-fit:contain;border-radius:6px}
+.mini a:hover{opacity:.85;filter:none}
+.mini a.on{opacity:1;filter:none;transform:scale(1.18);background:var(--surface);box-shadow:0 0 0 1.5px var(--accent),0 2px 8px rgba(0,0,0,.12)}
+@media (max-width:560px){.minis .brand span{display:none}.mini{justify-content:flex-start}.mini a{width:30px;height:30px}.mini a img{width:21px;height:21px}}
+@media (prefers-reduced-motion:reduce){.mini,.mini a{transition:none}}
+
 /* WIP ribbon */
 .has-ribbon{position:relative}
 .ribbon{position:absolute;top:0;right:0;width:118px;height:118px;overflow:hidden;pointer-events:none;z-index:3;border-top-right-radius:var(--radius)}
@@ -215,11 +226,8 @@ dialog.lb .lb-count{color:#9a9aa6;font:12px "JetBrains Mono",monospace;margin-le
 <header class="top">
   <div class="wrap">
     <a class="brand" href="#">jgermade <span>/ proyectos</span></a>
+    <div class="mini" id="mini" aria-label="Proyectos"></div>
     <nav>
-      <a class="hide-s" href="#apps">Apps</a>
-      <a class="hide-s" href="#dev">IA y desarrollo</a>
-      <a class="hide-s" href="#selfhost">Autoalojado</a>
-      <a class="hide-s" href="#red">Red</a>
       <a href="https://github.com/jgermade" aria-label="GitHub">GitHub</a>
       <button class="theme-btn" id="theme" type="button" aria-label="Cambiar tema">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 3v18" /><path d="M12 3a9 9 0 0 1 0 18z" fill="currentColor"/></svg>
@@ -629,7 +637,31 @@ src/App.html:4:7 - error TS2322: Type 'number' is not assignable to type 'string
     l.className='layer'; l.style.setProperty('--c1',c[0]); l.style.setProperty('--c2',c[1]);
     stage.appendChild(l); layers.push(l);
   });
+  // Header icons: one per project, built from the hero's list.
+  var mini=document.getElementById('mini'), index=document.querySelector('.index'), top=document.querySelector('.top');
+  var minis=[].slice.call(index.querySelectorAll('a')).map(function(a){
+    var m=document.createElement('a'), im=a.querySelector('img'), name=a.querySelector('b').textContent;
+    m.href=a.getAttribute('href'); m.title=name; m.setAttribute('aria-label',name);
+    var i2=document.createElement('img'); i2.src=im.getAttribute('src'); i2.alt=''; m.appendChild(i2);
+    mini.appendChild(m); return m;
+  });
+  var miniOn=-1;
+  function header(){
+    var shown=index.getBoundingClientRect().bottom<top.offsetHeight;
+    document.documentElement.classList.toggle('minis',shown);
+  }
+  function mark(i){ // panel i is in front; the hero is panel 0
+    var k=i-1; if(k===miniOn) return;
+    if(miniOn>=0) minis[miniOn].classList.remove('on'), minis[miniOn].removeAttribute('aria-current');
+    miniOn=k;
+    if(k>=0){
+      minis[k].classList.add('on'); minis[k].setAttribute('aria-current','true');
+      var a=minis[k], l=a.offsetLeft, w=a.offsetWidth; // keep it in view where the row scrolls
+      if(l<mini.scrollLeft||l+w>mini.scrollLeft+mini.clientWidth) mini.scrollTo({left:l-mini.clientWidth/2+w/2});
+    }
+  }
   function show(i){
+    header(); mark(i);
     if(i===current) return;
     var l=layers[i], src=panels[i].getAttribute('data-bg-img');
     if(src && !l.firstChild){ var im=new Image(); im.alt=''; im.decoding='async'; im.src=src; l.appendChild(im); }
@@ -677,7 +709,7 @@ src/App.html:4:7 - error TS2322: Type 'number' is not assignable to type 'string
       gaps[i]=deck?Math.round(vh*(n-1)*STEP):0;
       el.style.marginBottom=deck&&!last?gaps[i]+'px':(last?'0px':'');
       // A panel taller than the view sticks once its bottom reaches the bottom of the view.
-      el.style.top=Math.min(0,vh-el.offsetHeight)+'px';
+      el.style.top=i?Math.min(0,vh-el.offsetHeight)+'px':'';  // the hero scrolls normally
     });
     spacer.style.height=gaps[panels.length-1]+'px';
   }
@@ -725,11 +757,11 @@ src/App.html:4:7 - error TS2322: Type 'number' is not assignable to type 'string
       }
       // While the next panel rises it fades in; once it has risen HOLD, this one fades and recedes.
       var next=panels[i+1], e=0, a=1;
-      if(next && deck){
+      if(next && deck && i>0){
         var p=Math.min(1,Math.max(0,(vh-next.getBoundingClientRect().top-vh*HOLD)/(vh*0.55)));
         e=p*p*(3-2*p);
       }
-      if(i>0 && deck){
+      if(i>1 && deck){
         var q=Math.min(1,Math.max(0,(vh-r.top)/(vh*0.5)));
         a=q*q*(3-2*q);
       }
