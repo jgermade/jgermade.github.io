@@ -128,6 +128,9 @@ code,.mono{font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monosp
 .phones{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
 @media (max-width:560px){.phones{grid-template-columns:repeat(2,minmax(0,1fr))}.grid-2.stack-s{grid-template-columns:1fr}}
 .phones .shot{border-radius:18px}
+.shot.themed .d{display:none}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .shot.themed .l{display:none}:root:not([data-theme="light"]) .shot.themed .d{display:block}}
+:root[data-theme="dark"] .shot.themed .l{display:none}:root[data-theme="dark"] .shot.themed .d{display:block}
 .narrow{max-width:420px}
 
 /* terminal */
@@ -428,7 +431,7 @@ src/App.html:4:7 - error TS2322: Type 'number' is not assignable to type 'string
   </article>
 
   <span class="anchor" id="vericount"></span>
-  <article class="project" data-id="vericount" data-bg="#1557ad #22c55e">
+  <article class="project" data-id="vericount" data-bg="#1557ad #22c55e" data-bg-img="img/vericount-design-light.webp">
     <div class="text">
       <div class="kicker">Autoalojado</div>
       <div class="p-head"><img src="img/vericount.svg" alt=""><div><span class="num">08</span><h3>vericount</h3></div></div>
@@ -446,17 +449,7 @@ src/App.html:4:7 - error TS2322: Type 'number' is not assignable to type 'string
       </div>
     </div>
     <div class="media has-ribbon"><span class="ribbon" aria-label="En desarrollo"><span>WIP</span></span>
-      <div class="diagram">
-        <h4>Cadena de registros (esquema)</h4>
-        <div class="chain">
-          <div class="node"><b>Alta · F-2026-001</b><small>prev: —</small><small>hash: 9c1e…a04f</small></div>
-          <div class="arrow">→</div>
-          <div class="node"><b>Alta · F-2026-002</b><small>prev: 9c1e…a04f</small><small>hash: 3b7d…e912</small></div>
-          <div class="arrow">→</div>
-          <div class="node"><b>Anulación · F-2026-001</b><small>prev: 3b7d…e912</small><small>hash: f05a…1c3b</small></div>
-        </div>
-        <p style="margin:14px 0 0;color:var(--ink-3);font-size:13px">Los registros nunca se editan ni se borran: una corrección es un registro nuevo. Un trigger bloquea <code>UPDATE</code>, <code>DELETE</code> y <code>TRUNCATE</code>.</p>
-      </div>
+      <figure class="shot themed"><img class="l" src="img/vericount-design-light.webp" width="1200" height="874" alt="Propuesta de diseño de vericount: inicio con el total del trimestre, una factura con su cadena de registros Veri*factu y el envío a la AEAT" loading="lazy"><img class="d" src="img/vericount-design-dark.webp" width="1200" height="874" alt="" loading="lazy"><figcaption>Inicio, una factura con su cadena de registros Veri*factu y el envío a la AEAT.</figcaption></figure>
       <div class="term">
         <div class="term-bar"><i></i><i></i><i></i><span>servidor</span></div>
 <pre><span class="c"># Asistente de instalación (Linux con systemd)</span>
