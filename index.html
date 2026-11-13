@@ -157,6 +157,11 @@ code,.mono{font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monosp
 .term-bar span{margin-left:8px;font:500 12px "JetBrains Mono",monospace;color:var(--term-dim)}
 .term pre{margin:0;padding:16px 18px;overflow-x:auto;font:13px/1.7 "JetBrains Mono",monospace;white-space:pre}
 .term .c{color:var(--term-dim)} .term .tg{color:#ff8fa3} .term .at{color:#f4c96b} .term .st{color:#7ad69a} .term .kw{color:#a5b0ff} .term .nu{color:#7fd4ff} .term .mu{color:#e6c7ff}
+.term .tablist{display:flex;gap:2px;margin-left:10px;overflow-x:auto;scrollbar-width:none}
+.term .tablist button{font:500 12px "JetBrains Mono",monospace;color:var(--term-dim);background:none;border:0;border-radius:6px;padding:5px 10px;cursor:pointer;white-space:nowrap}
+.term .tablist button:hover{color:var(--term-ink);background:#1f2129}
+.term .tablist button[aria-selected="true"]{color:var(--term-ink);background:#262833}
+.term .tabpanel[hidden]{display:none}
 .term.code pre{font-size:14px;line-height:1.75;padding:20px 22px}
 .term .code-cap{margin:0;padding:10px 16px;border-top:1px solid #23252e;font-size:13px;color:var(--term-dim)}
 .term .code-cap code{color:var(--term-ink)} .term .p{color:var(--term-key)} .term .o{color:var(--term-ok)}
@@ -302,7 +307,7 @@ dialog.lb .lb-count{color:#9a9aa6;font:12px "JetBrains Mono",monospace;margin-le
         <a class="btn" href="https://github.com/jgermade/jackbird">Código</a>
       </div>
     </div>
-    <div class="media has-ribbon"><span class="ribbon" aria-label="En desarrollo"><span>WIP</span></span>
+    <div class="media">
       <figure class="shot"><img src="img/jackbird-library.webp" width="1600" height="1000" alt="Biblioteca de jackbird en acabado Silver con una pista sonando" loading="lazy"><figcaption>La biblioteca en Silver, con una pista sonando.</figcaption></figure>
       <figure class="shot"><img src="img/jackbird-graphite.webp" width="1200" height="750" alt="Álbum de dos discos en acabado Graphite" loading="lazy"><figcaption>Acabado Graphite.</figcaption></figure>
       <figure class="shot"><img src="img/jackbird-edit.webp" width="1200" height="750" alt="Diálogo de edición con tres pistas seleccionadas" loading="lazy"><figcaption>Editando tres pistas a la vez.</figcaption></figure>
@@ -361,7 +366,7 @@ dialog.lb .lb-count{color:#9a9aa6;font:12px "JetBrains Mono",monospace;margin-le
         <a class="btn" href="https://github.com/germadev/spriteman">Código</a>
       </div>
     </div>
-    <div class="media has-ribbon"><span class="ribbon" aria-label="En desarrollo"><span>WIP</span></span>
+    <div class="media">
       <figure class="shot"><img src="img/spritemotion-home.webp" width="1440" height="900" alt="Pantalla de inicio de Spritemotion para crear o abrir proyectos" loading="lazy"><figcaption>Crear un proyecto o abrir uno guardado en el navegador.</figcaption></figure>
       <figure class="shot"><img src="img/spritemotion-editor.webp" width="1440" height="900" alt="Editor de Spritemotion con un patito de 16×16 dibujado en la cuadrícula" loading="lazy"><figcaption>Un sprite de 16×16 en el editor: capas y paleta a la derecha, línea de tiempo abajo.</figcaption></figure>
     </div>
@@ -413,7 +418,7 @@ dialog.lb .lb-count{color:#9a9aa6;font:12px "JetBrains Mono",monospace;margin-le
         <a class="btn" href="https://github.com/jgermade/luu">Código</a>
       </div>
     </div>
-    <div class="media has-ribbon"><span class="ribbon" aria-label="En desarrollo"><span>WIP</span></span>
+    <div class="media">
       <figure class="shot"><img src="img/luu-landing.webp" width="1440" height="900" alt="Portada de la web de luu" loading="lazy"><figcaption>La web del proyecto.</figcaption></figure>
       <figure class="shot"><img src="img/luu-demo.webp" width="1440" height="900" alt="Demo de luu: panel de depuración con el uso del contexto por categorías y la sesión en vivo" loading="lazy"><figcaption>La demo: a la izquierda, en qué se gasta cada token del contexto; a la derecha, la sesión.</figcaption></figure>
     </div>
@@ -440,8 +445,9 @@ dialog.lb .lb-count{color:#9a9aa6;font:12px "JetBrains Mono",monospace;margin-le
     <div class="media">
       <figure class="shot"><img src="img/jq79.webp" width="1440" height="900" alt="Web de jq79 con un componente contador y su resultado en vivo" loading="lazy"><figcaption>Un componente completo en <code>counter.html</code>, montado en tiempo de ejecución.</figcaption></figure>
       <figure class="shot"><img src="img/jq79-tutorial.webp" width="1440" height="900" alt="Tutorial de jq79: explicación a la izquierda, editor del componente y resultado en vivo a la derecha" loading="lazy"><figcaption>El tutorial: 22 lecciones con editor y resultado en vivo.</figcaption></figure>
-      <div class="term code">
-        <div class="term-bar"><i></i><i></i><i></i><span>counter.html</span></div>
+      <div class="term code" data-tabs>
+        <div class="term-bar"><i></i><i></i><i></i><div class="tablist" role="tablist" aria-label="Cómo se usa jq79"><button type="button" role="tab" id="jq-tab-0" aria-controls="jq-panel-0" aria-selected="true">counter.html</button><button type="button" role="tab" id="jq-tab-1" aria-controls="jq-panel-1" aria-selected="false" tabindex="-1">index.html</button><button type="button" role="tab" id="jq-tab-2" aria-controls="jq-panel-2" aria-selected="false" tabindex="-1">script clásico</button></div></div>
+        <div class="tabpanel" role="tabpanel" id="jq-panel-0" aria-labelledby="jq-tab-0">
 <pre><span class="tg">&lt;script</span> <span class="at">:setup</span>=<span class="st">"{ step = 1 }"</span><span class="tg">&gt;</span>
   <span class="kw">let</span> count = <span class="nu">0</span>
   <span class="kw">$:</span> double = count * <span class="nu">2</span>
@@ -455,7 +461,31 @@ dialog.lb .lb-count{color:#9a9aa6;font:12px "JetBrains Mono",monospace;margin-le
 <span class="tg">&lt;style</span> <span class="at">scoped</span><span class="tg">&gt;</span>
   button { font: <span class="nu">600 1rem</span> system-ui; padding: <span class="nu">.7em 1.2em</span>; }
 <span class="tg">&lt;/style&gt;</span></pre>
-        <p class="code-cap">Un componente entero: script, plantilla y estilos en un <code>.html</code>, sin compilar.</p>
+          <p class="code-cap">Un componente entero: script, plantilla y estilos en un <code>.html</code>, sin compilar.</p>
+        </div>
+        <div class="tabpanel" role="tabpanel" id="jq-panel-1" aria-labelledby="jq-tab-1" hidden>
+<pre><span class="tg">&lt;!doctype html&gt;</span>
+<span class="tg">&lt;div</span> <span class="at">id</span>=<span class="st">"app"</span><span class="tg">&gt;&lt;/div&gt;</span>
+
+<span class="tg">&lt;script</span> <span class="at">type</span>=<span class="st">"module"</span><span class="tg">&gt;</span>
+  <span class="kw">import</span> { C79 } <span class="kw">from</span> <span class="st">"https://esm.sh/jq79"</span>
+
+  C79.fetch(<span class="st">"./counter.html"</span>).mount(<span class="st">"#app"</span>, { step: <span class="nu">2</span> })
+<span class="tg">&lt;/script&gt;</span></pre>
+          <p class="code-cap">La página que lo monta: la librería desde un CDN y el componente desde tu hosting. Sin bundler ni <code>npm install</code>.</p>
+        </div>
+        <div class="tabpanel" role="tabpanel" id="jq-panel-2" aria-labelledby="jq-tab-2" hidden>
+<pre><span class="tg">&lt;div</span> <span class="at">id</span>=<span class="st">"app"</span><span class="tg">&gt;&lt;/div&gt;</span>
+
+<span class="c">&lt;!-- sin módulos: la librería queda en window.jq79 --&gt;</span>
+<span class="tg">&lt;script</span> <span class="at">src</span>=<span class="st">"https://jgermade.github.io/jq79/jq79.global.js"</span><span class="tg">&gt;&lt;/script&gt;</span>
+<span class="tg">&lt;script&gt;</span>
+  <span class="kw">const</span> { Component79 } = jq79
+
+  Component79.fetch(<span class="st">"./counter.html"</span>).mount(<span class="st">"#app"</span>)
+<span class="tg">&lt;/script&gt;</span></pre>
+          <p class="code-cap">También sin módulos, con un <code>&lt;script&gt;</code> de toda la vida.</p>
+        </div>
       </div>
       <figure class="shot"><img src="img/jq79-comparison.webp" width="1440" height="900" alt="Comparativa de jq79 con vanillajs, Svelte, Vue, Preact y React en js-framework-benchmark" loading="lazy"><figcaption>Comparado con vanillajs, Svelte, Vue, Preact y React.</figcaption></figure>
     </div>
@@ -508,7 +538,7 @@ dialog.lb .lb-count{color:#9a9aa6;font:12px "JetBrains Mono",monospace;margin-le
         <a class="btn" href="https://github.com/jgermade/vericount">Código</a>
       </div>
     </div>
-    <div class="media has-ribbon"><span class="ribbon" aria-label="En desarrollo"><span>WIP</span></span>
+    <div class="media">
       <figure class="shot"><img src="img/vericount-design-light.webp" width="1200" height="874" alt="Pantallas de vericount en modo claro: inicio con el total del trimestre, una factura con su cadena de registros Veri*factu y el envío a la AEAT" loading="lazy"><figcaption>Inicio, una factura con su cadena de registros Veri*factu y el envío a la AEAT.</figcaption></figure>
       <figure class="shot"><img src="img/vericount-design-dark.webp" width="1200" height="874" alt="Las mismas pantallas de vericount en modo oscuro" loading="lazy"><figcaption>Las mismas pantallas, en modo oscuro.</figcaption></figure>
     </div>
@@ -605,7 +635,7 @@ dialog.lb .lb-count{color:#9a9aa6;font:12px "JetBrains Mono",monospace;margin-le
         <a class="btn" href="https://github.com/jgermade/steam-gamestore">Código</a>
       </div>
     </div>
-    <div class="media has-ribbon"><span class="ribbon" aria-label="En desarrollo"><span>WIP</span></span>
+    <div class="media">
       <figure class="shot"><img src="img/steam-gamestore-help.webp" width="1400" height="714" alt="Salida de gamestore --help con sus comandos: info, config, login, logout, library, steam-install, steam-uninstall y appid" loading="lazy"><figcaption>Sus comandos, con <code>gamestore --help</code>.</figcaption></figure>
       <figure class="shot"><img src="img/steam-gamestore-info.webp" width="1400" height="714" alt="Salida de gamestore info y gamestore appid: rutas, Proton, y el appid que Steam daría a la ficha" loading="lazy"><figcaption>Qué resuelve en la máquina, y el appid que Steam daría a su ficha. Salida real; el SteamOS de la ventana es simulado.</figcaption></figure>
       <div class="diagram">
@@ -827,6 +857,25 @@ dialog.lb .lb-count{color:#9a9aa6;font:12px "JetBrains Mono",monospace;margin-le
   [reduce,narrow].forEach(function(q){ if(q.addEventListener) q.addEventListener('change',function(){ layout(); onScroll(); }); });
   addEventListener('load',function(){ layout(); frame(); });
   layout(); frame();
+
+  // Tabs in code cards: click, or the arrow keys once a tab has the focus.
+  document.querySelectorAll('[data-tabs]').forEach(function(card){
+    var tabs=[].slice.call(card.querySelectorAll('[role=tab]'));
+    function pick(t,focus){
+      tabs.forEach(function(x){
+        var on=x===t; x.setAttribute('aria-selected',on); x.tabIndex=on?0:-1;
+        document.getElementById(x.getAttribute('aria-controls')).hidden=!on;
+      });
+      if(focus) t.focus();
+    }
+    tabs.forEach(function(t,i){
+      t.addEventListener('click',function(){ pick(t); });
+      t.addEventListener('keydown',function(e){
+        var d=e.key==='ArrowRight'?1:e.key==='ArrowLeft'?-1:0;
+        if(d){ pick(tabs[(i+d+tabs.length)%tabs.length],true); e.preventDefault(); }
+      });
+    });
+  });
 
   // Lightbox: a shot opens big; arrows (keys, buttons or a swipe) move between the shots of its project.
   var lb=document.getElementById('lb'), img=document.getElementById('lb-img'), cap=document.getElementById('lb-cap');
