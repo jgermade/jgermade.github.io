@@ -98,6 +98,9 @@ code,.mono{font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monosp
 .swipe .media.multi::-webkit-scrollbar{display:none}
 .swipe .media.multi>*{flex:0 0 86%;min-width:0;scroll-snap-align:start}
 .swipe .media.multi>.phones{display:contents}
+.phones.phones-2{grid-template-columns:repeat(2,minmax(0,1fr));max-width:440px;margin:0 auto;width:100%}
+.pair{display:grid;gap:14px}
+.swipe .media.multi>.pair{display:contents}
 .swipe .media.multi>.phones>.shot{flex:0 0 44%;scroll-snap-align:start}
 .swipe .media.multi>.shot.invoice{flex-basis:70%}
 .anchor{display:block;height:0}
@@ -310,14 +313,18 @@ dialog.lb .lb-count{color:#9a9aa6;font:12px "JetBrains Mono",monospace;margin-le
       </div>
     </div>
     <div class="media">
-      <div class="phones">
+      <div class="phones phones-2">
         <figure class="shot"><img src="img/hummingbox-list.webp" width="540" height="1170" alt="Lista de grabaciones, una reproduciéndose con su transcripción" loading="lazy"></figure>
         <figure class="shot"><img src="img/hummingbox-recording.webp" width="540" height="1170" alt="Grabación en curso con la forma de onda" loading="lazy"></figure>
+      </div>
+      <div class="phones phones-2">
         <figure class="shot"><img src="img/hummingbox-editor.webp" width="540" height="1170" alt="Modo edición con la selección recortada, volumen y fundidos" loading="lazy"></figure>
         <figure class="shot"><img src="img/hummingbox-folders.webp" width="540" height="1170" alt="Menú lateral con carpetas y el botón del piano" loading="lazy"></figure>
       </div>
-      <figure class="shot"><img src="img/hummingbox-piano.webp" width="1200" height="554" alt="Piano en horizontal tocando un acorde de Do mayor" loading="lazy"><figcaption>El piano, en horizontal.</figcaption></figure>
-      <figure class="shot"><img src="img/hummingbox-synth.webp" width="1200" height="554" alt="Sintetizador sobre las teclas con pantalla y dos mandos" loading="lazy"><figcaption>El sintetizador.</figcaption></figure>
+      <div class="pair">
+        <figure class="shot"><img src="img/hummingbox-piano.webp" width="1200" height="554" alt="Piano en horizontal tocando un acorde de Do mayor" loading="lazy"><figcaption>El piano, en horizontal.</figcaption></figure>
+        <figure class="shot"><img src="img/hummingbox-synth.webp" width="1200" height="554" alt="Sintetizador sobre las teclas con pantalla y dos mandos" loading="lazy"><figcaption>El sintetizador.</figcaption></figure>
+      </div>
     </div>
   </article>
 
