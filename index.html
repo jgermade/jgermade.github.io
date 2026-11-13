@@ -299,13 +299,13 @@ dialog.lb .lb-count{position:fixed;top:24px;left:0;right:0;margin:0;text-align:c
     <li><a href="#motorust"><img src="img/motorust.png" alt=""><span><b>Motorust</b><small>Carreras de motos arcade</small></span><span class="num">01</span></a></li>
     <li><a href="#play"><img src="img/play.svg" alt=""><span><b>play.germade</b><small>Consola retro web</small></span><span class="num">02</span></a></li>
     <li><a class="has-ribbon" href="#jackbird" title="En desarrollo"><span class="ribbon" aria-hidden="true"><span>WIP</span></span><img src="img/jackbird.svg" alt=""><span><b>jackbird</b><small>Biblioteca musical local</small></span><span class="num">03</span></a></li>
-    <li><a href="#hummingbox"><img src="img/hummingbox-icon.svg" alt=""><span><b>HummingBox</b><small>Grabadora de voz móvil</small></span><span class="num">04</span></a></li>
-    <li><a href="#vektro"><img src="img/vektro.svg" alt=""><span><b>Vektro</b><small>Imágenes a SVG</small></span><span class="num">05</span></a></li>
-    <li><a class="has-ribbon" href="#luu" title="En desarrollo"><span class="ribbon" aria-hidden="true"><span>WIP</span></span><img src="img/luu.svg" alt=""><span><b>luu</b><small>Agente de IA local</small></span><span class="num">06</span></a></li>
+    <li><a class="has-ribbon" href="#luu" title="En desarrollo"><span class="ribbon" aria-hidden="true"><span>WIP</span></span><img src="img/luu.svg" alt=""><span><b>luu</b><small>Agente de IA local</small></span><span class="num">04</span></a></li>
+    <li><a href="#hummingbox"><img src="img/hummingbox-icon.svg" alt=""><span><b>HummingBox</b><small>Grabadora de voz móvil</small></span><span class="num">05</span></a></li>
+    <li><a href="#jq79"><img src="img/jq79.svg" alt=""><span><b>jq79</b><small>Componentes reactivos</small></span><span class="num">06</span></a></li>
     <li><a href="#intergate"><img src="img/intergate.svg" alt=""><span><b>intergate</b><small>Túneles SSH a tu dominio</small></span><span class="num">07</span></a></li>
     <li><a class="has-ribbon" href="#vericount" title="En desarrollo"><span class="ribbon" aria-hidden="true"><span>WIP</span></span><img src="img/vericount.svg" alt=""><span><b>vericount</b><small>Contabilidad Veri*factu</small></span><span class="num">08</span></a></li>
-    <li><a class="has-ribbon" href="#spritemotion" title="En desarrollo"><span class="ribbon" aria-hidden="true"><span>WIP</span></span><img src="img/spritemotion.svg" alt=""><span><b>Spritemotion</b><small>Animador de sprites</small></span><span class="num">09</span></a></li>
-    <li><a href="#jq79"><img src="img/jq79.svg" alt=""><span><b>jq79</b><small>Componentes reactivos</small></span><span class="num">10</span></a></li>
+    <li><a href="#vektro"><img src="img/vektro.svg" alt=""><span><b>Vektro</b><small>Imágenes a SVG</small></span><span class="num">09</span></a></li>
+    <li><a class="has-ribbon" href="#spritemotion" title="En desarrollo"><span class="ribbon" aria-hidden="true"><span>WIP</span></span><img src="img/spritemotion.svg" alt=""><span><b>Spritemotion</b><small>Animador de sprites</small></span><span class="num">10</span></a></li>
     <li><a href="#proxyxt"><img src="img/proxyxt.svg" alt=""><span><b>ProxyXT</b><small>Extensión de proxies</small></span><span class="num">11</span></a></li>
     <li><a class="has-ribbon" href="#anygamepad" title="En desarrollo"><span class="ribbon" aria-hidden="true"><span>WIP</span></span><img src="img/anygamepad.svg" alt=""><span><b>anygamepad</b><small>Probador de mandos</small></span><span class="num">12</span></a></li>
     <li><a class="has-ribbon" href="#steam-gamestore" title="En desarrollo"><span class="ribbon" aria-hidden="true"><span>WIP</span></span><img src="img/steam-gamestore.svg" alt=""><span><b>steam-gamestore</b><small>GOG dentro de Steam</small></span><span class="num">13</span></a></li>
@@ -386,11 +386,36 @@ dialog.lb .lb-count{position:fixed;top:24px;left:0;right:0;margin:0;text-align:c
     </div>
   </article>
 
+  <span class="anchor" id="luu"></span>
+  <article class="project" data-id="luu" data-bg="#f59e0b #fb7185" data-bg-img="img/luu-demo.webp">
+    <div class="text">
+      <div class="kicker">IA y desarrollo</div>
+      <div class="p-head"><img src="img/luu.svg" alt=""><div><span class="num">04</span><h3>luu</h3></div></div>
+      <p class="tagline">El agente hecho para la ventana de contexto que de verdad tienes.</p>
+      <p>Un agente de IA <i>local-first</i> escrito en Rust, pensado para modelos de 7B a 32B con 8K–32K de contexto. Usa un modelo remoto solo si lo nombras, nunca como respaldo. Su tema central es la gestión del contexto: qué entra en el prompt y qué se gana su sitio.</p>
+      <ul class="feats">
+        <li><b>Inspector de contexto</b>: cuánto ocupa el sistema, las herramientas, el historial o el código en cada turno, y cuánto del prefijo se reutiliza.</li>
+        <li><b>Pregunta antes de actuar</b>, y el kernel controla cada comando que ejecuta.</li>
+        <li><b>Local u online</b>: un binario sin root para ti, o un servicio con inicio de sesión para varias personas.</li>
+      </ul>
+      <ul class="chips"><li>Rust</li><li>Ollama</li><li>llama.cpp</li><li>MLX</li><li>Linux · macOS</li></ul>
+      <div class="links">
+        <a class="btn primary" href="https://jgermade.github.io/luu/demo/">Abrir la demo ↗</a>
+        <a class="btn" href="https://jgermade.github.io/luu/">Web</a>
+        <a class="btn" href="https://github.com/jgermade/luu">Código</a>
+      </div>
+    </div>
+    <div class="media">
+      <figure class="shot"><img src="img/luu-landing.webp" width="1440" height="900" alt="Portada de la web de luu" loading="lazy"><figcaption>La web del proyecto.</figcaption></figure>
+      <figure class="shot"><img src="img/luu-demo.webp" width="1440" height="900" alt="Demo de luu: panel de depuración con el uso del contexto por categorías y la sesión en vivo" loading="lazy"><figcaption>La demo: a la izquierda, en qué se gasta cada token del contexto; a la derecha, la sesión.</figcaption></figure>
+    </div>
+  </article>
+
   <span class="anchor" id="hummingbox"></span>
   <article class="project" data-id="hummingbox" data-bg="#7c3aed #d946ef" data-bg-img="img/hummingbox-piano.webp">
     <div class="text">
       <div class="kicker">Apps</div>
-      <div class="p-head"><img src="img/hummingbox-icon.svg" alt=""><div><span class="num">04</span><h3>HummingBox</h3></div></div>
+      <div class="p-head"><img src="img/hummingbox-icon.svg" alt=""><div><span class="num">05</span><h3>HummingBox</h3></div></div>
       <p class="tagline">Una grabadora de voz que también tiene un piano.</p>
       <p>App para Android e iOS hecha con Flutter. Graba, reproduce, edita y transcribe notas de voz, y guárdalas en una carpeta del dispositivo o en Google Drive. Pensada para tararear una idea antes de que se escape.</p>
       <ul class="feats">
@@ -420,134 +445,11 @@ dialog.lb .lb-count{position:fixed;top:24px;left:0;right:0;margin:0;text-align:c
     </div>
   </article>
 
-  <span class="anchor" id="vektro"></span>
-  <article class="project" data-id="vektro" data-bg="#4f46e5 #38bdf8" data-bg-img="img/vektro.webp">
-    <div class="text">
-      <div class="kicker">Apps</div>
-      <div class="p-head"><img src="img/vektro.svg" alt=""><div><span class="num">05</span><h3>Vektro</h3></div></div>
-      <p class="tagline">Convierte imágenes en SVG limpio, sin salir de tu equipo.</p>
-      <p>El modo <b>pixel art</b> detecta la cuadrícula del dibujo y funde cada bloque contiguo del mismo color en un único <code>&lt;path&gt;</code>, trazando su contorno mínimo con agujeros incluidos, en lugar de escupir un rectángulo por píxel. El modo <b>ilustración</b> agrupa los colores en una paleta y traza las regiones de cada uno, para imágenes que no siguen ninguna cuadrícula.</p>
-      <ul class="feats">
-        <li><b>Todo en el navegador</b>: Rust compilado a WebAssembly, la imagen nunca se sube.</li>
-        <li><b>Tres trazados</b>: escalón literal, polígono simplificado o curvas Bézier suaves.</li>
-        <li><b>Web, CLI y librería</b>: <code>vektro pixelart sprite.png</code> genera <code>sprite.svg</code>.</li>
-      </ul>
-      <ul class="chips"><li>Rust</li><li>WebAssembly</li><li>CLI</li><li>SVG</li></ul>
-      <div class="links">
-        <a class="btn primary" href="https://jgermade.github.io/vektro/">Probar Vektro ↗</a>
-        <a class="btn" href="https://github.com/jgermade/vektro">Código</a>
-      </div>
-    </div>
-    <div class="media">
-      <figure class="shot"><img src="img/vektro.webp" width="1440" height="900" alt="Vektro convirtiendo un sprite PNG de 384×384 en un SVG de 883 bytes" loading="lazy"><figcaption>Pixel art: detecta la cuadrícula de 16×16 y genera un SVG de 883 B con 10 paths.</figcaption></figure>
-      <figure class="shot"><img src="img/vektro-illustration.webp" width="1440" height="900" alt="Vektro en modo ilustración convirtiendo una portada ilustrada de cuatro personajes en un SVG de 15 colores" loading="lazy"><figcaption>Ilustración: una portada de 1500×1500 en un SVG de 15 colores y 900 paths, con la precisión de color en 6.</figcaption></figure>
-    </div>
-  </article>
-
-  <span class="anchor" id="luu"></span>
-  <article class="project" data-id="luu" data-bg="#f59e0b #fb7185" data-bg-img="img/luu-demo.webp">
-    <div class="text">
-      <div class="kicker">IA y desarrollo</div>
-      <div class="p-head"><img src="img/luu.svg" alt=""><div><span class="num">06</span><h3>luu</h3></div></div>
-      <p class="tagline">El agente hecho para la ventana de contexto que de verdad tienes.</p>
-      <p>Un agente de IA <i>local-first</i> escrito en Rust, pensado para modelos de 7B a 32B con 8K–32K de contexto. Usa un modelo remoto solo si lo nombras, nunca como respaldo. Su tema central es la gestión del contexto: qué entra en el prompt y qué se gana su sitio.</p>
-      <ul class="feats">
-        <li><b>Inspector de contexto</b>: cuánto ocupa el sistema, las herramientas, el historial o el código en cada turno, y cuánto del prefijo se reutiliza.</li>
-        <li><b>Pregunta antes de actuar</b>, y el kernel controla cada comando que ejecuta.</li>
-        <li><b>Local u online</b>: un binario sin root para ti, o un servicio con inicio de sesión para varias personas.</li>
-      </ul>
-      <ul class="chips"><li>Rust</li><li>Ollama</li><li>llama.cpp</li><li>MLX</li><li>Linux · macOS</li></ul>
-      <div class="links">
-        <a class="btn primary" href="https://jgermade.github.io/luu/demo/">Abrir la demo ↗</a>
-        <a class="btn" href="https://jgermade.github.io/luu/">Web</a>
-        <a class="btn" href="https://github.com/jgermade/luu">Código</a>
-      </div>
-    </div>
-    <div class="media">
-      <figure class="shot"><img src="img/luu-landing.webp" width="1440" height="900" alt="Portada de la web de luu" loading="lazy"><figcaption>La web del proyecto.</figcaption></figure>
-      <figure class="shot"><img src="img/luu-demo.webp" width="1440" height="900" alt="Demo de luu: panel de depuración con el uso del contexto por categorías y la sesión en vivo" loading="lazy"><figcaption>La demo: a la izquierda, en qué se gasta cada token del contexto; a la derecha, la sesión.</figcaption></figure>
-    </div>
-  </article>
-
-  <span class="anchor" id="intergate"></span>
-  <article class="project" data-id="intergate" data-bg="#3b82f6 #ff9a2a" data-bg-img="img/intergate-panel.webp">
-    <div class="text">
-      <div class="kicker">Autoalojado</div>
-      <div class="p-head"><img src="img/intergate.svg" alt=""><div><span class="num">07</span><h3>intergate</h3></div></div>
-      <p class="tagline">Abre una puerta a la web desde tu localhost, en tu propio dominio.</p>
-      <p>Expone servicios locales a través de SSH, como ngrok o sish, pero en tu dominio y gestionado desde un panel web o un asistente en terminal. Cada subdominio sirve un túnel: <code>myapp.gate.example.com</code> → tu <code>localhost:3000</code>.</p>
-      <ul class="feats">
-        <li><b>Claves SSH por subdominio</b>: una clave solo abre túneles donde se ha autorizado; las desconocidas se rechazan en el handshake.</li>
-        <li><b>Sin contraseñas</b>: código por email y passkeys; GitHub u OpenID Connect opcionales. Acceso público, con sesión o privado por subdominio.</li>
-        <li><b>Puertos TCP y UDP</b> para bases de datos o servidores de juegos, y vista en vivo de cada túnel.</li>
-        <li><b>Un único binario</b> con SQLite y HTTPS automático (Let's Encrypt, certificado comodín), o Docker y Kubernetes.</li>
-      </ul>
-      <ul class="chips"><li>Go</li><li>SSH</li><li>SQLite</li><li>Let's Encrypt</li><li>Passkeys</li></ul>
-      <div class="links">
-        <a class="btn primary" href="https://jgermade.github.io/intergate/">Web ↗</a>
-        <a class="btn" href="https://github.com/jgermade/intergate">Código</a>
-      </div>
-    </div>
-    <div class="media">
-      <figure class="shot"><img src="img/intergate.webp" width="1440" height="900" alt="Web de intergate: dos puertas y un enlace cifrado entre internet y tu casa" loading="lazy"><figcaption>La web del proyecto.</figcaption></figure>
-      <figure class="shot"><img src="img/intergate-panel.webp" width="1440" height="900" alt="Panel de intergate: un subdominio conectado con su cliente, clave SSH, peticiones y tráfico, y sus opciones de acceso" loading="lazy"><figcaption>El panel de un subdominio: quién está conectado, con qué clave, cuánto tráfico, y quién puede entrar.</figcaption></figure>
-      <figure class="shot"><img src="img/intergate-subdomains.webp" width="1440" height="900" alt="Lista de subdominios con su estado, acceso y número de claves" loading="lazy"><figcaption>Tus subdominios.</figcaption></figure>
-    </div>
-  </article>
-
-  <span class="anchor" id="vericount"></span>
-  <article class="project" data-id="vericount" data-bg="#1557ad #22c55e" data-bg-img="img/vericount-design-light.webp">
-    <div class="text">
-      <div class="kicker">Autoalojado</div>
-      <div class="p-head"><img src="img/vericount.svg" alt=""><div><span class="num">08</span><h3>vericount</h3></div></div>
-      <p class="tagline">Contabilidad para una SL española, con Veri*factu.</p>
-      <p>Facturas emitidas, gastos y libros de IVA para una sociedad limitada, cumpliendo la normativa Veri*factu de la AEAT. El nombre une <i>verificar</i> y <i>cuentas</i>; el logo es un ábaco cuyas cuentas son bloques encadenados que dibujan un check.</p>
-      <ul class="feats">
-        <li><b>Registros inmutables</b>: cada factura genera un registro con hash SHA-256 encadenado al anterior, en tablas de solo inserción.</li>
-        <li><b>Modo práctica y modo real</b>: empieza enviando a una simulación de la AEAT dentro del servidor; el modo real se activa al subir el certificado.</li>
-        <li><b>Sin contraseñas</b>: invitación por email, código o passkey.</li>
-        <li><b>Instalación en una línea</b> con systemd, o Docker (imagen distroless de ~25 MB) o Helm.</li>
-      </ul>
-      <ul class="chips"><li>Rust</li><li>Axum</li><li>PostgreSQL</li><li>jq79</li><li>Docker · Helm</li></ul>
-      <div class="links">
-        <a class="btn" href="https://github.com/jgermade/vericount">Código</a>
-      </div>
-    </div>
-    <div class="media">
-      <figure class="shot"><img src="img/vericount-design-light.webp" width="1200" height="874" alt="Pantallas de vericount en modo claro: inicio con el total del trimestre, una factura con su cadena de registros Veri*factu y el envío a la AEAT" loading="lazy"><figcaption>Inicio, una factura con su cadena de registros Veri*factu y el envío a la AEAT.</figcaption></figure>
-      <figure class="shot"><img src="img/vericount-design-dark.webp" width="1200" height="874" alt="Las mismas pantallas de vericount en modo oscuro" loading="lazy"><figcaption>Las mismas pantallas, en modo oscuro.</figcaption></figure>
-    </div>
-  </article>
-
-  <span class="anchor" id="spritemotion"></span>
-  <article class="project" data-id="spritemotion" data-bg="#0ea5e9 #facc15" data-bg-img="img/spritemotion-editor.webp">
-    <div class="text">
-      <div class="kicker">Apps</div>
-      <div class="p-head"><img src="img/spritemotion.svg" alt=""><div><span class="num">09</span><h3>Spritemotion</h3></div></div>
-      <p class="tagline">Dibuja y anima sprites de pixel art en el navegador.</p>
-      <p>Un editor de sprites animados con capas jerárquicas: cada capa (torso, cabeza, brazo…) puede colgar de otra, como un esqueleto, y los fotogramas se interpolan por keyframes. El núcleo es un motor en Rust compilado a WebAssembly.</p>
-      <ul class="feats">
-        <li><b>Capas con jerarquía</b> y matriz de transformación propia, con opacidad por capa.</li>
-        <li><b>Línea de tiempo</b> con varias animaciones por proyecto (idle, walk…) y FPS configurables.</li>
-        <li><b>Exporta</b> el fotograma a SVG o ICO, la animación a SVG animado, Lottie JSON o cursor animado de Windows (.ani), y el proyecto completo a JSON editable.</li>
-      </ul>
-      <ul class="chips"><li>Rust → WASM</li><li>TypeScript</li><li>jq79</li><li>Vite</li></ul>
-      <div class="links">
-        <a class="btn primary" href="https://germadev.github.io/spriteman/">Abrir el editor ↗</a>
-        <a class="btn" href="https://github.com/germadev/spriteman">Código</a>
-      </div>
-    </div>
-    <div class="media">
-      <figure class="shot"><img src="img/spritemotion-home.webp" width="1440" height="900" alt="Pantalla de inicio de Spritemotion para crear o abrir proyectos" loading="lazy"><figcaption>Crear un proyecto o abrir uno guardado en el navegador.</figcaption></figure>
-      <figure class="shot"><img src="img/spritemotion-editor.webp" width="1440" height="900" alt="Editor de Spritemotion con un patito de 16×16 dibujado en la cuadrícula" loading="lazy"><figcaption>Un sprite de 16×16 en el editor: capas y paleta a la derecha, línea de tiempo abajo.</figcaption></figure>
-    </div>
-  </article>
-
   <span class="anchor" id="jq79"></span>
   <article class="project" data-id="jq79" data-bg="#2f74d0 #facc15" data-bg-img="img/jq79.webp">
     <div class="text">
       <div class="kicker">IA y desarrollo</div>
-      <div class="p-head"><img src="img/jq79.svg" alt=""><div><span class="num">10</span><h3>jq79</h3></div></div>
+      <div class="p-head"><img src="img/jq79.svg" alt=""><div><span class="num">06</span><h3>jq79</h3></div></div>
       <p class="tagline">Componentes reactivos en archivos <code>.html</code> normales.</p>
       <p>Una librería mínima de componentes: jq79 analiza y monta componentes de un solo archivo <b>en el navegador, en tiempo de ejecución</b>. Sin compilador, sin bundler, sin DOM virtual: un script desde un CDN y cualquier hosting estático es todo el stack. Es la base de jackbird, Spritemotion y vericount.</p>
       <ul class="feats">
@@ -607,6 +509,104 @@ dialog.lb .lb-count{position:fixed;top:24px;left:0;right:0;margin:0;text-align:c
         </div>
       </div>
       <figure class="shot"><img src="img/jq79-comparison.webp" width="1440" height="900" alt="Comparativa de jq79 con vanillajs, Svelte, Vue, Preact y React en js-framework-benchmark" loading="lazy"><figcaption>Comparado con vanillajs, Svelte, Vue, Preact y React.</figcaption></figure>
+    </div>
+  </article>
+
+  <span class="anchor" id="intergate"></span>
+  <article class="project" data-id="intergate" data-bg="#3b82f6 #ff9a2a" data-bg-img="img/intergate-panel.webp">
+    <div class="text">
+      <div class="kicker">Autoalojado</div>
+      <div class="p-head"><img src="img/intergate.svg" alt=""><div><span class="num">07</span><h3>intergate</h3></div></div>
+      <p class="tagline">Abre una puerta a la web desde tu localhost, en tu propio dominio.</p>
+      <p>Expone servicios locales a través de SSH, como ngrok o sish, pero en tu dominio y gestionado desde un panel web o un asistente en terminal. Cada subdominio sirve un túnel: <code>myapp.gate.example.com</code> → tu <code>localhost:3000</code>.</p>
+      <ul class="feats">
+        <li><b>Claves SSH por subdominio</b>: una clave solo abre túneles donde se ha autorizado; las desconocidas se rechazan en el handshake.</li>
+        <li><b>Sin contraseñas</b>: código por email y passkeys; GitHub u OpenID Connect opcionales. Acceso público, con sesión o privado por subdominio.</li>
+        <li><b>Puertos TCP y UDP</b> para bases de datos o servidores de juegos, y vista en vivo de cada túnel.</li>
+        <li><b>Un único binario</b> con SQLite y HTTPS automático (Let's Encrypt, certificado comodín), o Docker y Kubernetes.</li>
+      </ul>
+      <ul class="chips"><li>Go</li><li>SSH</li><li>SQLite</li><li>Let's Encrypt</li><li>Passkeys</li></ul>
+      <div class="links">
+        <a class="btn primary" href="https://jgermade.github.io/intergate/">Web ↗</a>
+        <a class="btn" href="https://github.com/jgermade/intergate">Código</a>
+      </div>
+    </div>
+    <div class="media">
+      <figure class="shot"><img src="img/intergate.webp" width="1440" height="900" alt="Web de intergate: dos puertas y un enlace cifrado entre internet y tu casa" loading="lazy"><figcaption>La web del proyecto.</figcaption></figure>
+      <figure class="shot"><img src="img/intergate-panel.webp" width="1440" height="900" alt="Panel de intergate: un subdominio conectado con su cliente, clave SSH, peticiones y tráfico, y sus opciones de acceso" loading="lazy"><figcaption>El panel de un subdominio: quién está conectado, con qué clave, cuánto tráfico, y quién puede entrar.</figcaption></figure>
+      <figure class="shot"><img src="img/intergate-subdomains.webp" width="1440" height="900" alt="Lista de subdominios con su estado, acceso y número de claves" loading="lazy"><figcaption>Tus subdominios.</figcaption></figure>
+    </div>
+  </article>
+
+  <span class="anchor" id="vericount"></span>
+  <article class="project" data-id="vericount" data-bg="#1557ad #22c55e" data-bg-img="img/vericount-design-light.webp">
+    <div class="text">
+      <div class="kicker">Autoalojado</div>
+      <div class="p-head"><img src="img/vericount.svg" alt=""><div><span class="num">08</span><h3>vericount</h3></div></div>
+      <p class="tagline">Contabilidad para una SL española, con Veri*factu.</p>
+      <p>Facturas emitidas, gastos y libros de IVA para una sociedad limitada, cumpliendo la normativa Veri*factu de la AEAT. El nombre une <i>verificar</i> y <i>cuentas</i>; el logo es un ábaco cuyas cuentas son bloques encadenados que dibujan un check.</p>
+      <ul class="feats">
+        <li><b>Registros inmutables</b>: cada factura genera un registro con hash SHA-256 encadenado al anterior, en tablas de solo inserción.</li>
+        <li><b>Modo práctica y modo real</b>: empieza enviando a una simulación de la AEAT dentro del servidor; el modo real se activa al subir el certificado.</li>
+        <li><b>Sin contraseñas</b>: invitación por email, código o passkey.</li>
+        <li><b>Instalación en una línea</b> con systemd, o Docker (imagen distroless de ~25 MB) o Helm.</li>
+      </ul>
+      <ul class="chips"><li>Rust</li><li>Axum</li><li>PostgreSQL</li><li>jq79</li><li>Docker · Helm</li></ul>
+      <div class="links">
+        <a class="btn" href="https://github.com/jgermade/vericount">Código</a>
+      </div>
+    </div>
+    <div class="media">
+      <figure class="shot"><img src="img/vericount-design-light.webp" width="1200" height="874" alt="Pantallas de vericount en modo claro: inicio con el total del trimestre, una factura con su cadena de registros Veri*factu y el envío a la AEAT" loading="lazy"><figcaption>Inicio, una factura con su cadena de registros Veri*factu y el envío a la AEAT.</figcaption></figure>
+      <figure class="shot"><img src="img/vericount-design-dark.webp" width="1200" height="874" alt="Las mismas pantallas de vericount en modo oscuro" loading="lazy"><figcaption>Las mismas pantallas, en modo oscuro.</figcaption></figure>
+    </div>
+  </article>
+
+  <span class="anchor" id="vektro"></span>
+  <article class="project" data-id="vektro" data-bg="#4f46e5 #38bdf8" data-bg-img="img/vektro.webp">
+    <div class="text">
+      <div class="kicker">Apps</div>
+      <div class="p-head"><img src="img/vektro.svg" alt=""><div><span class="num">09</span><h3>Vektro</h3></div></div>
+      <p class="tagline">Convierte imágenes en SVG limpio, sin salir de tu equipo.</p>
+      <p>El modo <b>pixel art</b> detecta la cuadrícula del dibujo y funde cada bloque contiguo del mismo color en un único <code>&lt;path&gt;</code>, trazando su contorno mínimo con agujeros incluidos, en lugar de escupir un rectángulo por píxel. El modo <b>ilustración</b> agrupa los colores en una paleta y traza las regiones de cada uno, para imágenes que no siguen ninguna cuadrícula.</p>
+      <ul class="feats">
+        <li><b>Todo en el navegador</b>: Rust compilado a WebAssembly, la imagen nunca se sube.</li>
+        <li><b>Tres trazados</b>: escalón literal, polígono simplificado o curvas Bézier suaves.</li>
+        <li><b>Web, CLI y librería</b>: <code>vektro pixelart sprite.png</code> genera <code>sprite.svg</code>.</li>
+      </ul>
+      <ul class="chips"><li>Rust</li><li>WebAssembly</li><li>CLI</li><li>SVG</li></ul>
+      <div class="links">
+        <a class="btn primary" href="https://jgermade.github.io/vektro/">Probar Vektro ↗</a>
+        <a class="btn" href="https://github.com/jgermade/vektro">Código</a>
+      </div>
+    </div>
+    <div class="media">
+      <figure class="shot"><img src="img/vektro.webp" width="1440" height="900" alt="Vektro convirtiendo un sprite PNG de 384×384 en un SVG de 883 bytes" loading="lazy"><figcaption>Pixel art: detecta la cuadrícula de 16×16 y genera un SVG de 883 B con 10 paths.</figcaption></figure>
+      <figure class="shot"><img src="img/vektro-illustration.webp" width="1440" height="900" alt="Vektro en modo ilustración convirtiendo una portada ilustrada de cuatro personajes en un SVG de 15 colores" loading="lazy"><figcaption>Ilustración: una portada de 1500×1500 en un SVG de 15 colores y 900 paths, con la precisión de color en 6.</figcaption></figure>
+    </div>
+  </article>
+
+  <span class="anchor" id="spritemotion"></span>
+  <article class="project" data-id="spritemotion" data-bg="#0ea5e9 #facc15" data-bg-img="img/spritemotion-editor.webp">
+    <div class="text">
+      <div class="kicker">Apps</div>
+      <div class="p-head"><img src="img/spritemotion.svg" alt=""><div><span class="num">10</span><h3>Spritemotion</h3></div></div>
+      <p class="tagline">Dibuja y anima sprites de pixel art en el navegador.</p>
+      <p>Un editor de sprites animados con capas jerárquicas: cada capa (torso, cabeza, brazo…) puede colgar de otra, como un esqueleto, y los fotogramas se interpolan por keyframes. El núcleo es un motor en Rust compilado a WebAssembly.</p>
+      <ul class="feats">
+        <li><b>Capas con jerarquía</b> y matriz de transformación propia, con opacidad por capa.</li>
+        <li><b>Línea de tiempo</b> con varias animaciones por proyecto (idle, walk…) y FPS configurables.</li>
+        <li><b>Exporta</b> el fotograma a SVG o ICO, la animación a SVG animado, Lottie JSON o cursor animado de Windows (.ani), y el proyecto completo a JSON editable.</li>
+      </ul>
+      <ul class="chips"><li>Rust → WASM</li><li>TypeScript</li><li>jq79</li><li>Vite</li></ul>
+      <div class="links">
+        <a class="btn primary" href="https://germadev.github.io/spriteman/">Abrir el editor ↗</a>
+        <a class="btn" href="https://github.com/germadev/spriteman">Código</a>
+      </div>
+    </div>
+    <div class="media">
+      <figure class="shot"><img src="img/spritemotion-home.webp" width="1440" height="900" alt="Pantalla de inicio de Spritemotion para crear o abrir proyectos" loading="lazy"><figcaption>Crear un proyecto o abrir uno guardado en el navegador.</figcaption></figure>
+      <figure class="shot"><img src="img/spritemotion-editor.webp" width="1440" height="900" alt="Editor de Spritemotion con un patito de 16×16 dibujado en la cuadrícula" loading="lazy"><figcaption>Un sprite de 16×16 en el editor: capas y paleta a la derecha, línea de tiempo abajo.</figcaption></figure>
     </div>
   </article>
 
