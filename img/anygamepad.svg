@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="160 136 540 540">
+  <!-- The anygamepad mark (docs/brand/logo.png, vector redraw): a ring in
+       two arcs around a tilted controller. The faint outline keeps the white
+       body visible on light backgrounds. -->
+  <defs>
+    <linearGradient id="ag-top" gradientUnits="userSpaceOnUse" x1="200" y1="474" x2="495" y2="215">
+      <stop offset="0" stop-color="#08d96c"/>
+      <stop offset="1" stop-color="#00d0eb"/>
+    </linearGradient>
+    <linearGradient id="ag-bottom" gradientUnits="userSpaceOnUse" x1="296" y1="590" x2="592" y2="502">
+      <stop offset="0" stop-color="#0191ff"/>
+      <stop offset="1" stop-color="#7e72fe"/>
+    </linearGradient>
+    <linearGradient id="ag-body" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0.55" stop-color="#f7f8fb"/>
+      <stop offset="1" stop-color="#dee4ee"/>
+    </linearGradient>
+  </defs>
+  <g fill="none" stroke-width="26" stroke-linecap="round">
+    <path d="M200 474 A213 213 0 0 1 495 215" stroke="url(#ag-top)"/>
+    <path d="M296 590 A213 213 0 0 0 592 502" stroke="url(#ag-bottom)"/>
+  </g>
+  <g transform="translate(448 398) rotate(-20)">
+    <path fill="url(#ag-body)" stroke="#b4bccb" stroke-width="12" transform="scale(0.95 1.1)"
+          d="M-150 -100 C-60 -112 60 -112 150 -100 C190 -94 208 -56 214 0 C221 62 216 108 176 115 C144 120 122 94 98 64 C74 36 44 26 0 26 C-44 26 -74 36 -98 64 C-122 94 -144 120 -176 115 C-216 108 -221 62 -214 0 C-208 -56 -190 -94 -150 -100 Z"/>
+    <path fill="#10131a" transform="translate(-100 -22) scale(1.1)"
+          d="M-14 -46 h28 a4 4 0 0 1 4 4 v28 h28 a4 4 0 0 1 4 4 v20 a4 4 0 0 1 -4 4 h-28 v28 a4 4 0 0 1 -4 4 h-28 a4 4 0 0 1 -4 -4 v-28 h-28 a4 4 0 0 1 -4 -4 v-20 a4 4 0 0 1 4 -4 h28 v-28 a4 4 0 0 1 4 -4 Z"/>
+    <g transform="translate(100 -28) scale(1.05)">
+      <circle cx="0" cy="-38" r="21" fill="#00d7b5"/>
+      <circle cx="38" cy="0" r="21" fill="#017afc"/>
+      <circle cx="-38" cy="0" r="21" fill="#a54ef7"/>
+      <circle cx="0" cy="38" r="21" fill="#fda518"/>
+    </g>
+  </g>
+</svg>

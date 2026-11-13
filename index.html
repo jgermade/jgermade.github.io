@@ -6,7 +6,7 @@
 <title>jgermade · Proyectos</title>
 <meta name="description" content="Proyectos de código abierto de Jesús Germade: apps de música y voz, herramientas de pixel art, un agente de IA local, túneles SSH, contabilidad con Veri*factu y utilidades de red.">
 <meta property="og:title" content="jgermade · Proyectos">
-<meta property="og:description" content="Once proyectos de código abierto: qué hace cada uno, con capturas.">
+<meta property="og:description" content="Doce proyectos de código abierto: qué hace cada uno, con capturas.">
 <meta property="og:image" content="https://jgermade.github.io/img/jackbird-library.webp">
 <link rel="icon" href="img/jq79.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -33,7 +33,8 @@
   --term-bg:#0b0c0f; --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px rgba(0,0,0,.35); color-scheme:dark;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+html{-webkit-text-size-adjust:100%}
+html.smooth{scroll-behavior:smooth}  /* only once the page has landed: a shared #link opens in place */
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 a{color:inherit}
 img{display:block;max-width:100%;height:auto}
@@ -216,7 +217,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
 .mini a img{width:24px;height:24px;object-fit:contain;border-radius:6px}
 .mini a:hover{opacity:.85;filter:none}
 .mini a.on{opacity:1;filter:none;transform:scale(1.18);background:var(--surface);box-shadow:0 0 0 1.5px var(--accent),0 2px 8px rgba(0,0,0,.12)}
-@media (max-width:560px){.minis .brand span{display:none}.mini{justify-content:flex-start}.mini a{width:30px;height:30px}.mini a img{width:21px;height:21px}}
+@media (max-width:560px){.minis .brand span{display:none}.mini{justify-content:flex-start;position:relative;-webkit-mask-image:linear-gradient(90deg,transparent,#000 18%,#000 82%,transparent);mask-image:linear-gradient(90deg,transparent,#000 18%,#000 82%,transparent)}.mini::before,.mini::after{content:"";flex:0 0 calc(50% - 23px)}.mini a{width:30px;height:30px}.mini a img{width:21px;height:21px}}
 @media (prefers-reduced-motion:reduce){.mini,.mini a{transition:none}}
 
 /* scroll snap stops (desktop): markers the script places at each state */
@@ -234,21 +235,27 @@ html.deck{scroll-snap-type:y mandatory}
 .index .has-ribbon .num{margin-right:20px}
 
 /* lightbox */
-dialog.lb{border:0;padding:0;background:transparent;max-width:min(96vw,1500px);max-height:94vh}
-dialog.lb::backdrop{background:rgba(8,8,12,.86)}
-dialog.lb img{max-width:min(calc(100vw - 150px),1500px);max-height:88vh;width:auto;border-radius:10px;margin:0 auto}
-dialog.lb p{color:#d4d4dc;text-align:center;font-size:14px;margin:10px 0 0}
-dialog.lb button{position:fixed;width:44px;height:44px;border-radius:50%;border:0;background:rgba(255,255,255,.14);color:#fff;font-size:26px;line-height:1;cursor:pointer}
+dialog.lb{border:0;padding:0;margin:0;background:transparent;width:100vw;height:100vh;height:100dvh;max-width:none;max-height:none;overflow:hidden;color:#d4d4dc}
+dialog.lb::backdrop{background:rgba(8,8,12,var(--lb-dim,.88))}
+/* the shots of a project side by side, one per screen, snapped */
+.lb-track{display:flex;width:100%;height:100%;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;overscroll-behavior:contain;scrollbar-width:none;touch-action:pan-x;transition:transform .25s,opacity .25s}
+.lb-track::-webkit-scrollbar{display:none}
+.lb-track.dragging{transition:none}
+.lb-slide{flex:0 0 100%;height:100%;scroll-snap-align:center;scroll-snap-stop:always;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:56px 76px 52px;box-sizing:border-box;margin:0}
+.lb-slide img{max-width:100%;max-height:calc(100% - 40px);width:auto;height:auto;object-fit:contain;border-radius:10px;user-select:none;-webkit-user-drag:none}
+.lb-slide figcaption{font-size:14px;text-align:center;max-width:70ch}
+dialog.lb button{position:fixed;z-index:2;width:44px;height:44px;border-radius:50%;border:0;background:rgba(255,255,255,.14);color:#fff;font-size:26px;line-height:1;cursor:pointer}
 dialog.lb button:hover{background:rgba(255,255,255,.26)}
 dialog.lb .lb-close{top:14px;right:16px}
 dialog.lb .lb-nav{top:50%;transform:translateY(-50%);font-size:32px}
 dialog.lb .lb-nav.prev{left:16px}
 dialog.lb .lb-nav.next{right:16px}
 dialog.lb .lb-nav[hidden]{display:none}
-@media (max-width:640px){dialog.lb img{max-width:94vw;max-height:78vh}dialog.lb .lb-nav{top:auto;bottom:18px;transform:none}}
-dialog.lb .lb-count{color:#9a9aa6;font:12px "JetBrains Mono",monospace;margin-left:8px}
+dialog.lb .lb-count{position:fixed;top:24px;left:0;right:0;margin:0;text-align:center;color:#9a9aa6;font:12px "JetBrains Mono",monospace;pointer-events:none}
+@media (max-width:640px){.lb-slide{padding:56px 12px 84px}dialog.lb .lb-nav{top:auto;bottom:18px;transform:none}}
+@media (prefers-reduced-motion:reduce){.lb-track{transition:none;scroll-behavior:auto}}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.index a{transition:none}}
+@media (prefers-reduced-motion:reduce){html.smooth{scroll-behavior:auto}.index a{transition:none}}
 </style>
 </head>
 <body>
@@ -273,8 +280,8 @@ dialog.lb .lb-count{color:#9a9aa6;font:12px "JetBrains Mono",monospace;margin-le
   <div class="hero-top">
     <div class="hero-text">
     <a class="me" href="https://github.com/jgermade"><img src="img/avatar.webp" width="256" height="256" alt="Avatar de jgermade en GitHub"><span><b>Jesús Germade</b><small>@jgermade</small></span></a>
-    <div class="eyebrow">Código abierto · hecho con Claude Code · 11 proyectos</div>
-    <h1>Once proyectos de código abierto.</h1>
+    <div class="eyebrow">Código abierto · hecho con Claude Code · 12 proyectos</div>
+    <h1>Doce proyectos de código abierto.</h1>
     <p class="lead">Apps para tu música, tu voz y tu pixel art; un agente de IA pensado para modelos locales; túneles, proxies y una contabilidad que puedes alojar tú. Casi todo funciona sin nube: tus archivos se quedan donde están.</p>
     <div class="meta">
       <a class="btn primary" href="#apps">Ver proyectos ↓</a>
@@ -299,6 +306,7 @@ dialog.lb .lb-count{color:#9a9aa6;font:12px "JetBrains Mono",monospace;margin-le
     <li><a href="#proxyxt"><img src="img/proxyxt.svg" alt=""><span><b>ProxyXT</b><small>Extensión de proxies</small></span><span class="num">09</span></a></li>
     <li><a href="#localproxy"><img src="img/localproxy.svg" alt=""><span><b>localproxy</b><small>Proxy local en Rust</small></span><span class="num">10</span></a></li>
     <li><a class="has-ribbon" href="#steam-gamestore" title="En desarrollo"><span class="ribbon" aria-hidden="true"><span>WIP</span></span><img src="img/steam-gamestore.svg" alt=""><span><b>steam-gamestore</b><small>GOG dentro de Steam</small></span><span class="num">11</span></a></li>
+    <li><a class="has-ribbon" href="#anygamepad" title="En desarrollo"><span class="ribbon" aria-hidden="true"><span>WIP</span></span><img src="img/anygamepad.svg" alt=""><span><b>anygamepad</b><small>Probador de mandos</small></span><span class="num">12</span></a></li>
   </ol>
 </section>
 
@@ -660,6 +668,31 @@ dialog.lb .lb-count{color:#9a9aa6;font:12px "JetBrains Mono",monospace;margin-le
     </div>
   </article>
 
+  <span class="anchor" id="anygamepad"></span>
+  <article class="project" data-id="anygamepad" data-bg="#4f46e5 #22d3ee" data-bg-img="img/anygamepad-xbox.webp">
+    <div class="text">
+      <div class="kicker">Juegos</div>
+      <div class="p-head"><img src="img/anygamepad.svg" alt=""><div><span class="num">12</span><h3>anygamepad</h3></div></div>
+      <p class="tagline">Cualquier mando, visto igual en cualquier sitio.</p>
+      <p>Una librería en Rust que normaliza la entrada de los mandos: un único modelo de mando para cualquier controlador, modo, conexión y sistema operativo. Su web es un probador de mandos que corre la librería en WebAssembly y enseña cómo identifican tu mando el navegador y el sistema.</p>
+      <ul class="feats">
+        <li><b>Probador en el navegador</b>: botones, ejes, gatillos y vibración, dibujados sobre un mando de Xbox o de PlayStation según lo que conectes.</li>
+        <li><b>WebHID</b>: lee los informes en bruto del mando, como los recibe el sistema; en los de PlayStation, también panel táctil, movimiento y batería.</li>
+        <li><b>Informes que se quedan en tu navegador</b>, y una base de datos de perfiles de mandos para los juegos que usen la librería.</li>
+      </ul>
+      <ul class="chips"><li>Rust</li><li>WebAssembly</li><li>WebHID</li><li>Gamepad API</li></ul>
+      <div class="links">
+        <a class="btn primary" href="https://anygamepad.github.io/">Probar tu mando ↗</a>
+        <a class="btn" href="https://github.com/anygamepad/anygamepad.github.io">Código</a>
+      </div>
+    </div>
+    <div class="media">
+      <figure class="shot"><img src="img/anygamepad-xbox.webp" width="1440" height="900" alt="Probador de anygamepad con un mando de Xbox conectado: A, RB y el gatillo derecho pulsados" loading="lazy"><figcaption>Un mando de Xbox, con lo que está pulsado resaltado.</figcaption></figure>
+      <figure class="shot"><img src="img/anygamepad-dualsense.webp" width="1440" height="900" alt="El mismo probador con un DualSense de PlayStation" loading="lazy"><figcaption>Un DualSense, dibujado como tal.</figcaption></figure>
+      <figure class="shot"><img src="img/anygamepad-values.webp" width="1440" height="900" alt="Valores normalizados de botones y ejes, con la prueba de vibración" loading="lazy"><figcaption>Los valores normalizados de cada botón y eje, y la prueba de vibración.</figcaption></figure>
+    </div>
+  </article>
+
 </main>
 
 <footer>
@@ -669,12 +702,12 @@ dialog.lb .lb-count{color:#9a9aa6;font:12px "JetBrains Mono",monospace;margin-le
   </div>
 </footer>
 
-<dialog class="lb" id="lb" aria-label="Captura ampliada">
+<dialog class="lb" id="lb" aria-label="Capturas ampliadas">
+  <div class="lb-track" id="lb-track"></div>
   <button type="button" class="lb-close" id="lb-close" aria-label="Cerrar">×</button>
   <button type="button" class="lb-nav prev" id="lb-prev" aria-label="Captura anterior">‹</button>
-  <img id="lb-img" alt="">
   <button type="button" class="lb-nav next" id="lb-next" aria-label="Captura siguiente">›</button>
-  <p><span id="lb-cap"></span> <span class="lb-count" id="lb-count"></span></p>
+  <p class="lb-count" id="lb-count" aria-live="polite"></p>
 </dialog>
 
 <script>
@@ -719,8 +752,9 @@ dialog.lb .lb-count{color:#9a9aa6;font:12px "JetBrains Mono",monospace;margin-le
     miniOn=k;
     if(k>=0){
       minis[k].classList.add('on'); minis[k].setAttribute('aria-current','true');
-      var a=minis[k], l=a.offsetLeft, w=a.offsetWidth; // keep it in view where the row scrolls
-      if(l<mini.scrollLeft||l+w>mini.scrollLeft+mini.clientWidth) mini.scrollTo({left:l-mini.clientWidth/2+w/2});
+      // Where the row scrolls (phones), the one in view is always in its middle.
+      var a=minis[k];
+      if(mini.scrollWidth>mini.clientWidth) mini.scrollTo({left:a.offsetLeft-mini.clientWidth/2+a.offsetWidth/2,behavior:reduce.matches?'instant':'smooth'});
     }
   }
   function show(i){
@@ -789,6 +823,10 @@ dialog.lb .lb-count{color:#9a9aa6;font:12px "JetBrains Mono",monospace;margin-le
     });
     spacer.style.height=gaps[panels.length-1]+'px';
     snapAt(-mainEl.offsetTop);                       // the top of the page
+    // The hero can be taller than the view (the index under it): stops down to its bottom.
+    var heroEnd=panels[0].offsetTop+panels[0].offsetHeight-mainEl.offsetTop-vh;
+    for(var hy=-mainEl.offsetTop+vh*0.75; hy<heroEnd; hy+=vh*0.75) snapAt(hy);
+    if(heroEnd>-mainEl.offsetTop+40) snapAt(heroEnd);
     panels.forEach(function(el,i){
       if(!i) return;
       var a=document.getElementById(el.getAttribute('data-id')).offsetTop, extra=Math.max(0,el.offsetHeight-vh);
@@ -862,7 +900,17 @@ dialog.lb .lb-count{color:#9a9aa6;font:12px "JetBrains Mono",monospace;margin-le
   addEventListener('scroll',onScroll,{passive:true});
   addEventListener('resize',function(){ layout(); onScroll(); });
   [reduce,narrow].forEach(function(q){ if(q.addEventListener) q.addEventListener('change',function(){ layout(); onScroll(); }); });
-  addEventListener('load',function(){ layout(); frame(); });
+  // A link with a #project lands on it at once, with the layout settled; smooth scrolling is
+  // turned on only after that, for clicks inside the page.
+  function land(){
+    var t=location.hash&&document.getElementById(decodeURIComponent(location.hash.slice(1)));
+    if(t) scrollTo({top:t.getBoundingClientRect().top+scrollY,behavior:'instant'});
+  }
+  land(); frame();
+  addEventListener('load',function(){
+    layout(); land(); frame();
+    requestAnimationFrame(function(){ document.documentElement.classList.add('smooth'); });
+  });
   layout(); frame();
 
   // Tabs in code cards: click, or the arrow keys once a tab has the focus.
@@ -884,45 +932,75 @@ dialog.lb .lb-count{color:#9a9aa6;font:12px "JetBrains Mono",monospace;margin-le
     });
   });
 
-  // Lightbox: a shot opens big; arrows (keys, buttons or a swipe) move between the shots of its project.
-  var lb=document.getElementById('lb'), img=document.getElementById('lb-img'), cap=document.getElementById('lb-cap');
-  var count=document.getElementById('lb-count'), prevB=document.getElementById('lb-prev'), nextB=document.getElementById('lb-next');
-  var set=[], at=0;
+  // Lightbox: the shots of a project side by side, scroll-snapped one per screen. Arrows (keys or
+  // buttons) move between them; a drag up or down closes it.
+  var lb=document.getElementById('lb'), track=document.getElementById('lb-track'), count=document.getElementById('lb-count');
+  var prevB=document.getElementById('lb-prev'), nextB=document.getElementById('lb-next'), n=0;
   function visible(fig){ // a themed figure holds a light and a dark image; take the one showing
     var imgs=[].slice.call(fig.querySelectorAll('img'));
     return imgs.filter(function(im){ return getComputedStyle(im).display!=='none'; })[0]||imgs[0];
   }
-  function draw(){
-    var fig=set[at], im=visible(fig), fc=fig.querySelector('figcaption');
-    img.src=im.currentSrc||im.src; img.alt=im.alt;
-    cap.textContent=fc?fc.textContent:im.alt;
-    var many=set.length>1;
-    count.textContent=many?(at+1)+' / '+set.length:'';
-    prevB.hidden=nextB.hidden=!many;
-  }
-  function step(d){ if(set.length>1){ at=(at+d+set.length)%set.length; draw(); } }
-  document.querySelectorAll('.shot img').forEach(function(el){
-    el.addEventListener('click',function(){
-      var fig=el.closest('figure'), scope=fig.closest('.project')||fig.parentNode;
-      set=[].slice.call(scope.querySelectorAll('figure.shot')); at=Math.max(0,set.indexOf(fig));
-      draw();
-      if(lb.showModal) lb.showModal();
+  function lbAt(){ return Math.round(track.scrollLeft/Math.max(1,track.clientWidth)); }
+  function update(){ count.textContent=n>1?(lbAt()+1)+' / '+n:''; }
+  function go(i,smooth){ track.scrollTo({left:i*track.clientWidth,behavior:smooth&&!reduce.matches?'smooth':'instant'}); }
+  function step(d){ if(n>1) go((lbAt()+d+n)%n,true); }
+  function open(fig){
+    var scope=fig.closest('.project')||fig.parentNode, set=[].slice.call(scope.querySelectorAll('figure.shot'));
+    track.textContent=''; n=set.length;
+    set.forEach(function(f){
+      var im=visible(f), fc=f.querySelector('figcaption'), slide=document.createElement('figure'), i2=document.createElement('img');
+      slide.className='lb-slide'; i2.src=im.currentSrc||im.src; i2.alt=im.alt; i2.draggable=false; slide.appendChild(i2);
+      var c=document.createElement('figcaption'); c.textContent=fc?fc.textContent:''; slide.appendChild(c);
+      track.appendChild(slide);
     });
+    prevB.hidden=nextB.hidden=n<2;
+    track.style.transform=''; track.style.opacity=''; lb.style.removeProperty('--lb-dim');
+    if(lb.showModal) lb.showModal();
+    go(Math.max(0,set.indexOf(fig)),false); update();
+  }
+  document.querySelectorAll('.shot img').forEach(function(el){
+    el.addEventListener('click',function(){ open(el.closest('figure')); });
   });
+  track.addEventListener('scroll',update,{passive:true});
   prevB.addEventListener('click',function(){ step(-1); });
   nextB.addEventListener('click',function(){ step(1); });
   lb.addEventListener('keydown',function(e){
     if(e.key==='ArrowLeft'){ step(-1); e.preventDefault(); }
     else if(e.key==='ArrowRight'){ step(1); e.preventDefault(); }
   });
-  var x0=null;
-  lb.addEventListener('touchstart',function(e){ x0=e.touches[0].clientX; },{passive:true});
-  lb.addEventListener('touchend',function(e){
-    if(x0===null) return; var dx=e.changedTouches[0].clientX-x0; x0=null;
-    if(Math.abs(dx)>40) step(dx<0?1:-1);
-  },{passive:true});
+  // Drag up or down to close: the shots follow the pointer and fade; far enough, the dialog closes.
+  var drag=null;
+  track.addEventListener('pointerdown',function(e){
+    if(e.button) return;
+    drag={x:e.clientX,y:e.clientY,id:e.pointerId,on:false};
+  });
+  track.addEventListener('pointermove',function(e){
+    if(!drag||e.pointerId!==drag.id) return;
+    var dx=e.clientX-drag.x, dy=e.clientY-drag.y;
+    if(!drag.on){
+      if(Math.abs(dy)<8||Math.abs(dy)<Math.abs(dx)*1.2) { if(Math.abs(dx)>8) drag=null; return; }
+      drag.on=true; track.classList.add('dragging'); track.setPointerCapture(e.pointerId);
+    }
+    var f=Math.min(1,Math.abs(dy)/(innerHeight*0.4));
+    track.style.transform='translate3d(0,'+dy+'px,0) scale('+(1-0.08*f)+')';
+    track.style.opacity=String(1-0.5*f); lb.style.setProperty('--lb-dim',String(0.88*(1-0.7*f)));
+  });
+  function release(e){
+    if(!drag||e.pointerId!==drag.id) return;
+    var dy=e.clientY-drag.y, was=drag.on; drag=null;
+    if(!was) return;
+    track.classList.remove('dragging');
+    if(Math.abs(dy)>Math.min(140,innerHeight*0.18)){
+      track.style.transform='translate3d(0,'+(dy>0?1:-1)*innerHeight*0.6+'px,0) scale(.9)'; track.style.opacity='0';
+      setTimeout(function(){ lb.close(); },reduce.matches?0:200);
+    } else { track.style.transform=''; track.style.opacity=''; lb.style.removeProperty('--lb-dim'); }
+  }
+  track.addEventListener('pointerup',release); track.addEventListener('pointercancel',release);
   document.getElementById('lb-close').addEventListener('click',function(){lb.close();});
-  lb.addEventListener('click',function(e){ if(e.target===lb) lb.close(); });
+  lb.addEventListener('click',function(e){
+    // a click outside the image (the dark margin of a slide) closes it too
+    if(e.target===lb||e.target.classList.contains('lb-slide')) lb.close();
+  });
 })();
 </script>
 </body>
