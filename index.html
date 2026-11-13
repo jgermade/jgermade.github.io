@@ -6,7 +6,7 @@
 <title>jgermade · Proyectos</title>
 <meta name="description" content="Proyectos de código abierto de Jesús Germade: apps de música y voz, herramientas de pixel art, un agente de IA local, túneles SSH, contabilidad con Veri*factu y utilidades de red.">
 <meta property="og:title" content="jgermade · Proyectos">
-<meta property="og:description" content="Once proyectos de código abierto: qué hace cada uno, con capturas.">
+<meta property="og:description" content="Doce proyectos de código abierto: qué hace cada uno, con capturas.">
 <meta property="og:image" content="https://jgermade.github.io/img/jackbird-library.webp">
 <link rel="icon" href="img/jq79.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -280,8 +280,8 @@ dialog.lb .lb-count{position:fixed;top:24px;left:0;right:0;margin:0;text-align:c
   <div class="hero-top">
     <div class="hero-text">
     <a class="me" href="https://github.com/jgermade"><img src="img/avatar.webp" width="256" height="256" alt="Avatar de jgermade en GitHub"><span><b>Jesús Germade</b><small>@jgermade</small></span></a>
-    <div class="eyebrow">Código abierto · hecho con Claude Code · 11 proyectos</div>
-    <h1>Once proyectos de código abierto.</h1>
+    <div class="eyebrow">Código abierto · hecho con Claude Code · 12 proyectos</div>
+    <h1>Doce proyectos de código abierto.</h1>
     <p class="lead">Apps para tu música, tu voz y tu pixel art; un agente de IA pensado para modelos locales; túneles, proxies y una contabilidad que puedes alojar tú. Casi todo funciona sin nube: tus archivos se quedan donde están.</p>
     <div class="meta">
       <a class="btn primary" href="#apps">Ver proyectos ↓</a>
@@ -306,6 +306,7 @@ dialog.lb .lb-count{position:fixed;top:24px;left:0;right:0;margin:0;text-align:c
     <li><a href="#proxyxt"><img src="img/proxyxt.svg" alt=""><span><b>ProxyXT</b><small>Extensión de proxies</small></span><span class="num">09</span></a></li>
     <li><a href="#localproxy"><img src="img/localproxy.svg" alt=""><span><b>localproxy</b><small>Proxy local en Rust</small></span><span class="num">10</span></a></li>
     <li><a class="has-ribbon" href="#steam-gamestore" title="En desarrollo"><span class="ribbon" aria-hidden="true"><span>WIP</span></span><img src="img/steam-gamestore.svg" alt=""><span><b>steam-gamestore</b><small>GOG dentro de Steam</small></span><span class="num">11</span></a></li>
+    <li><a class="has-ribbon" href="#anygamepad" title="En desarrollo"><span class="ribbon" aria-hidden="true"><span>WIP</span></span><img src="img/anygamepad.svg" alt=""><span><b>anygamepad</b><small>Probador de mandos</small></span><span class="num">12</span></a></li>
   </ol>
 </section>
 
@@ -664,6 +665,31 @@ dialog.lb .lb-count{position:fixed;top:24px;left:0;right:0;margin:0;text-align:c
       <figure class="shot"><img src="img/steam-gamestore-ui-search.webp" width="1440" height="810" alt="Búsqueda con el teclado en pantalla" loading="lazy"><figcaption>Buscar sin teclado: el teclado en pantalla, para el mando.</figcaption></figure>
       <figure class="shot"><img src="img/steam-gamestore-ui-menu.webp" width="1440" height="810" alt="Menú con reiniciar Steam y salir" loading="lazy"><figcaption>El menú: reiniciar Steam para que aparezcan los juegos nuevos.</figcaption></figure>
       <figure class="shot"><img src="img/steam-gamestore-help.webp" width="1400" height="714" alt="Salida de gamestore --help con sus comandos: info, config, login, logout, library, steam-install, steam-uninstall y appid" loading="lazy"><figcaption>Sus comandos, con <code>gamestore --help</code>.</figcaption></figure>
+    </div>
+  </article>
+
+  <span class="anchor" id="anygamepad"></span>
+  <article class="project" data-id="anygamepad" data-bg="#4f46e5 #22d3ee" data-bg-img="img/anygamepad-xbox.webp">
+    <div class="text">
+      <div class="kicker">Juegos</div>
+      <div class="p-head"><img src="img/anygamepad.svg" alt=""><div><span class="num">12</span><h3>anygamepad</h3></div></div>
+      <p class="tagline">Cualquier mando, visto igual en cualquier sitio.</p>
+      <p>Una librería en Rust que normaliza la entrada de los mandos: un único modelo de mando para cualquier controlador, modo, conexión y sistema operativo. Su web es un probador de mandos que corre la librería en WebAssembly y enseña cómo identifican tu mando el navegador y el sistema.</p>
+      <ul class="feats">
+        <li><b>Probador en el navegador</b>: botones, ejes, gatillos y vibración, dibujados sobre un mando de Xbox o de PlayStation según lo que conectes.</li>
+        <li><b>WebHID</b>: lee los informes en bruto del mando, como los recibe el sistema; en los de PlayStation, también panel táctil, movimiento y batería.</li>
+        <li><b>Informes que se quedan en tu navegador</b>, y una base de datos de perfiles de mandos para los juegos que usen la librería.</li>
+      </ul>
+      <ul class="chips"><li>Rust</li><li>WebAssembly</li><li>WebHID</li><li>Gamepad API</li></ul>
+      <div class="links">
+        <a class="btn primary" href="https://anygamepad.github.io/">Probar tu mando ↗</a>
+        <a class="btn" href="https://github.com/anygamepad/anygamepad.github.io">Código</a>
+      </div>
+    </div>
+    <div class="media">
+      <figure class="shot"><img src="img/anygamepad-xbox.webp" width="1440" height="900" alt="Probador de anygamepad con un mando de Xbox conectado: A, RB y el gatillo derecho pulsados" loading="lazy"><figcaption>Un mando de Xbox, con lo que está pulsado resaltado.</figcaption></figure>
+      <figure class="shot"><img src="img/anygamepad-dualsense.webp" width="1440" height="900" alt="El mismo probador con un DualSense de PlayStation" loading="lazy"><figcaption>Un DualSense, dibujado como tal.</figcaption></figure>
+      <figure class="shot"><img src="img/anygamepad-values.webp" width="1440" height="900" alt="Valores normalizados de botones y ejes, con la prueba de vibración" loading="lazy"><figcaption>Los valores normalizados de cada botón y eje, y la prueba de vibración.</figcaption></figure>
     </div>
   </article>
 
