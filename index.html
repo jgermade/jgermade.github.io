@@ -84,14 +84,22 @@ code,.mono{font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monosp
 /* project */
 .project{padding:88px 0 48px;display:grid;gap:28px;align-content:center;min-height:100vh;min-height:100svh}
 /* stacked panels: each one sticks once it fills the view; the margin is how long it stays before the next one rises */
-.hero,.project{position:sticky;top:0;margin-bottom:18vh;transform-origin:50% 45%;will-change:opacity,transform}
+.hero,.project{position:relative}
+.deck .hero,.deck .project{position:sticky;top:0;transform-origin:50% 45%;will-change:opacity,transform}
 /* deck of screenshots: every card in the same cell, raised over the previous one by the script */
 .deck .project{overflow:clip;overflow-clip-margin:40px}
 .deck .media{display:grid;align-items:start}
 .deck .media>:not(.ribbon){grid-area:1/1;transform-origin:50% 0;will-change:transform}
-.deck .media>.ribbon{z-index:50}
+.media-box{position:relative;min-width:0}
+.media-box>.ribbon{z-index:50}
+/* narrow screens: a project's shots are a row you swipe, the next one peeking in */
+.swipe .media.multi{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;margin:0 -16px;padding:4px 16px 14px;scroll-padding:0 16px;scrollbar-width:none}
+.swipe .media.multi::-webkit-scrollbar{display:none}
+.swipe .media.multi>*{flex:0 0 86%;min-width:0;scroll-snap-align:start}
+.swipe .media.multi>.phones{display:contents}
+.swipe .media.multi>.phones>.shot{flex:0 0 44%;scroll-snap-align:start}
+.swipe .media.multi>.shot.invoice{flex-basis:70%}
 .anchor{display:block;height:0}
-@media (prefers-reduced-motion:reduce){.hero,.project{position:relative;top:auto!important;margin-bottom:0}}
 @media (min-width:980px){
   .project{grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:48px;align-items:start}
   .project{align-items:center}
@@ -613,7 +621,7 @@ src/App.html:4:7 - error TS2322: Type 'number' is not assignable to type 'string
   // Full-height panels stacked with position:sticky. A panel rises with the scroll until it fills
   // the view, then stays put (it no longer moves with the scroll). After a short hold, the next one
   // rises over it while it fades and recedes. The fixed background follows the panel in front.
-  var reduce=matchMedia('(prefers-reduced-motion: reduce)');
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)'), narrow=matchMedia('(max-width: 979px)');
   var panels=[].slice.call(document.querySelectorAll('.hero, .project'));
   var stage=document.getElementById('stage'), layers=[], current=-1, ticking=false;
   panels.forEach(function(el){
@@ -634,18 +642,36 @@ src/App.html:4:7 - error TS2322: Type 'number' is not assignable to type 'string
   var footer=document.querySelector('footer');
   var decks=panels.map(function(el){
     var m=el.querySelector('.media');
-    return m?[].slice.call(m.children).filter(function(c){ return !c.classList.contains('ribbon'); }):[];
+    if(!m) return [];
+    // The WIP ribbon goes on a box around the shots, so it stays put when they move or scroll.
+    var box=document.createElement('div'); box.className='media-box'+(m.classList.contains('has-ribbon')?' has-ribbon':'');
+    m.parentNode.insertBefore(box,m); box.appendChild(m);
+    var rib=m.querySelector(':scope > .ribbon'); if(rib) box.appendChild(rib);
+    m.classList.remove('has-ribbon');
+    var cards=[].slice.call(m.children);
+    if(cards.length>1) m.classList.add('multi');
+    return cards;
   });
   var STEP=0.55, HOLD=0.25, OFF=14;   // per card, and how far the next panel rises (fading in) before this one fades, in viewport heights; px between stacked cards
-  function on(){ return !reduce.matches; }
+  // Pinned panels and decks need the shots beside the text: wide screens only.
+  function on(){ return !reduce.matches && !narrow.matches; }
   // The last panel can't take a margin (sticky stops a margin short of the end of <main>), so a
   // spacer after it gives it the same pinned scroll distance.
   var spacer=document.createElement('div'), gaps=[];
   spacer.setAttribute('aria-hidden','true');
   panels[panels.length-1].after(spacer);
   function layout(){
-    var vh=innerHeight, deck=on();
-    document.documentElement.classList.toggle('deck',deck);
+    var vh=innerHeight, deck=on(), root=document.documentElement;
+    root.classList.toggle('deck',deck);
+    root.classList.toggle('swipe',narrow.matches);
+    if(!deck){
+      panels.forEach(function(el,i){
+        el.style.top=el.style.marginBottom=el.style.transform=el.style.opacity=el.style.pointerEvents='';
+        decks[i].forEach(function(c){ c.style.transform=c.style.zIndex=c.style.visibility=''; });
+      });
+      spacer.style.height='0px';
+      return;
+    }
     panels.forEach(function(el,i){
       var n=deck?Math.max(1,decks[i].length):1, last=i===panels.length-1;
       gaps[i]=deck?Math.round(vh*(n-1)*STEP):0;
@@ -658,6 +684,20 @@ src/App.html:4:7 - error TS2322: Type 'number' is not assignable to type 'string
   function frame(){
     ticking=false;
     var vh=innerHeight, deck=on(), active=0;
+    if(!deck){
+      // Narrow screens scroll normally; a panel only fades and rises a little as it comes in.
+      var soft=!reduce.matches;
+      panels.forEach(function(el,i){
+        var r=el.getBoundingClientRect();
+        if(r.top<=vh*0.5) active=i;
+        if(!soft||!i) return;
+        var q=Math.min(1,Math.max(0,(vh-r.top)/(vh*0.35))), e=q*q*(3-2*q);
+        el.style.opacity=e===1?'':String(0.2+0.8*e);
+        el.style.transform=e===1?'':'translate3d(0,'+Math.round((1-e)*28)+'px,0)';
+      });
+      show(active);
+      return;
+    }
     panels.forEach(function(el,i){
       var r=el.getBoundingClientRect();
       if(r.top<=vh*0.5) active=i;
@@ -704,7 +744,7 @@ src/App.html:4:7 - error TS2322: Type 'number' is not assignable to type 'string
   function onScroll(){ if(!ticking){ ticking=true; requestAnimationFrame(frame); } }
   addEventListener('scroll',onScroll,{passive:true});
   addEventListener('resize',function(){ layout(); onScroll(); });
-  if(reduce.addEventListener) reduce.addEventListener('change',function(){ layout(); onScroll(); });
+  [reduce,narrow].forEach(function(q){ if(q.addEventListener) q.addEventListener('change',function(){ layout(); onScroll(); }); });
   addEventListener('load',function(){ layout(); frame(); });
   layout(); frame();
 
