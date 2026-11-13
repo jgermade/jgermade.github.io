@@ -171,7 +171,11 @@ code,.mono{font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monosp
 .term .tablist button{font:500 12px "JetBrains Mono",monospace;color:var(--term-dim);background:none;border:0;border-radius:6px;padding:5px 10px;cursor:pointer;white-space:nowrap}
 .term .tablist button:hover{color:var(--term-ink);background:#1f2129}
 .term .tablist button[aria-selected="true"]{color:var(--term-ink);background:#262833}
-.term .tabpanel[hidden]{display:none}
+/* the tabs share one cell, so the card is always as tall as its tallest tab */
+.term[data-tabs]{display:grid;grid-template-columns:minmax(0,1fr)}
+.term[data-tabs]>.tabpanel{grid-area:2/1;display:flex;flex-direction:column;min-width:0}
+.term[data-tabs]>.tabpanel>pre{flex:1}
+.term .tabpanel[hidden]{display:flex;visibility:hidden}
 .term.code pre{font-size:14px;line-height:1.75;padding:20px 22px}
 .term .code-cap{margin:0;padding:10px 16px;border-top:1px solid #23252e;font-size:13px;color:var(--term-dim)}
 .term .code-cap code{color:var(--term-ink)} .term .p{color:var(--term-key)} .term .o{color:var(--term-ok)}
@@ -296,8 +300,8 @@ dialog.lb .lb-count{position:fixed;top:24px;left:0;right:0;margin:0;text-align:c
   </div>
 
   <ol class="index">
-    <li><a href="#motorust"><img src="img/motorust.png" alt=""><span><b>Motorust</b><small>Carreras de motos arcade</small></span><span class="num">01</span></a></li>
-    <li><a href="#play"><img src="img/play.svg" alt=""><span><b>play.germade</b><small>Consola retro web</small></span><span class="num">02</span></a></li>
+    <li><a class="has-ribbon" href="#motorust" title="En desarrollo"><span class="ribbon" aria-hidden="true"><span>WIP</span></span><img src="img/motorust.png" alt=""><span><b>Motorust</b><small>Carreras de motos</small></span><span class="num">01</span></a></li>
+    <li><a class="has-ribbon" href="#play" title="En desarrollo"><span class="ribbon" aria-hidden="true"><span>WIP</span></span><img src="img/play.svg" alt=""><span><b>play.germade</b><small>Consola retro web</small></span><span class="num">02</span></a></li>
     <li><a class="has-ribbon" href="#jackbird" title="En desarrollo"><span class="ribbon" aria-hidden="true"><span>WIP</span></span><img src="img/jackbird.svg" alt=""><span><b>jackbird</b><small>Biblioteca musical local</small></span><span class="num">03</span></a></li>
     <li><a class="has-ribbon" href="#luu" title="En desarrollo"><span class="ribbon" aria-hidden="true"><span>WIP</span></span><img src="img/luu.svg" alt=""><span><b>luu</b><small>Agente de IA local</small></span><span class="num">04</span></a></li>
     <li><a href="#hummingbox"><img src="img/hummingbox-icon.svg" alt=""><span><b>HummingBox</b><small>Grabadora de voz móvil</small></span><span class="num">05</span></a></li>
@@ -346,7 +350,7 @@ dialog.lb .lb-count{position:fixed;top:24px;left:0;right:0;margin:0;text-align:c
       <div class="kicker">Juegos</div>
       <div class="p-head"><img src="img/play.svg" alt=""><div><span class="num">02</span><h3>play.germade</h3></div></div>
       <p class="tagline">Juegos retro modernos y emuladores, en tu navegador.</p>
-      <p>Una consola en la web: los motores modernos de clásicos como Sonic o Celeste y emuladores de Neo Geo, Mega Drive, Super Nintendo y Game Boy Advance, compilados a WebAssembly. Tú aportas los datos de cada juego y se instalan en el navegador, así que no hace falta servidor.</p>
+      <p>Una consola en la web: los motores modernos de clásicos como Sonic o Celeste, compilados a WebAssembly, y en camino, emuladores de Neo Geo, Mega Drive, Super Nintendo y Game Boy Advance. Tú aportas los datos de cada juego y se instalan en el navegador, así que no hace falta servidor.</p>
       <ul class="feats">
         <li><b>Retro moderno</b>: decompilaciones como RSDKv4, que mueve Sonic 1 y Sonic 2 con el mismo motor.</li>
         <li><b>Pensada para el mando</b>: una interfaz de consola a pantalla completa que se instala como app.</li>
@@ -357,7 +361,9 @@ dialog.lb .lb-count{position:fixed;top:24px;left:0;right:0;margin:0;text-align:c
       </div>
     </div>
     <div class="media">
-      <figure class="shot"><img src="img/play-library.webp" width="1440" height="900" alt="Biblioteca de play.germade: juegos retro modernos arriba y emuladores debajo" loading="lazy"><figcaption>La biblioteca: juegos retro modernos y emuladores, con el mando.</figcaption></figure>
+      <figure class="shot"><img src="img/play-library.webp" width="1440" height="900" alt="Biblioteca de play.germade: juegos retro modernos arriba y emuladores debajo" loading="lazy"><figcaption>La biblioteca: juegos retro modernos, que se recorren con el mando.</figcaption></figure>
+      <figure class="shot"><img src="img/play-emulators.webp" width="1440" height="900" alt="Fila de emuladores de play.germade con Neo Geo seleccionado: Mega Drive, Super Nintendo y Game Boy Advance al lado" loading="lazy"><figcaption>Los emuladores: Neo Geo con FinalBurn Neo, Mega Drive, Super Nintendo y Game Boy Advance.</figcaption></figure>
+      <figure class="shot"><img src="img/play-install.webp" width="1440" height="900" alt="Diálogo para instalar Sonic the Hedgehog 2 eligiendo el archivo Data.rsdk propio" loading="lazy"><figcaption>Instalar un juego: aportas tu copia de los datos y se queda en el navegador.</figcaption></figure>
     </div>
   </article>
 
@@ -863,7 +869,7 @@ dialog.lb .lb-count{position:fixed;top:24px;left:0;right:0;margin:0;text-align:c
     spacer.style.height=gaps[panels.length-1]+'px';
     snapAt(-mainEl.offsetTop);                       // the top of the page
     // The hero can be taller than the view (the index under it): stops down to its bottom.
-    var heroEnd=panels[0].offsetTop+panels[0].offsetHeight-mainEl.offsetTop-vh;
+    var heroEnd=panels[0].offsetTop+panels[0].offsetHeight-vh;  // offsetTop is already within <main>
     for(var hy=-mainEl.offsetTop+vh*0.75; hy<heroEnd; hy+=vh*0.75) snapAt(hy);
     if(heroEnd>-mainEl.offsetTop+40) snapAt(heroEnd);
     panels.forEach(function(el,i){
