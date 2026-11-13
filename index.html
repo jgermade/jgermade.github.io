@@ -559,7 +559,7 @@ dialog.lb .lb-count{color:#9a9aa6;font:12px "JetBrains Mono",monospace;margin-le
   </article>
 
   <span class="anchor" id="steam-gamestore"></span>
-  <article class="project" data-id="steam-gamestore" data-bg="#ff7a2f #6366f1">
+  <article class="project" data-id="steam-gamestore" data-bg="#ff7a2f #6366f1" data-bg-img="img/steam-gamestore-help.webp">
     <div class="text">
       <div class="kicker">Red</div>
       <div class="p-head"><img src="img/steam-gamestore.svg" alt=""><div><span class="num">11</span><h3>steam-gamestore</h3></div></div>
@@ -575,12 +575,8 @@ dialog.lb .lb-count{color:#9a9aa6;font:12px "JetBrains Mono",monospace;margin-le
       </div>
     </div>
     <div class="media has-ribbon"><span class="ribbon" aria-label="En desarrollo"><span>WIP</span></span>
-      <div class="term">
-        <div class="term-bar"><i></i><i></i><i></i><span>SteamOS · modo escritorio</span></div>
-<pre><span class="p">$</span> curl -fsSL https://raw.githubusercontent.com/jgermade/steam-gamestore/main/install.sh | sh
-<span class="p">$</span> gamestore login           <span class="c"># inicia sesión en GOG</span>
-<span class="p">$</span> gamestore steam-install   <span class="c"># se añade a Steam como ficha</span></pre>
-      </div>
+      <figure class="shot"><img src="img/steam-gamestore-help.webp" width="1400" height="714" alt="Salida de gamestore --help con sus comandos: info, config, login, logout, library, steam-install, steam-uninstall y appid" loading="lazy"><figcaption>Sus comandos, con <code>gamestore --help</code>.</figcaption></figure>
+      <figure class="shot"><img src="img/steam-gamestore-info.webp" width="1400" height="714" alt="Salida de gamestore info y gamestore appid: rutas, Proton, y el appid que Steam daría a la ficha" loading="lazy"><figcaption>Qué resuelve en la máquina, y el appid que Steam daría a su ficha. Salida real; el SteamOS de la ventana es simulado.</figcaption></figure>
       <div class="diagram">
         <h4>Estado actual</h4>
         <table class="st">
