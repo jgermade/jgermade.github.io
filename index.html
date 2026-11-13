@@ -100,6 +100,9 @@ code,.mono{font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monosp
 .swipe .media.multi>.phones{display:contents}
 .phones.phones-2{grid-template-columns:repeat(2,minmax(0,1fr));max-width:440px;margin:0 auto;width:100%}
 .pair{display:grid;gap:14px}
+.duo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;align-items:start;max-width:600px;margin:0 auto;width:100%}
+.swipe .media.multi>.duo{display:contents}
+.swipe .media.multi>.duo>.shot{flex:0 0 66%;scroll-snap-align:start}
 .swipe .media.multi>.pair{display:contents}
 .swipe .media.multi>.phones>.shot{flex:0 0 44%;scroll-snap-align:start}
 .swipe .media.multi>.shot.invoice{flex-basis:70%}
@@ -517,9 +520,11 @@ src/App.html:4:7 - error TS2322: Type 'number' is not assignable to type 'string
       </div>
     </div>
     <div class="media">
-      <div class="grid-4">
+      <div class="duo">
         <figure class="shot"><img src="img/proxyxt-home.webp" width="720" height="634" alt="Popup con un servidor activo" loading="lazy"><figcaption>Servidor activo.</figcaption></figure>
         <figure class="shot"><img src="img/proxyxt-add.webp" width="720" height="724" alt="Formulario para añadir un servidor proxy" loading="lazy"><figcaption>Alta de servidor.</figcaption></figure>
+      </div>
+      <div class="duo">
         <figure class="shot"><img src="img/proxyxt-prefs.webp" width="720" height="968" alt="Preferencias de la extensión" loading="lazy"><figcaption>Preferencias.</figcaption></figure>
         <figure class="shot"><img src="img/proxyxt-logs.webp" width="720" height="968" alt="Panel de logs del backend" loading="lazy"><figcaption>Logs.</figcaption></figure>
       </div>
