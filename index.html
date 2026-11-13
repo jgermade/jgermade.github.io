@@ -143,9 +143,6 @@ code,.mono{font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monosp
 .phones{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
 @media (max-width:560px){.phones{grid-template-columns:repeat(2,minmax(0,1fr))}.grid-2.stack-s{grid-template-columns:1fr}}
 .phones .shot{border-radius:18px}
-.shot.themed .d{display:none}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .shot.themed .l{display:none}:root:not([data-theme="light"]) .shot.themed .d{display:block}}
-:root[data-theme="dark"] .shot.themed .l{display:none}:root[data-theme="dark"] .shot.themed .d{display:block}
 .narrow{max-width:420px}
 
 /* terminal */
@@ -484,16 +481,8 @@ src/App.html:4:7 - error TS2322: Type 'number' is not assignable to type 'string
       </div>
     </div>
     <div class="media has-ribbon"><span class="ribbon" aria-label="En desarrollo"><span>WIP</span></span>
-      <figure class="shot themed"><img class="l" src="img/vericount-design-light.webp" width="1200" height="874" alt="Propuesta de diseño de vericount: inicio con el total del trimestre, una factura con su cadena de registros Veri*factu y el envío a la AEAT" loading="lazy"><img class="d" src="img/vericount-design-dark.webp" width="1200" height="874" alt="" loading="lazy"><figcaption>Inicio, una factura con su cadena de registros Veri*factu y el envío a la AEAT.</figcaption></figure>
-      <div class="term">
-        <div class="term-bar"><i></i><i></i><i></i><span>servidor</span></div>
-<pre><span class="c"># Asistente de instalación (Linux con systemd)</span>
-<span class="p">$</span> curl -fsSL https://github.com/jgermade/vericount/releases/latest/download/setup.sh | sudo bash
-
-<span class="c"># O con Docker</span>
-<span class="p">$</span> docker compose up -d
-<span class="p">$</span> docker compose run --rm app invite you@example.com</pre>
-      </div>
+      <figure class="shot"><img src="img/vericount-design-light.webp" width="1200" height="874" alt="Pantallas de vericount en modo claro: inicio con el total del trimestre, una factura con su cadena de registros Veri*factu y el envío a la AEAT" loading="lazy"><figcaption>Inicio, una factura con su cadena de registros Veri*factu y el envío a la AEAT.</figcaption></figure>
+      <figure class="shot"><img src="img/vericount-design-dark.webp" width="1200" height="874" alt="Las mismas pantallas de vericount en modo oscuro" loading="lazy"><figcaption>Las mismas pantallas, en modo oscuro.</figcaption></figure>
     </div>
   </article>
 
