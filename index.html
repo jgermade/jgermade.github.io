@@ -171,7 +171,11 @@ code,.mono{font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monosp
 .term .tablist button{font:500 12px "JetBrains Mono",monospace;color:var(--term-dim);background:none;border:0;border-radius:6px;padding:5px 10px;cursor:pointer;white-space:nowrap}
 .term .tablist button:hover{color:var(--term-ink);background:#1f2129}
 .term .tablist button[aria-selected="true"]{color:var(--term-ink);background:#262833}
-.term .tabpanel[hidden]{display:none}
+/* the tabs share one cell, so the card is always as tall as its tallest tab */
+.term[data-tabs]{display:grid;grid-template-columns:minmax(0,1fr)}
+.term[data-tabs]>.tabpanel{grid-area:2/1;display:flex;flex-direction:column;min-width:0}
+.term[data-tabs]>.tabpanel>pre{flex:1}
+.term .tabpanel[hidden]{display:flex;visibility:hidden}
 .term.code pre{font-size:14px;line-height:1.75;padding:20px 22px}
 .term .code-cap{margin:0;padding:10px 16px;border-top:1px solid #23252e;font-size:13px;color:var(--term-dim)}
 .term .code-cap code{color:var(--term-ink)} .term .p{color:var(--term-key)} .term .o{color:var(--term-ok)}
