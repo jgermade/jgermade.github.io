@@ -1,0 +1,523 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>jgermade · Proyectos</title>
+<meta name="description" content="Proyectos de código abierto de Jesús Germade: un juego de carreras de motos, juegos retro en el navegador, apps de música y voz, herramientas de pixel art, un agente de IA local, túneles SSH, contabilidad con Veri*factu y utilidades de red.">
+<link rel="canonical" href="https://jgermade.github.io/es/">
+<link rel="alternate" hreflang="en" href="https://jgermade.github.io/">
+<link rel="alternate" hreflang="es" href="https://jgermade.github.io/es/">
+<link rel="alternate" hreflang="x-default" href="https://jgermade.github.io/">
+<meta property="og:url" content="https://jgermade.github.io/es/">
+<meta property="og:locale" content="es_ES">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:title" content="jgermade · Proyectos">
+<meta property="og:description" content="Catorce proyectos de código abierto: qué hace cada uno, con capturas.">
+<meta property="og:image" content="https://jgermade.github.io/img/jackbird-library.webp">
+<link rel="icon" href="../img/jq79.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+<div class="stage" id="stage" aria-hidden="true"></div>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#">jgermade <span>/ proyectos</span></a>
+    <div class="mini" id="mini" aria-label="Proyectos"></div>
+    <nav>
+      <a class="lang" href="../" hreflang="en" lang="en" title="Read in English">EN</a>
+      <a class="icon-btn" href="https://github.com/jgermade" aria-label="GitHub de jgermade" title="GitHub"><svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg></a>
+      <button class="theme-btn" id="theme" type="button" aria-label="Cambiar tema">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 3v18" /><path d="M12 3a9 9 0 0 1 0 18z" fill="currentColor"/></svg>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+<section class="hero" data-bg="#3f51e0 #e2a530">
+  <div class="hero-top">
+    <div class="hero-text">
+    <a class="me" href="https://github.com/jgermade"><img src="../img/avatar.webp" width="256" height="256" alt="Avatar de jgermade en GitHub"><span><b>Jesús Germade</b><small>@jgermade</small></span></a>
+    <div class="eyebrow">Código abierto · hecho con Claude Code · 14 proyectos</div>
+    <h1>Catorce proyectos de código abierto.</h1>
+    <p class="lead">Un juego de carreras de motos y una consola retro en el navegador; apps para tu música, tu voz y tu pixel art; un agente de IA pensado para modelos locales; túneles, proxies y una contabilidad que puedes alojar tú. Casi todo funciona sin nube: tus archivos se quedan donde están.</p>
+    <div class="meta">
+      <a class="btn primary" href="#apps">Ver proyectos ↓</a>
+      <a class="btn" href="https://github.com/jgermade">github.com/jgermade</a>
+    </div>
+    </div>
+    <figure class="quote">
+      <blockquote><p>¡Todo lo que siempre quise hacer, ahora con superpoderes!</p></blockquote>
+      <figcaption>Jesús Germade, sobre hacerlos con Claude Code</figcaption>
+    </figure>
+  </div>
+
+  <ol class="index">
+    <li><a class="has-ribbon" href="#motorust" title="En desarrollo"><span class="ribbon" aria-hidden="true"><span>WIP</span></span><img src="../img/motorust.png" alt=""><span><b>Motorust</b><small>Carreras de motos</small></span><span class="num">01</span></a></li>
+    <li><a class="has-ribbon" href="#play" title="En desarrollo"><span class="ribbon" aria-hidden="true"><span>WIP</span></span><img src="../img/play.svg" alt=""><span><b>play.germade</b><small>Consola retro web</small></span><span class="num">02</span></a></li>
+    <li><a class="has-ribbon" href="#jackbird" title="En desarrollo"><span class="ribbon" aria-hidden="true"><span>WIP</span></span><img src="../img/jackbird.svg" alt=""><span><b>jackbird</b><small>Biblioteca musical local</small></span><span class="num">03</span></a></li>
+    <li><a class="has-ribbon" href="#luu" title="En desarrollo"><span class="ribbon" aria-hidden="true"><span>WIP</span></span><img src="../img/luu.svg" alt=""><span><b>luu</b><small>Agente de IA local</small></span><span class="num">04</span></a></li>
+    <li><a href="#hummingbox"><img src="../img/hummingbox-icon.svg" alt=""><span><b>HummingBox</b><small>Grabadora de voz móvil</small></span><span class="num">05</span></a></li>
+    <li><a href="#jq79"><img src="../img/jq79.svg" alt=""><span><b>jq79</b><small>Componentes reactivos</small></span><span class="num">06</span></a></li>
+    <li><a href="#intergate"><img src="../img/intergate.svg" alt=""><span><b>intergate</b><small>Túneles SSH a tu dominio</small></span><span class="num">07</span></a></li>
+    <li><a class="has-ribbon" href="#vericount" title="En desarrollo"><span class="ribbon" aria-hidden="true"><span>WIP</span></span><img src="../img/vericount.svg" alt=""><span><b>vericount</b><small>Contabilidad Veri*factu</small></span><span class="num">08</span></a></li>
+    <li><a href="#vektro"><img src="../img/vektro.svg" alt=""><span><b>Vektro</b><small>Imágenes a SVG</small></span><span class="num">09</span></a></li>
+    <li><a class="has-ribbon" href="#spritemotion" title="En desarrollo"><span class="ribbon" aria-hidden="true"><span>WIP</span></span><img src="../img/spritemotion.svg" alt=""><span><b>Spritemotion</b><small>Animador de sprites</small></span><span class="num">10</span></a></li>
+    <li><a href="#proxyxt"><img src="../img/proxyxt.svg" alt=""><span><b>ProxyXT</b><small>Extensión de proxies</small></span><span class="num">11</span></a></li>
+    <li><a class="has-ribbon" href="#anygamepad" title="En desarrollo"><span class="ribbon" aria-hidden="true"><span>WIP</span></span><img src="../img/anygamepad.svg" alt=""><span><b>anygamepad</b><small>Probador de mandos</small></span><span class="num">12</span></a></li>
+    <li><a class="has-ribbon" href="#steam-gamestore" title="En desarrollo"><span class="ribbon" aria-hidden="true"><span>WIP</span></span><img src="../img/steam-gamestore.svg" alt=""><span><b>steam-gamestore</b><small>GOG dentro de Steam</small></span><span class="num">13</span></a></li>
+    <li><a href="#localproxy"><img src="../img/localproxy.svg" alt=""><span><b>localproxy</b><small>Proxy local en Rust</small></span><span class="num">14</span></a></li>
+  </ol>
+</section>
+
+<!-- ============ PROYECTOS ============ -->
+<span class="anchor" id="apps"></span>
+
+  <span class="anchor" id="motorust"></span>
+  <article class="project" data-id="motorust" data-bg="#ff6a1f #e0338f" data-bg-img="../img/motorust-home.webp">
+    <div class="text">
+      <div class="kicker">Juegos</div>
+      <div class="p-head"><img src="../img/motorust.png" alt=""><div><span class="num">01</span><h3>Motorust</h3></div></div>
+      <p class="tagline">Carreras de motos arcade, con el gas a fondo.</p>
+      <p>Un juego de carreras hecho en Rust con Bevy: diez circuitos, ocho motos y siete rivales que adelantan, frenan antes de las curvas y te esquivan. Se juega gratis en el navegador o se descarga para Windows, Linux y macOS, y las versiones de escritorio se actualizan desde el propio juego.</p>
+      <ul class="feats">
+        <li><b>Diez circuitos, diez mundos</b>: de la costa al espacio, con cuestas donde la moto vuela, peraltes, túneles, rizos y bifurcaciones.</li>
+        <li><b>Cinco modos</b>: arcade, carrera, eliminación, contrarreloj y paseo libre, y pantalla dividida para dos jugadores.</li>
+        <li><b>Sonido sintetizado</b> en tiempo real, con Doppler al cruzarte con un rival, y teclado o mando con controles reasignables.</li>
+      </ul>
+      <ul class="chips"><li>Rust</li><li>Bevy</li><li>WebAssembly</li><li>WebGL2</li><li>Windows · Linux · macOS</li></ul>
+      <div class="links">
+        <a class="btn primary" href="https://motorust.germade.dev/">Jugar ↗</a>
+      </div>
+    </div>
+    <div class="media">
+      <figure class="shot"><img src="../img/motorust-home.webp" width="1440" height="900" alt="Portada de Motorust: una carrera de motos junto al mar al atardecer, con el botón Jugar" loading="lazy"><figcaption>La web: se juega directamente en el navegador.</figcaption></figure>
+      <figure class="shot"><img src="../img/motorust-costa-bits.webp" width="1280" height="720" alt="Circuito Costa Bits: carretera entre acantilados de bloques al atardecer" loading="lazy"><figcaption>Costa Bits: acantilados, un túnel y una autopista entre palmeras.</figcaption></figure>
+      <figure class="shot"><img src="../img/motorust-ghost-island.webp" width="1280" height="720" alt="Circuito Ghost Island: una isla del Japón feudal con un castillo" loading="lazy"><figcaption>Ghost Island: un castillo que se cruza por debajo y por encima.</figcaption></figure>
+    </div>
+  </article>
+
+  <span class="anchor" id="play"></span>
+  <article class="project" data-id="play" data-bg="#fbbf24 #3b82f6" data-bg-img="../img/play-library.webp">
+    <div class="text">
+      <div class="kicker">Juegos</div>
+      <div class="p-head"><img src="../img/play.svg" alt=""><div><span class="num">02</span><h3>play.germade</h3></div></div>
+      <p class="tagline">Juegos retro modernos y emuladores, en tu navegador.</p>
+      <p>Una consola en la web: los motores modernos de clásicos como Sonic o Celeste, compilados a WebAssembly, y emuladores: Mega Drive con BlastEm y Neo Geo con FinalBurn Neo ya funcionan; Super Nintendo y Game Boy Advance, en camino. Tú aportas los datos de cada juego y tus ROMs, y todo se queda en el navegador, así que no hace falta servidor.</p>
+      <ul class="feats">
+        <li><b>Retro moderno</b>: decompilaciones como RSDKv4, que mueve Sonic 1 y Sonic 2 con el mismo motor.</li>
+        <li><b>Biblioteca de ROMs</b>: cada versión se reconoce por su CRC en el catálogo, las de un mismo juego se agrupan y los mods IPS, BPS o UPS se enganchan a la suya.</li>
+        <li><b>Pensada para el mando</b>: una interfaz de consola a pantalla completa que se instala como app, con puntos de suspensión en cada juego.</li>
+      </ul>
+      <ul class="chips"><li>WebAssembly</li><li>PWA</li><li>Emuladores</li><li>Gamepad API</li></ul>
+      <div class="links">
+        <a class="btn primary" href="https://play.germade.dev/">Abrir play ↗</a>
+      </div>
+    </div>
+    <div class="media">
+      <figure class="shot"><img src="../img/play-library.webp" width="1440" height="900" alt="Portada de play.germade con la ficha de Sonic the Hedgehog desplegada: juegos retro modernos arriba y emuladores debajo" loading="lazy"><figcaption>La portada: los retro modernos arriba y los emuladores debajo; cada uno despliega su ficha.</figcaption></figure>
+      <figure class="shot"><img src="../img/play-emulators.webp" width="1440" height="900" alt="Mega Drive desplegada en la fila de emuladores, con nueve juegos homebrew y el motor BlastEm elegido" loading="lazy"><figcaption>Mega Drive con BlastEm: tus ROMs, agrupadas por juego. Aquí, homebrew de libre distribución.</figcaption></figure>
+      <figure class="shot"><img src="../img/play-game.webp" width="1440" height="900" alt="Old Towers, un homebrew de RetroSouls, en pleno nivel en el emulador de Mega Drive" loading="lazy"><figcaption>Old Towers, de RetroSouls, en BlastEm compilado a WebAssembly.</figcaption></figure>
+      <figure class="shot"><img src="../img/play-points.webp" width="1440" height="900" alt="Puntos de suspensión de Old Towers: el momento sin guardar y tres huecos con su miniatura" loading="lazy"><figcaption>Puntos de suspensión: guardas el momento en un hueco y vuelves a él desde su miniatura.</figcaption></figure>
+      <figure class="shot"><img src="../img/play-roms.webp" width="1440" height="900" alt="Gestor de la biblioteca con Old Towers seleccionado: dos versiones con su CRC, regiones y el hueco para añadir un mod" loading="lazy"><figcaption>El gestor de ROMs: versiones identificadas por CRC, regiones y mods por versión.</figcaption></figure>
+      <figure class="shot"><img src="../img/play-install.webp" width="1440" height="900" alt="Diálogo para instalar Sonic the Hedgehog 2 eligiendo el archivo Data.rsdk propio" loading="lazy"><figcaption>Instalar un juego: aportas tu copia de los datos y se queda en el navegador.</figcaption></figure>
+    </div>
+  </article>
+
+  <span class="anchor" id="jackbird"></span>
+  <article class="project" data-id="jackbird" data-bg="#f0601e #3fb27f" data-bg-img="../img/jackbird-library.webp">
+    <div class="text">
+      <div class="kicker">Apps</div>
+      <div class="p-head"><img src="../img/jackbird.svg" alt=""><div><span class="num">03</span><h3>jackbird</h3></div></div>
+      <p class="tagline">Tu biblioteca de música, justo donde está.</p>
+      <p>Una app para tu colección local de MP3 y FLAC. Abres una carpeta y te muestra los álbumes con sus portadas, los reproduce y te deja corregir etiquetas y carátulas, de una pista o de cien a la vez. Los cambios se escriben directamente en tus archivos: no hay servidor y no se sube nada.</p>
+      <ul class="feats">
+        <li><b>Interfaz «Deck»</b> inspirada en los reproductores portátiles de antes: teclas con recorrido, pantalla de matriz de puntos y dos acabados, Silver y Graphite.</li>
+        <li><b>Edición en lote</b> de etiquetas y portadas, con un motor de etiquetas escrito en Rust y compilado a WebAssembly.</li>
+        <li><b>Tres formas de usarla:</b> en el navegador, como app de escritorio (macOS, Windows, Linux) o como servicio para un NAS o una Raspberry Pi, con biblioteca familiar y acceso con passkeys.</li>
+      </ul>
+      <ul class="chips"><li>TypeScript</li><li>Rust → WASM</li><li>Tauri v2</li><li>File System Access API</li><li>jq79</li></ul>
+      <div class="links">
+        <a class="btn primary" href="https://jgermade.github.io/jackbird/">Probar la demo ↗</a>
+        <a class="btn" href="https://github.com/jgermade/jackbird">Código</a>
+      </div>
+    </div>
+    <div class="media">
+      <figure class="shot"><img src="../img/jackbird-library.webp" width="1600" height="1000" alt="Biblioteca de jackbird en acabado Silver con una pista sonando" loading="lazy"><figcaption>La biblioteca en Silver, con una pista sonando.</figcaption></figure>
+      <figure class="shot"><img src="../img/jackbird-graphite.webp" width="1200" height="750" alt="Álbum de dos discos en acabado Graphite" loading="lazy"><figcaption>Acabado Graphite.</figcaption></figure>
+      <figure class="shot"><img src="../img/jackbird-edit.webp" width="1200" height="750" alt="Diálogo de edición con tres pistas seleccionadas" loading="lazy"><figcaption>Editando tres pistas a la vez.</figcaption></figure>
+    </div>
+  </article>
+
+  <span class="anchor" id="luu"></span>
+  <article class="project" data-id="luu" data-bg="#f59e0b #fb7185" data-bg-img="../img/luu-demo.webp">
+    <div class="text">
+      <div class="kicker">IA y desarrollo</div>
+      <div class="p-head"><img src="../img/luu.svg" alt=""><div><span class="num">04</span><h3>luu</h3></div></div>
+      <p class="tagline">El agente hecho para la ventana de contexto que de verdad tienes.</p>
+      <p>Un agente de IA <i>local-first</i> escrito en Rust, pensado para modelos de 7B a 32B con 8K–32K de contexto. Usa un modelo remoto solo si lo nombras, nunca como respaldo. Su tema central es la gestión del contexto: qué entra en el prompt y qué se gana su sitio.</p>
+      <ul class="feats">
+        <li><b>Inspector de contexto</b>: cuánto ocupa el sistema, las herramientas, el historial o el código en cada turno, y cuánto del prefijo se reutiliza.</li>
+        <li><b>Pregunta antes de actuar</b>, y el kernel controla cada comando que ejecuta.</li>
+        <li><b>Local u online</b>: un binario sin root para ti, o un servicio con inicio de sesión para varias personas.</li>
+      </ul>
+      <ul class="chips"><li>Rust</li><li>Ollama</li><li>llama.cpp</li><li>MLX</li><li>Linux · macOS</li></ul>
+      <div class="links">
+        <a class="btn primary" href="https://jgermade.github.io/luu/demo/">Abrir la demo ↗</a>
+        <a class="btn" href="https://jgermade.github.io/luu/">Web</a>
+        <a class="btn" href="https://github.com/jgermade/luu">Código</a>
+      </div>
+    </div>
+    <div class="media">
+      <figure class="shot"><img src="../img/luu-landing.webp" width="1440" height="900" alt="Portada de la web de luu" loading="lazy"><figcaption>La web del proyecto.</figcaption></figure>
+      <figure class="shot"><img src="../img/luu-demo.webp" width="1440" height="900" alt="Demo de luu: panel de depuración con el uso del contexto por categorías y la sesión en vivo" loading="lazy"><figcaption>La demo: a la izquierda, en qué se gasta cada token del contexto; a la derecha, la sesión.</figcaption></figure>
+    </div>
+  </article>
+
+  <span class="anchor" id="hummingbox"></span>
+  <article class="project" data-id="hummingbox" data-bg="#7c3aed #d946ef" data-bg-img="../img/hummingbox-piano.webp">
+    <div class="text">
+      <div class="kicker">Apps</div>
+      <div class="p-head"><img src="../img/hummingbox-icon.svg" alt=""><div><span class="num">05</span><h3>HummingBox</h3></div></div>
+      <p class="tagline">Una grabadora de voz que también tiene un piano.</p>
+      <p>App para Android e iOS hecha con Flutter. Graba, reproduce, edita y transcribe notas de voz, y guárdalas en una carpeta del dispositivo o en Google Drive. Pensada para tararear una idea antes de que se escape.</p>
+      <ul class="feats">
+        <li><b>Graba con un toque</b>, con cuenta atrás o <b>empezando cuando hablas</b> (conserva el segundo anterior). AAC o WAV, de 8 a 48 kHz.</li>
+        <li><b>Edita</b> sobre la forma de onda: recorta, ajusta volumen, normaliza y añade fundidos.</li>
+        <li><b>Piano y sintetizador</b> en horizontal para encontrar tus notas; lo tocado se guarda como <code>.mid</code> junto al audio.</li>
+        <li><b>Transcripción</b> en el propio dispositivo (reconocedor del sistema o Whisper), con búsqueda y nombres automáticos.</li>
+      </ul>
+      <ul class="chips"><li>Flutter</li><li>Android</li><li>iOS</li><li>Whisper</li><li>Google Drive</li><li>8 idiomas</li></ul>
+      <div class="links">
+        <a class="btn" href="https://github.com/germadev/hummingbox">Código</a>
+      </div>
+    </div>
+    <div class="media">
+      <div class="phones phones-2">
+        <figure class="shot"><img src="../img/hummingbox-list.webp" width="540" height="1170" alt="Lista de grabaciones, una reproduciéndose con su transcripción" loading="lazy"></figure>
+        <figure class="shot"><img src="../img/hummingbox-recording.webp" width="540" height="1170" alt="Grabación en curso con la forma de onda" loading="lazy"></figure>
+      </div>
+      <div class="phones phones-2">
+        <figure class="shot"><img src="../img/hummingbox-editor.webp" width="540" height="1170" alt="Modo edición con la selección recortada, volumen y fundidos" loading="lazy"></figure>
+        <figure class="shot"><img src="../img/hummingbox-folders.webp" width="540" height="1170" alt="Menú lateral con carpetas y el botón del piano" loading="lazy"></figure>
+      </div>
+      <div class="pair">
+        <figure class="shot"><img src="../img/hummingbox-piano.webp" width="1200" height="554" alt="Piano en horizontal tocando un acorde de Do mayor" loading="lazy"><figcaption>El piano, en horizontal.</figcaption></figure>
+        <figure class="shot"><img src="../img/hummingbox-synth.webp" width="1200" height="554" alt="Sintetizador sobre las teclas con pantalla y dos mandos" loading="lazy"><figcaption>El sintetizador.</figcaption></figure>
+      </div>
+    </div>
+  </article>
+
+  <span class="anchor" id="jq79"></span>
+  <article class="project" data-id="jq79" data-bg="#2f74d0 #facc15" data-bg-img="../img/jq79.webp">
+    <div class="text">
+      <div class="kicker">IA y desarrollo</div>
+      <div class="p-head"><img src="../img/jq79.svg" alt=""><div><span class="num">06</span><h3>jq79</h3></div></div>
+      <p class="tagline">Componentes reactivos en archivos <code>.html</code> normales.</p>
+      <p>Una librería mínima de componentes: jq79 analiza y monta componentes de un solo archivo <b>en el navegador, en tiempo de ejecución</b>. Sin compilador, sin bundler, sin DOM virtual: un script desde un CDN y cualquier hosting estático es todo el stack. Es la base de jackbird, Spritemotion y vericount.</p>
+      <ul class="feats">
+        <li><b>29 kB gzip y cero dependencias</b>, con reactividad fina basada en Proxy y scripts <code>setup</code> al estilo Svelte.</li>
+        <li><b>Extensión de VS Code</b> que comprueba y autocompleta scripts y plantillas, y <code>jq79-check</code> para CI.</li>
+        <li><b>Plugin de Vite</b> opcional para precompilar y servir con CSP estricta.</li>
+      </ul>
+      <ul class="chips"><li>JavaScript</li><li>TypeScript</li><li>npm</li><li>VS Code</li><li>Vite</li></ul>
+      <div class="links">
+        <a class="btn primary" href="https://jgermade.github.io/jq79/">Web y tutorial ↗</a>
+        <a class="btn" href="https://github.com/jgermade/jq79">Código</a>
+      </div>
+    </div>
+    <div class="media">
+      <figure class="shot"><img src="../img/jq79.webp" width="1440" height="900" alt="Web de jq79 con un componente contador y su resultado en vivo" loading="lazy"><figcaption>Un componente completo en <code>counter.html</code>, montado en tiempo de ejecución.</figcaption></figure>
+      <figure class="shot"><img src="../img/jq79-tutorial.webp" width="1440" height="900" alt="Tutorial de jq79: explicación a la izquierda, editor del componente y resultado en vivo a la derecha" loading="lazy"><figcaption>El tutorial: 22 lecciones con editor y resultado en vivo.</figcaption></figure>
+      <div class="term code" data-tabs>
+        <div class="term-bar"><i></i><i></i><i></i><div class="tablist" role="tablist" aria-label="Cómo se usa jq79"><button type="button" role="tab" id="jq-tab-0" aria-controls="jq-panel-0" aria-selected="true">counter.html</button><button type="button" role="tab" id="jq-tab-1" aria-controls="jq-panel-1" aria-selected="false" tabindex="-1">index.html</button><button type="button" role="tab" id="jq-tab-2" aria-controls="jq-panel-2" aria-selected="false" tabindex="-1">script clásico</button></div></div>
+        <div class="tabpanel" role="tabpanel" id="jq-panel-0" aria-labelledby="jq-tab-0">
+<pre><span class="tg">&lt;script</span> <span class="at">:setup</span>=<span class="st">"{ step = 1 }"</span><span class="tg">&gt;</span>
+  <span class="kw">let</span> count = <span class="nu">0</span>
+  <span class="kw">$:</span> double = count * <span class="nu">2</span>
+<span class="tg">&lt;/script&gt;</span>
+
+<span class="tg">&lt;button</span> <span class="at">@click</span>=<span class="st">"count = count + step"</span><span class="tg">&gt;</span>
+  clicked <span class="mu">{{ count }}</span> times
+<span class="tg">&lt;/button&gt;</span>
+<span class="tg">&lt;span</span> <span class="at">:if</span>=<span class="st">"count &gt; 0"</span><span class="tg">&gt;</span>double is <span class="mu">{{ double }}</span><span class="tg">&lt;/span&gt;</span>
+
+<span class="tg">&lt;style</span> <span class="at">scoped</span><span class="tg">&gt;</span>
+  button { font: <span class="nu">600 1rem</span> system-ui; padding: <span class="nu">.7em 1.2em</span>; }
+<span class="tg">&lt;/style&gt;</span></pre>
+          <p class="code-cap">Un componente entero: script, plantilla y estilos en un <code>.html</code>, sin compilar.</p>
+        </div>
+        <div class="tabpanel" role="tabpanel" id="jq-panel-1" aria-labelledby="jq-tab-1" hidden>
+<pre><span class="tg">&lt;!doctype html&gt;</span>
+<span class="tg">&lt;div</span> <span class="at">id</span>=<span class="st">"app"</span><span class="tg">&gt;&lt;/div&gt;</span>
+
+<span class="tg">&lt;script</span> <span class="at">type</span>=<span class="st">"module"</span><span class="tg">&gt;</span>
+  <span class="kw">import</span> { C79 } <span class="kw">from</span> <span class="st">"https://esm.sh/jq79"</span>
+
+  C79.fetch(<span class="st">"./counter.html"</span>).mount(<span class="st">"#app"</span>, { step: <span class="nu">2</span> })
+<span class="tg">&lt;/script&gt;</span></pre>
+          <p class="code-cap">La página que lo monta: la librería desde un CDN y el componente desde tu hosting. Sin bundler ni <code>npm install</code>.</p>
+        </div>
+        <div class="tabpanel" role="tabpanel" id="jq-panel-2" aria-labelledby="jq-tab-2" hidden>
+<pre><span class="tg">&lt;div</span> <span class="at">id</span>=<span class="st">"app"</span><span class="tg">&gt;&lt;/div&gt;</span>
+
+<span class="c">&lt;!-- sin módulos: la librería queda en window.jq79 --&gt;</span>
+<span class="tg">&lt;script</span> <span class="at">src</span>=<span class="st">"https://jgermade.github.io/jq79/jq79.global.js"</span><span class="tg">&gt;&lt;/script&gt;</span>
+<span class="tg">&lt;script&gt;</span>
+  <span class="kw">const</span> { Component79 } = jq79
+
+  Component79.fetch(<span class="st">"./counter.html"</span>).mount(<span class="st">"#app"</span>)
+<span class="tg">&lt;/script&gt;</span></pre>
+          <p class="code-cap">También sin módulos, con un <code>&lt;script&gt;</code> de toda la vida.</p>
+        </div>
+      </div>
+      <figure class="shot"><img src="../img/jq79-comparison.webp" width="1440" height="900" alt="Comparativa de jq79 con vanillajs, Svelte, Vue, Preact y React en js-framework-benchmark" loading="lazy"><figcaption>Comparado con vanillajs, Svelte, Vue, Preact y React.</figcaption></figure>
+    </div>
+  </article>
+
+  <span class="anchor" id="intergate"></span>
+  <article class="project" data-id="intergate" data-bg="#3b82f6 #ff9a2a" data-bg-img="../img/intergate-panel.webp">
+    <div class="text">
+      <div class="kicker">Autoalojado</div>
+      <div class="p-head"><img src="../img/intergate.svg" alt=""><div><span class="num">07</span><h3>intergate</h3></div></div>
+      <p class="tagline">Abre una puerta a la web desde tu localhost, en tu propio dominio.</p>
+      <p>Expone servicios locales a través de SSH, como ngrok o sish, pero en tu dominio y gestionado desde un panel web o un asistente en terminal. Cada subdominio sirve un túnel: <code>myapp.gate.example.com</code> → tu <code>localhost:3000</code>.</p>
+      <ul class="feats">
+        <li><b>Claves SSH por subdominio</b>: una clave solo abre túneles donde se ha autorizado; las desconocidas se rechazan en el handshake.</li>
+        <li><b>Sin contraseñas</b>: código por email y passkeys; GitHub u OpenID Connect opcionales. Acceso público, con sesión o privado por subdominio.</li>
+        <li><b>Puertos TCP y UDP</b> para bases de datos o servidores de juegos, y vista en vivo de cada túnel.</li>
+        <li><b>Un único binario</b> con SQLite y HTTPS automático (Let's Encrypt, certificado comodín), o Docker y Kubernetes.</li>
+      </ul>
+      <ul class="chips"><li>Go</li><li>SSH</li><li>SQLite</li><li>Let's Encrypt</li><li>Passkeys</li></ul>
+      <div class="links">
+        <a class="btn primary" href="https://jgermade.github.io/intergate/">Web ↗</a>
+        <a class="btn" href="https://github.com/jgermade/intergate">Código</a>
+      </div>
+    </div>
+    <div class="media">
+      <figure class="shot"><img src="../img/intergate.webp" width="1440" height="900" alt="Web de intergate: dos puertas y un enlace cifrado entre internet y tu casa" loading="lazy"><figcaption>La web del proyecto.</figcaption></figure>
+      <figure class="shot"><img src="../img/intergate-panel.webp" width="1440" height="900" alt="Panel de intergate: un subdominio conectado con su cliente, clave SSH, peticiones y tráfico, y sus opciones de acceso" loading="lazy"><figcaption>El panel de un subdominio: quién está conectado, con qué clave, cuánto tráfico, y quién puede entrar.</figcaption></figure>
+      <figure class="shot"><img src="../img/intergate-subdomains.webp" width="1440" height="900" alt="Lista de subdominios con su estado, acceso y número de claves" loading="lazy"><figcaption>Tus subdominios.</figcaption></figure>
+    </div>
+  </article>
+
+  <span class="anchor" id="vericount"></span>
+  <article class="project" data-id="vericount" data-bg="#1557ad #22c55e" data-bg-img="../img/vericount-design-light.webp">
+    <div class="text">
+      <div class="kicker">Autoalojado</div>
+      <div class="p-head"><img src="../img/vericount.svg" alt=""><div><span class="num">08</span><h3>vericount</h3></div></div>
+      <p class="tagline">Contabilidad para una SL española, con Veri*factu.</p>
+      <p>Facturas emitidas, gastos y libros de IVA para una sociedad limitada, cumpliendo la normativa Veri*factu de la AEAT. El nombre une <i>verificar</i> y <i>cuentas</i>; el logo es un ábaco cuyas cuentas son bloques encadenados que dibujan un check.</p>
+      <ul class="feats">
+        <li><b>Registros inmutables</b>: cada factura genera un registro con hash SHA-256 encadenado al anterior, en tablas de solo inserción.</li>
+        <li><b>Modo práctica y modo real</b>: empieza enviando a una simulación de la AEAT dentro del servidor; el modo real se activa al subir el certificado.</li>
+        <li><b>Sin contraseñas</b>: invitación por email, código o passkey.</li>
+        <li><b>Instalación en una línea</b> con systemd, o Docker (imagen distroless de ~25 MB) o Helm.</li>
+      </ul>
+      <ul class="chips"><li>Rust</li><li>Axum</li><li>PostgreSQL</li><li>jq79</li><li>Docker · Helm</li></ul>
+      <div class="links">
+        <a class="btn" href="https://github.com/jgermade/vericount">Código</a>
+      </div>
+    </div>
+    <div class="media">
+      <figure class="shot"><img src="../img/vericount-design-light.webp" width="1200" height="874" alt="Pantallas de vericount en modo claro: inicio con el total del trimestre, una factura con su cadena de registros Veri*factu y el envío a la AEAT" loading="lazy"><figcaption>Inicio, una factura con su cadena de registros Veri*factu y el envío a la AEAT.</figcaption></figure>
+      <figure class="shot"><img src="../img/vericount-design-dark.webp" width="1200" height="874" alt="Las mismas pantallas de vericount en modo oscuro" loading="lazy"><figcaption>Las mismas pantallas, en modo oscuro.</figcaption></figure>
+    </div>
+  </article>
+
+  <span class="anchor" id="vektro"></span>
+  <article class="project" data-id="vektro" data-bg="#4f46e5 #38bdf8" data-bg-img="../img/vektro.webp">
+    <div class="text">
+      <div class="kicker">Apps</div>
+      <div class="p-head"><img src="../img/vektro.svg" alt=""><div><span class="num">09</span><h3>Vektro</h3></div></div>
+      <p class="tagline">Convierte imágenes en SVG limpio, sin salir de tu equipo.</p>
+      <p>El modo <b>pixel art</b> detecta la cuadrícula del dibujo y funde cada bloque contiguo del mismo color en un único <code>&lt;path&gt;</code>, trazando su contorno mínimo con agujeros incluidos, en lugar de escupir un rectángulo por píxel. El modo <b>ilustración</b> agrupa los colores en una paleta y traza las regiones de cada uno, para imágenes que no siguen ninguna cuadrícula.</p>
+      <ul class="feats">
+        <li><b>Todo en el navegador</b>: Rust compilado a WebAssembly, la imagen nunca se sube.</li>
+        <li><b>Tres trazados</b>: escalón literal, polígono simplificado o curvas Bézier suaves.</li>
+        <li><b>Web, CLI y librería</b>: <code>vektro pixelart sprite.png</code> genera <code>sprite.svg</code>.</li>
+      </ul>
+      <ul class="chips"><li>Rust</li><li>WebAssembly</li><li>CLI</li><li>SVG</li></ul>
+      <div class="links">
+        <a class="btn primary" href="https://jgermade.github.io/vektro/">Probar Vektro ↗</a>
+        <a class="btn" href="https://github.com/jgermade/vektro">Código</a>
+      </div>
+    </div>
+    <div class="media">
+      <figure class="shot"><img src="../img/vektro.webp" width="1440" height="900" alt="Vektro convirtiendo un sprite PNG de 384×384 en un SVG de 883 bytes" loading="lazy"><figcaption>Pixel art: detecta la cuadrícula de 16×16 y genera un SVG de 883 B con 10 paths.</figcaption></figure>
+      <figure class="shot"><img src="../img/vektro-illustration.webp" width="1440" height="900" alt="Vektro en modo ilustración convirtiendo una portada ilustrada de cuatro personajes en un SVG de 15 colores" loading="lazy"><figcaption>Ilustración: una portada de 1500×1500 en un SVG de 15 colores y 900 paths, con la precisión de color en 6.</figcaption></figure>
+    </div>
+  </article>
+
+  <span class="anchor" id="spritemotion"></span>
+  <article class="project" data-id="spritemotion" data-bg="#0ea5e9 #facc15" data-bg-img="../img/spritemotion-editor.webp">
+    <div class="text">
+      <div class="kicker">Apps</div>
+      <div class="p-head"><img src="../img/spritemotion.svg" alt=""><div><span class="num">10</span><h3>Spritemotion</h3></div></div>
+      <p class="tagline">Dibuja y anima sprites de pixel art en el navegador.</p>
+      <p>Un editor de sprites animados con capas jerárquicas: cada capa (torso, cabeza, brazo…) puede colgar de otra, como un esqueleto, y los fotogramas se interpolan por keyframes. El núcleo es un motor en Rust compilado a WebAssembly.</p>
+      <ul class="feats">
+        <li><b>Capas con jerarquía</b> y matriz de transformación propia, con opacidad por capa.</li>
+        <li><b>Línea de tiempo</b> con varias animaciones por proyecto (idle, walk…) y FPS configurables.</li>
+        <li><b>Exporta</b> el fotograma a SVG o ICO, la animación a SVG animado, Lottie JSON o cursor animado de Windows (.ani), y el proyecto completo a JSON editable.</li>
+      </ul>
+      <ul class="chips"><li>Rust → WASM</li><li>TypeScript</li><li>jq79</li><li>Vite</li></ul>
+      <div class="links">
+        <a class="btn primary" href="https://germadev.github.io/spriteman/">Abrir el editor ↗</a>
+        <a class="btn" href="https://github.com/germadev/spriteman">Código</a>
+      </div>
+    </div>
+    <div class="media">
+      <figure class="shot"><img src="../img/spritemotion-home.webp" width="1440" height="900" alt="Pantalla de inicio de Spritemotion para crear o abrir proyectos" loading="lazy"><figcaption>Crear un proyecto o abrir uno guardado en el navegador.</figcaption></figure>
+      <figure class="shot"><img src="../img/spritemotion-editor.webp" width="1440" height="900" alt="Editor de Spritemotion con un patito de 16×16 dibujado en la cuadrícula" loading="lazy"><figcaption>Un sprite de 16×16 en el editor: capas y paleta a la derecha, línea de tiempo abajo.</figcaption></figure>
+    </div>
+  </article>
+
+  <span class="anchor" id="proxyxt"></span>
+  <article class="project" data-id="proxyxt" data-bg="#ff5a1f #6aa1f5" data-bg-img="../img/proxyxt-home.webp">
+    <div class="text">
+      <div class="kicker">Red</div>
+      <div class="p-head"><img src="../img/proxyxt.svg" alt=""><div><span class="num">11</span><h3>ProxyXT</h3></div></div>
+      <p class="tagline">Varios proxies, un clic para cambiar.</p>
+      <p>Extensión para Chrome y Firefox que guarda varios servidores proxy y activa uno desde un popup ligero. Pensada para quien salta entre redes o entornos varias veces al día.</p>
+      <ul class="feats">
+        <li><b>Failover automático</b> round-robin cuando un proxy falla, con aviso opcional.</li>
+        <li><b>Color por servidor</b> y orden con arrastrar y soltar.</li>
+        <li><b>Sincronización</b> opcional con la cuenta del navegador y recarga de la pestaña al cambiar.</li>
+        <li><b>Logs del backend</b> en el propio popup, con filtros por nivel. En 6 idiomas.</li>
+      </ul>
+      <ul class="chips"><li>Preact</li><li>esbuild</li><li>WebExtensions</li><li>Chrome</li><li>Firefox</li></ul>
+      <div class="links">
+        <a class="btn" href="https://github.com/jgermade/proxyXT">Código</a>
+        <a class="btn" href="https://github.com/jgermade/proxyXT/releases">Descargas</a>
+      </div>
+    </div>
+    <div class="media">
+      <div class="duo">
+        <figure class="shot"><img src="../img/proxyxt-home.webp" width="720" height="634" alt="Popup con un servidor activo" loading="lazy"><figcaption>Servidor activo.</figcaption></figure>
+        <figure class="shot"><img src="../img/proxyxt-add.webp" width="720" height="724" alt="Formulario para añadir un servidor proxy" loading="lazy"><figcaption>Alta de servidor.</figcaption></figure>
+      </div>
+      <div class="duo">
+        <figure class="shot"><img src="../img/proxyxt-prefs.webp" width="720" height="968" alt="Preferencias de la extensión" loading="lazy"><figcaption>Preferencias.</figcaption></figure>
+        <figure class="shot"><img src="../img/proxyxt-logs.webp" width="720" height="968" alt="Panel de logs del backend" loading="lazy"><figcaption>Logs.</figcaption></figure>
+      </div>
+    </div>
+  </article>
+
+  <span class="anchor" id="anygamepad"></span>
+  <article class="project" data-id="anygamepad" data-bg="#4f46e5 #22d3ee" data-bg-img="../img/anygamepad-xbox.webp">
+    <div class="text">
+      <div class="kicker">Juegos</div>
+      <div class="p-head"><img src="../img/anygamepad.svg" alt=""><div><span class="num">12</span><h3>anygamepad</h3></div></div>
+      <p class="tagline">Cualquier mando, visto igual en cualquier sitio.</p>
+      <p>Una librería en Rust que normaliza la entrada de los mandos: un único modelo de mando para cualquier controlador, modo, conexión y sistema operativo. Su web es un probador de mandos que corre la librería en WebAssembly y enseña cómo identifican tu mando el navegador y el sistema.</p>
+      <ul class="feats">
+        <li><b>Probador en el navegador</b>: botones, ejes, gatillos y vibración, dibujados sobre un mando de Xbox o de PlayStation según lo que conectes.</li>
+        <li><b>WebHID</b>: lee los informes en bruto del mando, como los recibe el sistema; en los de PlayStation, también panel táctil, movimiento y batería.</li>
+        <li><b>Informes que se quedan en tu navegador</b>, y una base de datos de perfiles de mandos para los juegos que usen la librería.</li>
+      </ul>
+      <ul class="chips"><li>Rust</li><li>WebAssembly</li><li>WebHID</li><li>Gamepad API</li></ul>
+      <div class="links">
+        <a class="btn primary" href="https://anygamepad.github.io/">Probar tu mando ↗</a>
+        <a class="btn" href="https://github.com/anygamepad/anygamepad.github.io">Código</a>
+      </div>
+    </div>
+    <div class="media">
+      <figure class="shot"><img src="../img/anygamepad-xbox.webp" width="1440" height="900" alt="Probador de anygamepad con un mando de Xbox conectado: A, RB y el gatillo derecho pulsados" loading="lazy"><figcaption>Un mando de Xbox, con lo que está pulsado resaltado.</figcaption></figure>
+      <figure class="shot"><img src="../img/anygamepad-dualsense.webp" width="1440" height="900" alt="El mismo probador con un DualSense de PlayStation" loading="lazy"><figcaption>Un DualSense, dibujado como tal.</figcaption></figure>
+      <figure class="shot"><img src="../img/anygamepad-values.webp" width="1440" height="900" alt="Valores normalizados de botones y ejes, con la prueba de vibración" loading="lazy"><figcaption>Los valores normalizados de cada botón y eje, y la prueba de vibración.</figcaption></figure>
+    </div>
+  </article>
+
+  <span class="anchor" id="steam-gamestore"></span>
+  <article class="project" data-id="steam-gamestore" data-bg="#ff7a2f #6366f1" data-bg-img="../img/steam-gamestore-ui.webp">
+    <div class="text">
+      <div class="kicker">Red</div>
+      <div class="p-head"><img src="../img/steam-gamestore.svg" alt=""><div><span class="num">13</span><h3>steam-gamestore</h3></div></div>
+      <p class="tagline">Tus juegos de GOG, como fichas normales de Steam.</p>
+      <p>Un instalador de GOG que vive dentro de la biblioteca de Steam. Los juegos comprados en GOG se descargan, se instalan en silencio y se añaden como fichas de Steam, así que se lanzan desde Big Picture con el Proton que Steam ya gestiona. Las partidas se restauran antes de jugar y se respaldan después con Ludusavi.</p>
+      <ul class="feats">
+        <li><b>Sin root</b>: todo vive en <code>~/.local/bin</code>, así que funciona en un SteamOS inmutable.</li>
+        <li><b>Pensado para el mando</b>: lanzado desde Big Picture, como cualquier otro juego.</li>
+      </ul>
+      <ul class="chips"><li>Rust</li><li>GOG</li><li>Steam</li><li>Proton</li><li>Ludusavi</li></ul>
+      <div class="links">
+        <a class="btn" href="https://github.com/jgermade/steam-gamestore">Código</a>
+      </div>
+    </div>
+    <div class="media">
+      <figure class="shot"><img src="../img/steam-gamestore-ui.webp" width="1440" height="810" alt="Interfaz para mando: cuadrícula de portadas de GOG con juegos instalados y uno fallido marcados" loading="lazy"><figcaption>La biblioteca de GOG, con lo instalado y lo que falló marcado. Se abre como un juego desde Steam.</figcaption></figure>
+      <figure class="shot"><img src="../img/steam-gamestore-ui-installed.webp" width="1440" height="810" alt="Pestaña de juegos instalados" loading="lazy"><figcaption>Lo instalado, con LB/RB.</figcaption></figure>
+      <figure class="shot"><img src="../img/steam-gamestore-ui-search.webp" width="1440" height="810" alt="Búsqueda con el teclado en pantalla" loading="lazy"><figcaption>Buscar sin teclado: el teclado en pantalla, para el mando.</figcaption></figure>
+      <figure class="shot"><img src="../img/steam-gamestore-ui-menu.webp" width="1440" height="810" alt="Menú con reiniciar Steam y salir" loading="lazy"><figcaption>El menú: reiniciar Steam para que aparezcan los juegos nuevos.</figcaption></figure>
+      <figure class="shot"><img src="../img/steam-gamestore-help.webp" width="1400" height="714" alt="Salida de gamestore --help con sus comandos: info, config, login, logout, library, steam-install, steam-uninstall y appid" loading="lazy"><figcaption>Sus comandos, con <code>gamestore --help</code>.</figcaption></figure>
+    </div>
+  </article>
+
+  <span class="anchor" id="localproxy"></span>
+  <article class="project" data-id="localproxy" data-bg="#22c55e #0ea5e9">
+    <div class="text">
+      <div class="kicker">Red</div>
+      <div class="p-head"><img src="../img/localproxy.svg" alt=""><div><span class="num">14</span><h3>localproxy</h3></div></div>
+      <p class="tagline">Un proxy en localhost que decide por dónde sale cada petición.</p>
+      <p>Un demonio en Rust que escucha en tu máquina y reenvía el tráfico HTTP y HTTPS por una cadena configurable: un upstream principal, un respaldo y, si lo permites, conexión directa. Tus herramientas lo usan a través de <code>http_proxy</code> / <code>https_proxy</code>, sin tocar la configuración del sistema.</p>
+      <ul class="feats">
+        <li><b>HTTP y túneles CONNECT</b> para HTTPS, sin interceptar el tráfico.</li>
+        <li><b>Upstream HTTP o SOCKS5</b>, fijo o según la puerta de enlace de la red en la que estés.</li>
+        <li><b>Asistente interactivo</b> que genera el TOML, y servicio de usuario (LaunchAgent en macOS, <code>systemd --user</code> en Linux).</li>
+      </ul>
+      <ul class="chips"><li>Rust</li><li>macOS</li><li>Linux</li><li>SOCKS5</li></ul>
+      <div class="links">
+        <a class="btn" href="https://github.com/jgermade/localproxy">Código</a>
+      </div>
+    </div>
+    <div class="media">
+      <div class="diagram">
+        <h4>Cadena de resolución</h4>
+        <p style="margin:0 0 12px;color:var(--ink-2);font-size:14px">Tu terminal → <code>http_proxy=http://127.0.0.1:1234</code> → localproxy prueba, en orden:</p>
+        <div class="chain">
+          <div class="node"><b>1 · principal</b><small>HTTP · SOCKS5 · gateway</small></div>
+          <div class="arrow">→</div>
+          <div class="node"><b>2 · respaldo</b><small>estático o directo</small></div>
+          <div class="arrow">→</div>
+          <div class="node"><b>3 · directo</b><small>si la config lo permite</small></div>
+        </div>
+      </div>
+      <div class="term">
+        <div class="term-bar"><i></i><i></i><i></i><span>zsh</span></div>
+<pre><span class="c"># Instala en ~/.local/bin y añade el bloque a tu shell</span>
+<span class="p">$</span> curl -fsSL https://raw.githubusercontent.com/jgermade/localproxy/main/install.sh | bash
+
+<span class="c"># Arranca en segundo plano o como servicio de usuario</span>
+<span class="p">$</span> localproxy start --detached
+<span class="p">$</span> localproxy status</pre>
+      </div>
+    </div>
+  </article>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Jesús Germade · <a href="https://github.com/jgermade">github.com/jgermade</a> · <a href="https://github.com/germadev">github.com/germadev</a></span>
+    <span>Los álbumes y artistas de las capturas de jackbird son inventados.</span>
+  </div>
+</footer>
+
+<dialog class="lb" id="lb" aria-label="Capturas ampliadas">
+  <div class="lb-track" id="lb-track"></div>
+  <button type="button" class="lb-close" id="lb-close" aria-label="Cerrar">×</button>
+  <button type="button" class="lb-nav prev" id="lb-prev" aria-label="Captura anterior">‹</button>
+  <button type="button" class="lb-nav next" id="lb-next" aria-label="Captura siguiente">›</button>
+  <p class="lb-count" id="lb-count" aria-live="polite"></p>
+</dialog>
+
+<script src="../assets/site.js"></script>
+</body>
+</html>
