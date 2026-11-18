@@ -92,6 +92,14 @@
         decks[i].forEach(function(c){ c.style.transform=c.style.zIndex=c.style.visibility=''; });
       });
       spacer.style.height='0px';
+      // Phones: a soft stop at the start of each project, only taken when the scroll ends near it.
+      if(narrow.matches&&!reduce.matches){
+        snapAt(-mainEl.offsetTop);
+        panels.forEach(function(el,i){ if(i) snapAt(document.getElementById(el.getAttribute('data-id')).offsetTop); });
+        snapAt(root.scrollHeight-vh-mainEl.offsetTop);
+        var mx=root.scrollHeight-vh;
+        stops=stops.map(function(y){ return Math.max(0,Math.min(mx,y)); }).sort(function(x,y){ return x-y; });
+      }
       return;
     }
     panels.forEach(function(el,i){
@@ -122,16 +130,17 @@
   var from=null, lastY=scrollY, idle=0, held=false, settling=null;
   function settle(){
     clearTimeout(idle);
-    if(held||!on()||!stops.length||(lb&&lb.open)) return;
+    if(held||!stops.length||(lb&&lb.open)||(!on()&&!narrow.matches)) return;
+    var soft=!on();  // phones: the stops only pull when close, and a nudge doesn't skip ahead
     var y=scrollY, start=from; from=null;
     if(settling!==null&&Math.abs(y-settling)<2){ settling=null; return; }
     settling=null;
     var best=0;
     for(var i=1;i<stops.length;i++) if(Math.abs(stops[i]-y)<Math.abs(stops[best]-y)) best=i;
-    if(start!==null&&Math.abs(stops[best]-start)<2&&Math.abs(y-start)>12)
+    if(!soft&&start!==null&&Math.abs(stops[best]-start)<2&&Math.abs(y-start)>12)
       best=Math.max(0,Math.min(stops.length-1,best+(y>start?1:-1)));
     var t=stops[best];
-    if(Math.abs(t-y)<2) return;
+    if(Math.abs(t-y)<2||(soft&&Math.abs(t-y)>innerHeight*0.22)) return;
     settling=t;
     scrollTo({top:t,behavior:reduce.matches?'instant':'smooth'});
   }
@@ -144,7 +153,7 @@
   // A new gesture takes over from a glide; a held scrollbar settles only once it is let go.
   ['wheel','keydown'].forEach(function(t){ addEventListener(t,function(){ settling=null; },{passive:true}); });
   addEventListener('pointerdown',function(){ held=true; settling=null; },{passive:true});
-  addEventListener('pointerup',function(){ held=false; later(); },{passive:true});
+  ['pointerup','pointercancel'].forEach(function(t){ addEventListener(t,function(){ held=false; later(); },{passive:true}); });
   function frame(){
     ticking=false;
     var vh=innerHeight, deck=on(), active=0;
