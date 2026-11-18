@@ -98,8 +98,11 @@ code,.mono{font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monosp
 .swipe .media.multi::-webkit-scrollbar{display:none}
 .swipe .media.multi>*{flex:0 0 86%;min-width:0;scroll-snap-align:start}
 .swipe .media.multi>.phones{display:contents}
+/* HummingBox: two phones, or the two landscape shots stacked, as big as fits in the view */
 .phones.phones-2{grid-template-columns:repeat(2,minmax(0,1fr));max-width:440px;margin:0 auto;width:100%}
 .pair{display:grid;gap:14px}
+.deck .media>.phones-2{max-width:min(100%,calc((100vh - 200px)*.92 + 12px));align-self:center}
+.deck .media>.pair{max-width:min(84%,calc((100vh - 300px)/.923));margin:0 auto;width:100%;align-self:center}
 .duo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;align-items:start;max-width:600px;margin:0 auto;width:100%}
 .swipe .media.multi>.duo{display:contents}
 .swipe .media.multi>.duo>.shot{flex:0 0 66%;scroll-snap-align:start}
@@ -210,11 +213,8 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between}
 @media (max-width:560px){.minis .brand span{display:none}.mini{justify-content:flex-start;position:relative;-webkit-mask-image:linear-gradient(90deg,transparent,#000 18%,#000 82%,transparent);mask-image:linear-gradient(90deg,transparent,#000 18%,#000 82%,transparent)}.mini::before,.mini::after{content:"";flex:0 0 calc(50% - 23px)}.mini a{width:30px;height:30px}.mini a img{width:21px;height:21px}}
 @media (prefers-reduced-motion:reduce){.mini,.mini a{transition:none}}
 
-/* scroll snap stops (desktop): markers the script places at each state */
+/* the stops the script settles the scroll on are offsets within <main> */
 main{position:relative}
-.snaps{position:absolute;top:0;left:0;width:0;height:0;pointer-events:none}
-.snaps i{position:absolute;left:0;width:1px;height:1px;scroll-snap-align:start}
-html.deck{scroll-snap-type:y mandatory}
 
 /* WIP ribbon */
 .has-ribbon{position:relative}
