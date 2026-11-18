@@ -109,6 +109,13 @@ code,.mono{font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monosp
 .swipe .media.multi>.pair{display:contents}
 .swipe .media.multi>.phones>.shot{flex:0 0 44%;scroll-snap-align:start}
 .swipe .media.multi>.shot.invoice{flex-basis:70%}
+/* every card in the row is as tall as the tallest; a screenshot fills its card, cropped from the top
+   left (the lightbox shows it whole) */
+.swipe .media.multi .shot{display:flex;flex-direction:column}
+.swipe .media.multi .shot img{flex:1 0 auto;height:auto;object-fit:cover;object-position:0 0}
+.swipe .media.multi .shot figcaption{flex:none}
+.swipe .media.multi>.pair>.shot{flex:0 0 86%;scroll-snap-align:start}
+.swipe .media.multi>.pair>.shot img{object-position:50% 50%}  /* landscape shots in a tall card: the middle */
 .anchor{display:block;height:0}
 @media (min-width:980px){
   .project{grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:48px;align-items:start}
