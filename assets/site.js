@@ -29,10 +29,7 @@
     mini.appendChild(m); return m;
   });
   var miniOn=-1;
-  function header(){
-    var shown=index.getBoundingClientRect().bottom<top.offsetHeight;
-    document.documentElement.classList.toggle('minis',shown);
-  }
+  function header(shown){ document.documentElement.classList.toggle('minis',shown); }
   function mark(i){ // panel i is in front; the hero is panel 0
     var k=i-1; if(k===miniOn) return;
     if(miniOn>=0) minis[miniOn].classList.remove('on'), minis[miniOn].removeAttribute('aria-current');
@@ -44,8 +41,8 @@
       if(mini.scrollWidth>mini.clientWidth) mini.scrollTo({left:a.offsetLeft-mini.clientWidth/2+a.offsetWidth/2,behavior:reduce.matches?'instant':'smooth'});
     }
   }
-  function show(i){
-    header(); mark(i);
+  function show(i,shown){
+    header(shown); mark(i);
     if(i===current) return;
     var l=layers[i], src=panels[i].getAttribute('data-bg-img');
     if(src && !l.firstChild){ var im=new Image(); im.alt=''; im.decoding='async'; im.src=src; l.appendChild(im); }
@@ -97,40 +94,45 @@
     });
     spacer.style.height=gaps[panels.length-1]+'px';
   }
+  // Each frame first reads every position it needs, then writes every style: a read right after
+  // a write would make the browser recalculate the page, once per panel.
   function frame(){
     ticking=false;
-    var vh=innerHeight, deck=on(), active=0;
+    var vh=innerHeight, deck=on(), active=0, n=panels.length;
+    // Reads.
+    var tops=panels.map(function(el){ return el.getBoundingClientRect().top; });
+    var heights=panels.map(function(el){ return el.offsetHeight; });
+    var footTop=footer.getBoundingClientRect().top;
+    var mediaTops=deck?panels.map(function(el,i){
+      return decks[i].length>1?el.querySelector('.media').getBoundingClientRect().top:0;
+    }):null;
+    var shown=index.getBoundingClientRect().bottom<top.offsetHeight;
+    for(var i=0;i<n;i++) if(tops[i]<=vh*0.5) active=i;
+    // Writes.
     if(!deck){
       // Narrow screens scroll normally; a panel only fades and rises a little as it comes in.
-      var soft=!reduce.matches;
-      panels.forEach(function(el,i){
-        var r=el.getBoundingClientRect();
-        if(r.top<=vh*0.5) active=i;
-        if(!soft||!i) return;
-        var q=Math.min(1,Math.max(0,(vh-r.top)/(vh*0.35))), e=q*q*(3-2*q);
+      if(!reduce.matches) panels.forEach(function(el,i){
+        if(!i) return;
+        var q=Math.min(1,Math.max(0,(vh-tops[i])/(vh*0.35))), e=q*q*(3-2*q);
         el.style.opacity=e===1?'':String(0.2+0.8*e);
         el.style.transform=e===1?'':'translate3d(0,'+Math.round((1-e)*28)+'px,0)';
       });
-      show(active);
+      show(active,shown);
       return;
     }
     panels.forEach(function(el,i){
-      var r=el.getBoundingClientRect();
-      if(r.top<=vh*0.5) active=i;
-      var after=panels[i+1]||footer, at=after.getBoundingClientRect().top;
-      var stickTop=Math.min(0,vh-el.offsetHeight);
-      var pinned=stickTop+el.offsetHeight+gaps[i]-at; // scroll since it pinned
+      var at=i+1<n?tops[i+1]:footTop;
+      var stickTop=Math.min(0,vh-heights[i]);
+      var pinned=stickTop+heights[i]+gaps[i]-at; // scroll since it pinned
       // deck
       var cards=decks[i];
       if(cards.length>1){
-        var media=el.querySelector('.media'), below=vh-media.getBoundingClientRect().top+40;
+        var below=vh-mediaTops[i]+40;
         var ts=cards.map(function(c,k){
           if(!k) return 1;
-          if(!deck) return 1;
           return Math.min(1,Math.max(0,(pinned-(k-1)*vh*STEP)/(vh*STEP)));
         });
         cards.forEach(function(c,k){
-          if(!deck){ c.style.transform=''; c.style.zIndex=''; return; }
           var t=ts[k], ease=1-Math.pow(1-t,3), depth=0;
           for(var j=k+1;j<cards.length;j++) depth+=ts[j];
           var y=k?(1-ease)*Math.max(below,0)+k*OFF:0;
@@ -140,13 +142,13 @@
         });
       }
       // While the next panel rises it fades in; once it has risen HOLD, this one fades and recedes.
-      var next=panels[i+1], e=0, a=1;
-      if(next && deck && i>0){
-        var p=Math.min(1,Math.max(0,(vh-next.getBoundingClientRect().top-vh*HOLD)/(vh*0.55)));
+      var e=0, a=1;
+      if(i+1<n && i>0){
+        var p=Math.min(1,Math.max(0,(vh-tops[i+1]-vh*HOLD)/(vh*0.55)));
         e=p*p*(3-2*p);
       }
-      if(i>1 && deck){
-        var q=Math.min(1,Math.max(0,(vh-r.top)/(vh*0.5)));
+      if(i>1){
+        var q=Math.min(1,Math.max(0,(vh-tops[i])/(vh*0.5)));
         a=q*q*(3-2*q);
       }
       var o=a*(1-e);
@@ -155,7 +157,7 @@
       el.style.transform=e?'scale('+(1-0.1*e)+')':'';
       el.style.pointerEvents=e>0.5?'none':'';
     });
-    show(active);
+    show(active,shown);
   }
   function onScroll(){ if(!ticking){ ticking=true; requestAnimationFrame(frame); } }
   addEventListener('scroll',onScroll,{passive:true});
