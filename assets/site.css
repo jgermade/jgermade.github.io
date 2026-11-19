@@ -101,7 +101,7 @@ code,.mono{font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monosp
 /* HummingBox: two phones, or the two landscape shots stacked, as big as fits in the view */
 .phones.phones-2{grid-template-columns:repeat(2,minmax(0,1fr));max-width:440px;margin:0 auto;width:100%}
 .pair{display:grid;gap:14px}
-.deck .media>.phones-2{max-width:min(100%,calc((100vh - 200px)*.92 + 12px));align-self:center}
+.deck .media>.phones-2{max-width:min(84%,calc((100vh - 280px)*.92 + 12px));align-self:center}  /* about as tall as the landscape pair */
 .deck .media>.pair{max-width:min(84%,calc((100vh - 300px)/.923));margin:0 auto;width:100%;align-self:center}
 .duo{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;align-items:start;max-width:600px;margin:0 auto;width:100%}
 .swipe .media.multi>.duo{display:contents}

@@ -68,31 +68,34 @@
   var STEP=0.55, HOLD=0.25, OFF=14;   // per card, and how far the next panel rises (fading in) before this one fades, in viewport heights; px between stacked cards
   // Pinned panels and decks need the shots beside the text: wide screens only.
   function on(){ return !reduce.matches && !narrow.matches; }
-  // The last panel can't take a margin (sticky stops a margin short of the end of <main>), so a
-  // spacer after it gives it the same pinned scroll distance.
-  var spacer=document.createElement('div'), gaps=[];
-  spacer.setAttribute('aria-hidden','true');
-  panels[panels.length-1].after(spacer);
+  // The pinned scroll distance of each panel is a spacer after it, not a margin: a sticky panel
+  // stays put only while its margin box fits above the end of <main>, so with margins the one
+  // before the last would come loose before its last shot had risen.
+  var gaps=[], spacers=panels.map(function(el){
+    var sp=document.createElement('div'); sp.setAttribute('aria-hidden','true'); el.after(sp); return sp;
+  });
   function layout(){
-    var vh=innerHeight, deck=on(), root=document.documentElement;
+    var vh=innerHeight, deck=on(), root=document.documentElement, n=panels.length;
     root.classList.toggle('deck',deck);
     root.classList.toggle('swipe',narrow.matches);
     if(!deck){
       panels.forEach(function(el,i){
-        el.style.top=el.style.marginBottom=el.style.transform=el.style.opacity=el.style.pointerEvents='';
+        el.style.top=el.style.transform=el.style.opacity=el.style.pointerEvents='';
         decks[i].forEach(function(c){ c.style.transform=c.style.zIndex=c.style.visibility=''; });
+        spacers[i].style.height='';
+        gaps[i]=0;
       });
-      spacer.style.height='0px';
       return;
     }
     panels.forEach(function(el,i){
-      var n=deck?Math.max(1,decks[i].length):1, last=i===panels.length-1;
-      gaps[i]=deck?Math.round(vh*(n-1)*STEP):0;
-      el.style.marginBottom=deck&&!last?gaps[i]+'px':(last?'0px':'');
+      gaps[i]=Math.round(vh*(Math.max(1,decks[i].length)-1)*STEP);
+      spacers[i].style.height=gaps[i]+'px';
       // A panel taller than the view sticks once its bottom reaches the bottom of the view.
       el.style.top=i?Math.min(0,vh-el.offsetHeight)+'px':'';  // the hero scrolls normally
     });
-    spacer.style.height=gaps[panels.length-1]+'px';
+    // The one before the last stays pinned until the last has risen over it.
+    var last=panels[n-1], prev=panels[n-2], stick=function(el){ return Math.min(0,vh-el.offsetHeight); };
+    if(n>2) spacers[n-1].style.height=Math.max(gaps[n-1],Math.ceil(prev.offsetHeight+stick(prev)+stick(last)-last.offsetHeight))+'px';
   }
   // Each frame first reads every position it needs, then writes every style: a read right after
   // a write would make the browser recalculate the page, once per panel.
