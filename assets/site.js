@@ -76,14 +76,8 @@
   var spacer=document.createElement('div'), gaps=[];
   spacer.setAttribute('aria-hidden','true');
   panels[panels.length-1].after(spacer);
-  // Scroll snap: a stop at every state (each project once it fills the view, and each of its shots
-  // once stacked); the margins are only the room they need. The page scrolls freely, and only once
-  // the scroll stops does it glide to the nearest stop (CSS snapping stops at every wheel tick).
-  var mainEl=document.querySelector('main'), stops=[];
-  function snapAt(y){ stops.push(Math.round(y+mainEl.offsetTop)); }
   function layout(){
     var vh=innerHeight, deck=on(), root=document.documentElement;
-    stops=[];
     root.classList.toggle('deck',deck);
     root.classList.toggle('swipe',narrow.matches);
     if(!deck){
@@ -102,49 +96,7 @@
       el.style.top=i?Math.min(0,vh-el.offsetHeight)+'px':'';  // the hero scrolls normally
     });
     spacer.style.height=gaps[panels.length-1]+'px';
-    snapAt(-mainEl.offsetTop);                       // the top of the page
-    // The hero can be taller than the view (the index under it): stops down to its bottom.
-    var heroEnd=panels[0].offsetTop+panels[0].offsetHeight-vh;  // offsetTop is already within <main>
-    for(var hy=-mainEl.offsetTop+vh*0.75; hy<heroEnd; hy+=vh*0.75) snapAt(hy);
-    if(heroEnd>-mainEl.offsetTop+40) snapAt(heroEnd);
-    panels.forEach(function(el,i){
-      if(!i) return;
-      var a=document.getElementById(el.getAttribute('data-id')).offsetTop, extra=Math.max(0,el.offsetHeight-vh);
-      if(extra>20) snapAt(a);                       // a panel taller than the view: its top first
-      for(var k=0;k<Math.max(1,decks[i].length);k++) snapAt(a+extra+k*vh*STEP);
-    });
-    snapAt(document.documentElement.scrollHeight-vh-mainEl.offsetTop);  // the end of the page, footer in view
-    var max=root.scrollHeight-vh;
-    stops=stops.map(function(y){ return Math.max(0,Math.min(max,y)); }).sort(function(x,y){ return x-y; });
   }
-  // Settling: a scroll that ends between stops glides to the nearest one. A short nudge (an arrow
-  // key, one wheel tick) that would fall back to where it started goes on to the next stop instead.
-  var from=null, lastY=scrollY, idle=0, held=false, settling=null;
-  function settle(){
-    clearTimeout(idle);
-    if(held||!on()||!stops.length||(lb&&lb.open)) return;
-    var y=scrollY, start=from; from=null;
-    if(settling!==null&&Math.abs(y-settling)<2){ settling=null; return; }
-    settling=null;
-    var best=0;
-    for(var i=1;i<stops.length;i++) if(Math.abs(stops[i]-y)<Math.abs(stops[best]-y)) best=i;
-    if(start!==null&&Math.abs(stops[best]-start)<2&&Math.abs(y-start)>12)
-      best=Math.max(0,Math.min(stops.length-1,best+(y>start?1:-1)));
-    var t=stops[best];
-    if(Math.abs(t-y)<2) return;
-    settling=t;
-    scrollTo({top:t,behavior:reduce.matches?'instant':'smooth'});
-  }
-  function later(){ clearTimeout(idle); idle=setTimeout(settle,160); }
-  addEventListener('scroll',function(){
-    if(settling===null&&from===null) from=lastY;
-    lastY=scrollY; later();
-  },{passive:true});
-  if('onscrollend' in window) addEventListener('scrollend',settle);
-  // A new gesture takes over from a glide; a held scrollbar settles only once it is let go.
-  ['wheel','keydown'].forEach(function(t){ addEventListener(t,function(){ settling=null; },{passive:true}); });
-  addEventListener('pointerdown',function(){ held=true; settling=null; },{passive:true});
-  ['pointerup','pointercancel'].forEach(function(t){ addEventListener(t,function(){ held=false; later(); },{passive:true}); });
   function frame(){
     ticking=false;
     var vh=innerHeight, deck=on(), active=0;
